@@ -1,128 +1,136 @@
-# CoursePulse
+# CoursePulse ⚡
 
-> **Autonomous, self-updating, anti-paywall open course directory with cryptographic verification and visual proof.**
-
-CoursePulse continuously audits top-tier university and industry open-learning courses, asserting full syllabus accessibility, zero payment walls, zero credit card traps, and verified free learning materials. Every course in this directory is validated via headless Playwright inspections and an immutable cryptographic audit ledger.
-
-## Real-Time Directory Telemetry
-
-- **Active Audited Courses**: `20` / `20`
-- **Courses with Free Certificates/Badges**: `15`
-- **Last Verified Pipeline Run**: `2026-10-24T12:00:00.000000+00:00`
-- **Paywall Invariant**: `100% Free Guaranteed` (Full syllabus, zero credit card required, zero trial bait)
-- **Visual Proof Invariant**: Every active course contains a visual rendering audit in `docs/screenshots/`
+> **Autonomous, paywall-free open course directory & learning progress tracker.**  
+> Built as a zero-build static site for GitHub Pages. No framework, no npm, no bundler, no backend.
 
 ---
 
-## Core Guarantees & Verification Invariants
+## Features
 
-Unlike commercial aggregate registries filled with affiliate links and 7-day trial traps, CoursePulse enforces strict mathematical and browser-level invariants:
-
-1. **Zero Hidden Paywalls**: No paywalls, subscription models (e.g. Coursera Plus required to complete), or payment card inputs at registration.
-2. **Full Curriculum Accessibility**: Every reading, lecture, problem set, and module is 100% unlocked from day one.
-3. **Anti-Scam Domain Provenance**: Courses are strictly sourced from verified academic, governmental, or reputable non-profit institutions.
-4. **Visual Difference Hashing**: Headless Playwright captures render snapshots and monitors structural changes with 64-bit difference hashing (`dhash`).
-
----
-
-## Directory Catalog by Category
-
-### Artificial Intelligence (6)
-
-| Course | Institution | Platform | Level | Duration | Credential | Materials | Proof |
-| :--- | :--- | :--- | :---: | :---: | :--- | :--- | :---: |
-| [AI Python for Beginners](https://www.deeplearning.ai/short-courses/ai-python-for-beginners/) | DeepLearning.AI | DeepLearning.AI | Beginner | 10h | **[Accomplishment]** | `Video Lessons` `Jupyter Workspace` `Free Statement of Accomplishment` | [Visual Proof](docs/screenshots/deeplearningai-ai-python.png) |
-| [CS50AI: Introduction to Artificial Intelligence with Python](https://cs50.harvard.edu/ai/) | Harvard University | Harvard Online / CS50 | Intermediate | 90h | **[Free Cert]** | `Algorithms & AI Theory` `Hands-on Python Projects` `Automated Grading` | [Visual Proof](docs/screenshots/harvard-cs50ai.png) |
-| [Deep Learning with TensorFlow & Keras](https://www.kaggle.com/learn/intro-to-deep-learning) | Kaggle | Kaggle Learn | Intermediate | 4h | **[Free Cert]** | `TensorFlow Cloud Notebooks` `Automated Feedback` `Free Certificate` | [Visual Proof](docs/screenshots/kaggle-deep-learning.png) |
-| [Elements of AI: Introduction to Artificial Intelligence](https://www.elementsofai.com/) | University of Helsinki & Reaktor | Elements of AI | Beginner | 30h | **[Free Cert]** | `Interactive Visual Modules` `Automated Exercises` `Peer Reviews` | [Visual Proof](docs/screenshots/helsinki-elements-of-ai.png) |
-| [Introduction to Generative AI Learning Path](https://www.cloudskillsboost.google/course_templates/536) | Google Cloud | Google Cloud Skills Boost | Beginner | 5h | **[Free Badge]** | `Google Engineering Videos` `Reading Documents` `Quiz` | [Visual Proof](docs/screenshots/google-cloud-intro-generative-ai.png) |
-| [Machine Learning with Python Certification](https://www.freecodecamp.org/learn/machine-learning-with-python/) | freeCodeCamp | freeCodeCamp.org | Intermediate | 300h | **[Free Cert]** | `TensorFlow Lab Notebooks` `5 ML Capstone Projects` `Free Verifiable Certificate` | [Visual Proof](docs/screenshots/fcc-machine-learning-python.png) |
-
-### Computer Science (5)
-
-| Course | Institution | Platform | Level | Duration | Credential | Materials | Proof |
-| :--- | :--- | :--- | :---: | :---: | :--- | :--- | :---: |
-| [CS50P: Introduction to Programming with Python](https://cs50.harvard.edu/python/) | Harvard University | Harvard Online / CS50 | Beginner | 80h | **[Free Cert]** | `Video Lectures` `Automated Testing Suite (check50)` `Coding Exercises` | [Visual Proof](docs/screenshots/harvard-cs50p.png) |
-| [CS50x: Introduction to Computer Science](https://cs50.harvard.edu/x/) | Harvard University | Harvard Online / CS50 | Beginner | 120h | **[Free Cert]** | `Full Video Lectures` `Interactive Problem Sets` `Cloud IDE` | [Visual Proof](docs/screenshots/harvard-cs50x.png) |
-| [Introduction to Computer Science and Programming in Python](https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/) | Massachusetts Institute of Technology (MIT) | MIT OpenCourseWare | Beginner | 60h | *(Audit Only)* | `Full Lecture Videos` `Lecture Transcripts` `Problem Sets with Solutions` | [Visual Proof](docs/screenshots/mit-ocw-6-0001.png) |
-| [Python Essentials 1](https://www.netacad.com/courses/programming/pcap-programming-essentials-python) | Cisco Networking Academy & OpenEDG | Cisco Networking Academy | Beginner | 30h | **[Free Badge]** | `Browser Sandbox Environment` `Quizzes & Module Tests` `Cisco NetAcad Digital Badge` | [Visual Proof](docs/screenshots/cisco-netacad-python-essentials.png) |
-| [Python for Beginners Learning Path](https://learn.microsoft.com/en-us/training/paths/python-language/) | Microsoft | Microsoft Learn | Beginner | 12h | **[Free Badge]** | `Interactive Cloud Sandbox` `Code Knowledge Checks` `Verifiable Profile Badge` | [Visual Proof](docs/screenshots/microsoft-learn-python.png) |
-
-### Data Science (3)
-
-| Course | Institution | Platform | Level | Duration | Credential | Materials | Proof |
-| :--- | :--- | :--- | :---: | :---: | :--- | :--- | :---: |
-| [Intro to Machine Learning](https://www.kaggle.com/learn/intro-to-machine-learning) | Kaggle | Kaggle Learn | Beginner | 4h | **[Free Cert]** | `Runnable GPU Notebooks` `Automated Code Checks` `Free Certificate` | [Visual Proof](docs/screenshots/kaggle-intro-to-machine-learning.png) |
-| [Introduction to MongoDB & Document Databases](https://learn.mongodb.com/learning-paths/introduction-to-mongodb) | MongoDB | MongoDB University | Beginner | 15h | **[Free Badge]** | `Interactive Video Lectures` `Cloud Atlas Lab Sandbox` `Verifiable MongoDB Badge` | [Visual Proof](docs/screenshots/mongodb-university-intro.png) |
-| [Scientific Computing with Python Certification](https://www.freecodecamp.org/learn/scientific-computing-with-python/) | freeCodeCamp | freeCodeCamp.org | Intermediate | 300h | **[Free Cert]** | `Interactive Lessons` `5 Real-world Python Projects` `Free Verifiable Certificate` | [Visual Proof](docs/screenshots/fcc-scientific-computing-python.png) |
-
-### Mathematics & Algorithms (3)
-
-| Course | Institution | Platform | Level | Duration | Credential | Materials | Proof |
-| :--- | :--- | :--- | :---: | :---: | :--- | :--- | :---: |
-| [Algorithms: Design and Analysis](https://online.stanford.edu/courses/soe-ycscs1-algorithms-design-and-analysis-part-1) | Stanford University | Stanford Online / Tim Roughgarden | Intermediate | 80h | *(Audit Only)* | `Full Stanford Video Lectures` `Programming Problem Sets` `Lecture Notes` | [Visual Proof](docs/screenshots/stanford-algorithms-specialization.png) |
-| [Introduction to Algorithms](https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/) | Massachusetts Institute of Technology (MIT) | MIT OpenCourseWare | Intermediate | 90h | *(Audit Only)* | `Spring 2020 Video Lectures` `Recitations` `Problem Sets` | [Visual Proof](docs/screenshots/mit-ocw-6-006.png) |
-| [Linear Algebra (Gilbert Strang)](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/) | Massachusetts Institute of Technology (MIT) | MIT OpenCourseWare | Intermediate | 75h | *(Audit Only)* | `35 Video Lectures` `Homework & Exam Solutions` `Instructor Notes` | [Visual Proof](docs/screenshots/mit-ocw-18-06.png) |
-
-### Web Development (3)
-
-| Course | Institution | Platform | Level | Duration | Credential | Materials | Proof |
-| :--- | :--- | :--- | :---: | :---: | :--- | :--- | :---: |
-| [Full Stack Open: Deep Dive Into Modern Web Development](https://fullstackopen.com/en/) | University of Helsinki | Full Stack Open | Intermediate | 180h | **[Free Cert]** | `14 Comprehensive Parts` `Hands-on Submission Grader` `Discord Community` | [Visual Proof](docs/screenshots/helsinki-fullstackopen.png) |
-| [Responsive Web Design Certification](https://www.freecodecamp.org/learn/2022/responsive-web-design/) | freeCodeCamp | freeCodeCamp.org | Beginner | 300h | **[Free Cert]** | `Interactive Browser Sandbox` `15 Practice Projects` `5 Certification Projects` | [Visual Proof](docs/screenshots/fcc-responsive-web-design.png) |
-| [The Odin Project: Foundations Path](https://www.theodinproject.com/paths/foundations/courses/foundations) | The Odin Project | The Odin Project | Beginner | 100h | *(Audit Only)* | `Curated Learning Paths` `Real Portfolio Projects` `Active Discord Community` | [Visual Proof](docs/screenshots/the-odin-project-foundations.png) |
+- **Zero-Build Architecture**: 100% vanilla ES modules, semantic HTML5, CSS overrides, and pinned Tailwind CSS + DaisyUI via CDN.
+- **Subpath & Offline-Ready**: Uses strictly relative paths (`./assets/`, `./data/`) so it works out-of-the-box on GitHub Pages subpaths (`https://<user>.github.io/<repo>/`).
+- **Data-Driven (`data/courses.json`)**: Anyone can add or update courses via GitHub pull requests without touching frontend code.
+- **Client-Side Progress & Notes**: Module completions and personal notes persist in `localStorage` keyed by course ID.
+- **Export & Import JSON**: Back up or transfer your learning progress across devices with one click.
+- **Live Statistics**: Real-time course tracking with DaisyUI metrics (Total Courses, In Progress, Completed, Overall Completion Radial Progress).
+- **Deep Filtering & Search**: Instant debounced search, status filters (Not started / In progress / Completed), categories, difficulty levels, tags, and multi-field sorting.
+- **URL Query Param Sync**: Filters, search terms, and sort orders sync dynamically with the URL (`?q=python&status=in-progress`).
+- **Course Detail Modal & Checklist**: Interactive module checklists with automated completion calculation, notes scratchpad, and celebratory confetti upon 100% completion.
+- **Theme Switcher**: 8+ themes (`light`, `dark`, `cupcake`, `emerald`, `synthwave`, `nord`, `dracula`, `forest`) with automatic `prefers-color-scheme` detection and pre-paint flash prevention.
 
 ---
 
-## Inspection Engine & Anti-Trap Architecture
+## File Structure
 
-The automated inspector (`src/inspector.py` & `src/paywall_detector.py`) checks prospective leads across several defense layers:
-
-```mermaid
-flowchart TD
-    A["Target URL"] --> B["Domain Provenance Gate (RFC 3986 & Known Whitelist)"]
-    B -->|Passed| C["Asynchronous HTTPX Probe & Playwright DOM Evaluation"]
-    B -->|Failed| X["Rejected (Unverified Source)"]
-    C --> D["Paywall Heuristics Check (Trial Traps, Credit Card Demands)"]
-    D -->|Trap Detected| Y["Flagged: Paywalled / Trap"]
-    D -->|Clean| E["Full Syllabus Invariant & Content Density Check"]
-    E --> F["Playwright Visual Screenshot Capture & dHash Fingerprint"]
-    F --> G["Append Cryptographic SHA-256 Audit Ledger Entry"]
-    G --> H["Atomic Write to courses.json & Auto-deploy Docs"]
+```
+/
+├── index.html                  # Main application canvas
+├── 404.html                    # Subpath-ready 404 error page
+├── assets/
+│   ├── app.js                  # Vanilla JS ES Module (~12 KB unminified)
+│   └── styles.css              # Custom overrides & animations
+├── data/
+│   └── courses.json            # Course database (contribute via PR!)
+├── .github/
+│   └── workflows/
+│       └── pages.yml           # Official GitHub Pages deployment workflow
+└── README.md                   # Documentation & setup guide
 ```
 
-### Paywall Trap Detection Signals
-
-- **Subscription Bait**: Keywords like `"7-day free trial"`, `"subscription will renew automatically"`, `"billed annually"` flag instant disqualification.
-- **Credit Card Gates**: Any prompt requesting cardholder details, billing addresses, or payment gateways for course enrollment fails verification.
-- **Locked Module Selectors**: Elements matching `.module-locked`, `[aria-label*='locked']`, or padlock iconography indicate an incomplete free audit and prompt human review.
-
 ---
 
-## Running the Pipeline Locally
+## Local Development & Preview
 
-### Prerequisites
-- Python 3.12+
-- Headless Chromium (`playwright install chromium`)
+Because CoursePulse is a pure static web app that fetches `./data/courses.json`, serve it with any lightweight local HTTP server (browsers restrict `fetch()` on `file://` protocols):
 
 ```bash
-# Clone the repository
-git clone https://github.com/CoursePulse/free-course-tracker.git
+# 1. Clone your repository
+git clone https://github.com/<your-username>/free-course-tracker.git
 cd free-course-tracker
 
-# Install dependencies
-pip install -r requirements.txt
-playwright install chromium
+# 2. Start a local Python HTTP server
+python -m http.server 8000
 
-# Run full validation and inspection pipeline
-python -m src.main
-
-# Run test suite
-pytest -v
+# 3. Open in your browser
+# Visit http://localhost:8000
 ```
+
+Alternatively, use Node.js `npx serve` or VS Code's Live Server extension.
 
 ---
 
-## License & Integrity Pledge
+## How to Add a Course (Pull Request Guide)
 
-All course content, trademarks, and curricula belong to their respective universities, foundations, and authors. CoursePulse is an open-source, non-profit community project built for students, self-taught engineers, and lifelong learners.
+To add a new free course to CoursePulse, simply append an entry to `data/courses.json`. No build step or code modifications are required.
+
+### JSON Schema & Copy-Paste Template
+
+```json
+{
+  "id": "institution-course-slug",
+  "title": "Course Title: Subtitle",
+  "provider": "University or Platform Name",
+  "url": "https://official-course-url.org/",
+  "category": "Computer Science",
+  "level": "Beginner",
+  "duration_hours": 40,
+  "tags": ["Python", "Algorithms", "Free Certificate"],
+  "description": "A clear, 2-3 sentence overview of the syllabus and prerequisites.",
+  "modules": [
+    { "id": "slug-m1", "title": "Module 1: Introduction & Fundamentals" },
+    { "id": "slug-m2", "title": "Module 2: Core Concepts & Practice" },
+    { "id": "slug-m3", "title": "Module 3: Advanced Applications" },
+    { "id": "slug-m4", "title": "Module 4: Final Capstone Project" }
+  ]
+}
+```
+
+### Validation Rules
+- **`id`**: Lowercase alphanumeric string with hyphens (e.g. `harvard-cs50x`, `mit-ocw-6-006`).
+- **`level`**: Must be either `"Beginner"`, `"Intermediate"`, or `"Advanced"`.
+- **`duration_hours`**: Positive integer representing estimated total study hours.
+- **`url`**: Must link to the official, 100% paywall-free course syllabus.
+- **`modules`**: Array of objects with unique `id` and human-readable `title`.
+
+---
+
+## How to Customize or Change Themes
+
+CoursePulse uses DaisyUI's `data-theme` attribute on the root `<html>` tag.
+
+### Changing Available Themes
+Open `index.html` and look for the `<select id="theme-select">`:
+
+```html
+<select id="theme-select" class="select select-sm select-bordered">
+  <option value="light">☀️ Light</option>
+  <option value="dark">🌙 Dark</option>
+  <option value="cupcake">🧁 Cupcake</option>
+  <option value="emerald">🌲 Emerald</option>
+  <option value="synthwave">🌆 Synthwave</option>
+  <option value="nord">❄️ Nord</option>
+  <option value="dracula">🧛 Dracula</option>
+  <option value="forest">🌿 Forest</option>
+</select>
+```
+
+DaisyUI includes over 30 built-in themes (e.g. `corporate`, `luxury`, `coffee`, `retro`, `cyberpunk`). To add a theme, simply add an `<option value="theme-name">` to the select menu.
+
+---
+
+## GitHub Pages Deployment Setup
+
+Deploying CoursePulse to GitHub Pages takes under 1 minute using GitHub Actions:
+
+1. Push your repository to GitHub (`main` branch).
+2. On GitHub, navigate to your repository's **Settings** tab.
+3. Under the **Code and automation** section in the left sidebar, click **Pages**.
+4. Under **Build and deployment** > **Source**, select **GitHub Actions** from the dropdown.
+5. The included workflow [`.github/workflows/pages.yml`](.github/workflows/pages.yml) will trigger automatically on every push to `main` and deploy the entire static site.
+6. Your live tracker will be accessible at: `https://<your-username>.github.io/<repository-name>/`
+
+---
+
+## License & Fair Use
+
+CoursePulse is released under the MIT License. All courses, logos, video lectures, and syllabus materials belong to their respective universities, foundations, and educational providers.

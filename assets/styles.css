@@ -1,0 +1,64 @@
+/* CoursePulse Custom Overrides & Micro-interactions */
+
+/* Ensure smooth scrolling and font smoothing */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Card hover elevation */
+.course-card {
+  transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.course-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Explicit focus rings for WCAG AA accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid hsl(var(--p));
+  outline-offset: 2px;
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Lightweight Canvas / Confetti Container */
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Custom scrollbar for module checklist */
+.modal-checklist::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-checklist::-webkit-scrollbar-track {
+  background: transparent;
+}
+.modal-checklist::-webkit-scrollbar-thumb {
+  background: hsl(var(--bc) / 0.2);
+  border-radius: 9999px;
+}
+.modal-checklist::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--bc) / 0.4);
+}
