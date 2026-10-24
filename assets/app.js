@@ -6,7 +6,7 @@ const state = {
   courses: [], progress: {}, activeCourseId: null, activeTrigger: null,
   filters: { search: '', status: 'all', category: 'all', level: 'all', tags: new Set(), sort: 'title-asc' },
   statsCache: { total: 0, inProgress: 0, completed: 0, overallPct: 0 },
-  isLoading: true, error: null,
+  isLoading: true, error: null, isTagsExpanded: false,
 };
 
 function loadProgress() {
@@ -164,19 +164,36 @@ function esc(s) {
 
 function renderFilterOptions() {
   const cats = Array.from(new Set(state.courses.map((c) => c.category).filter(Boolean))).sort();
-  const allTags = Array.from(new Set(state.courses.flatMap((c) => c.tags || []).filter(Boolean))).sort();
-
   const cEl = document.getElementById('filter-category');
   if (cEl) cEl.innerHTML = '<option value="all">All Categories</option>' + cats.map((c) => `<option value="${esc(c)}">${esc(c)}</option>`).join('');
 
+  // Frequency-ranked tags
+  const tagCounts = {};
+  state.courses.forEach((c) => (c.tags || []).forEach((t) => { tagCounts[t] = (tagCounts[t] || 0) + 1; }));
+  const sortedTags = Object.keys(tagCounts).sort((a, b) => tagCounts[b] - tagCounts[a] || a.localeCompare(b));
+  
+  // Show top 12 tags by default, plus any actively filtered tag
+  const visibleTags = state.isTagsExpanded ? sortedTags : sortedTags.slice(0, 12);
+  state.filters.tags.forEach((t) => { if (!visibleTags.includes(t)) visibleTags.push(t); });
+
+  const toggleBtn = document.getElementById('btn-toggle-all-tags');
+  if (toggleBtn) {
+    toggleBtn.textContent = state.isTagsExpanded ? 'Show fewer' : `Show all topics (${sortedTags.length})`;
+  }
+
   const tagsContainer = document.getElementById('tags-chips-container');
   if (tagsContainer) {
-    tagsContainer.innerHTML = allTags.map((tag) => {
+    tagsContainer.innerHTML = visibleTags.map((tag) => {
       const act = state.filters.tags.has(tag);
-      return `<button type="button" class="badge badge-sm py-2 px-2.5 cursor-pointer font-medium transition ${act ? 'badge-primary text-primary-content shadow-sm' : 'badge-ghost text-base-content/70 hover:badge-outline'}" onclick="window.coursePulseApp.toggleFilterTag('${esc(tag)}')">${esc(tag)}</button>`;
+      return `<button type="button" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium transition cursor-pointer select-none ${act ? 'bg-primary text-primary-content shadow-xs' : 'bg-base-200/80 text-base-content/75 hover:bg-base-300 hover:text-base-content'}" onclick="window.coursePulseApp.toggleFilterTag('${esc(tag)}')">${esc(tag)}</button>`;
     }).join('');
   }
   renderActiveFilterChips();
+}
+
+export function toggleTagsExpand() {
+  state.isTagsExpanded = !state.isTagsExpanded;
+  renderFilterOptions();
 }
 
 function renderActiveFilterChips() {
@@ -237,23 +254,76 @@ function renderCoursesList() {
 
   grid.innerHTML = courses.map((c, idx) => {
     const p = getCourseProgress(c.id), tot = (c.modules || []).length, comp = (p.completedModules || []).length, pct = getCoursePercentage(c), st = getCourseStatus(c);
-    const lvl = c.level === 'Beginner' ? 'badge-success badge-outline' : (c.level === 'Intermediate' ? 'badge-warning badge-outline' : 'badge-error badge-outline');
-    const stB = st === 'completed' ? '<span class="badge badge-success text-[10px] font-mono">✓ Done</span>' : (st === 'in-progress' ? '<span class="badge badge-primary text-[10px]">In Progress</span>' : '');
-    const tags = (c.tags || []).slice(0, 3).map((t) => `<span class="badge badge-sm badge-ghost text-[10px] cursor-pointer hover:badge-primary" onclick="window.coursePulseApp.toggleFilterTag('${esc(t)}')">${esc(t)}</span>`).join('');
-    const delay = Math.min(idx * 30, 200);
+    const lvlClass = c.level === 'Beginner' ? 'text-success bg-success/10 border-success/30' : (c.level === 'Intermediate' ? 'text-warning bg-warning/10 border-warning/30' : 'text-error bg-error/10 border-error/30');
+    const stBadge = st === 'completed' ?
+      '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-success/15 text-success"><svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2 6 4.5 8.5 10 3"/></svg> Done</span>' :
+      (st === 'in-progress' ? '<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-primary/15 text-primary">In Progress</span>' : '');
+    const tags = (c.tags || []).slice(0, 2).map((t) => `<button type="button" class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-base-200/60 hover:bg-primary/10 hover:text-primary transition cursor-pointer" onclick="window.coursePulseApp.toggleFilterTag('${esc(t)}')">${esc(t)}</button>`).join('');
+    const delay = Math.min(idx * 25, 180);
 
     return `
-      <article class="course-card card-animate-in card bg-base-100 border border-base-200 shadow-sm hover:shadow-md transition flex flex-col justify-between" style="animation-delay:${delay}ms;" data-course-id="${esc(c.id)}">
-        <div class="card-body p-4 sm:p-5 flex flex-col gap-2.5">
-          <div class="flex items-center justify-between gap-2"><span class="badge badge-outline text-[11px] font-mono truncate max-w-[140px]">${esc(c.provider)}</span><div class="flex items-center gap-1">${stB}<span class="badge ${lvl} text-[11px] font-medium">${esc(c.level)}</span></div></div>
-          <h2 class="card-title text-sm sm:text-base font-bold cursor-pointer hover:text-primary transition leading-snug" onclick="window.coursePulseApp.openCourseModal('${esc(c.id)}', this)">${esc(c.title)}</h2>
-          <p class="text-xs text-base-content/70 line-clamp-2 leading-relaxed">${esc(c.description)}</p>
-          <div class="flex flex-wrap items-center gap-1 pt-1"><span class="badge badge-sm bg-base-200 text-[11px] font-mono">${c.duration_hours}h</span><span class="badge badge-sm bg-base-200 text-[11px]">${esc(c.category)}</span>${tags}</div>
-          <div class="flex flex-col gap-1 pt-1.5"><div class="flex items-center justify-between text-xs text-base-content/70"><span class="card-modules-label">${comp} of ${tot} modules</span><span class="card-pct-label font-mono font-semibold text-primary">${pct}%</span></div><progress class="card-progress-bar progress progress-primary w-full h-2" value="${pct}" max="100"></progress></div>
+      <article class="course-card card-animate-in card bg-base-100 border border-base-200 shadow-sm hover:shadow-md hover:border-base-300 transition flex flex-col justify-between" style="animation-delay:${delay}ms;" data-course-id="${esc(c.id)}">
+        <div class="card-body p-4 sm:p-5 flex flex-col gap-3">
+          
+          <!-- Top Row: Provider & Level/Status (Zero Overlap Guaranteed) -->
+          <div class="flex items-center justify-between gap-2">
+            <div class="flex items-center min-w-0 flex-1">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-medium bg-base-200/90 text-base-content/80 truncate max-w-full" title="${esc(c.provider)}">
+                ${esc(c.provider)}
+              </span>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              ${stBadge}
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium border ${lvlClass}">
+                ${esc(c.level)}
+              </span>
+            </div>
+          </div>
+
+          <!-- Title -->
+          <h2 class="card-title text-sm sm:text-base font-semibold leading-snug cursor-pointer hover:text-primary transition line-clamp-2 text-balance" onclick="window.coursePulseApp.openCourseModal('${esc(c.id)}', this)">
+            ${esc(c.title)}
+          </h2>
+
+          <!-- Description -->
+          <p class="text-xs text-base-content/70 line-clamp-2 leading-relaxed text-pretty">
+            ${esc(c.description)}
+          </p>
+
+          <!-- Duration & Category Tags -->
+          <div class="flex flex-wrap items-center gap-1.5 pt-0.5">
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium bg-base-200 text-base-content/70">
+              <svg class="w-3 h-3 text-base-content/50 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              ${c.duration_hours}h
+            </span>
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-base-200 text-base-content/70">
+              ${esc(c.category)}
+            </span>
+            ${tags}
+          </div>
+
+          <!-- Progress Telemetry -->
+          <div class="flex flex-col gap-1.5 pt-1.5">
+            <div class="flex items-center justify-between text-xs text-base-content/70">
+              <span class="card-modules-label font-medium">${comp} of ${tot} modules</span>
+              <span class="card-pct-label font-mono font-semibold ${pct === 100 ? 'text-success' : 'text-primary'} tabular-nums">${pct}%</span>
+            </div>
+            <progress class="card-progress-bar progress ${pct === 100 ? 'progress-success' : 'progress-primary'} w-full h-1.5 rounded-full" value="${pct}" max="100"></progress>
+          </div>
         </div>
-        <div class="card-actions px-4 sm:px-5 pb-4 pt-0 border-t border-base-200/60 mt-auto flex items-center justify-between gap-2">
-          <button onclick="window.coursePulseApp.openCourseModal('${esc(c.id)}', this)" class="btn btn-sm btn-primary flex-1 text-xs font-semibold">Track Modules</button>
-          <a href="${esc(c.url)}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost btn-square" title="Open course website" aria-label="Open course in new tab"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+
+        <!-- Action Row -->
+        <div class="card-actions px-4 sm:px-5 pb-4 pt-2.5 border-t border-base-200/70 mt-auto flex items-center justify-between gap-2">
+          <button onclick="window.coursePulseApp.openCourseModal('${esc(c.id)}', this)" class="btn btn-sm btn-primary flex-1 text-xs font-semibold h-9 min-h-[36px] shadow-xs active:scale-[0.98] transition">
+            Track Modules
+          </button>
+          <a href="${esc(c.url)}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost border border-base-300 h-9 min-h-[36px] px-2.5 hover:bg-base-200 transition" title="Open course website" aria-label="Open course in new tab">
+            <svg class="w-4 h-4 text-base-content/70 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
         </div>
       </article>`;
   }).join('');
@@ -540,5 +610,5 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.coursePulseApp = {
-  fetchCourses, openCourseModal, closeCourseModal, toggleModule, markAllModules, saveCourseNotes, exportProgress, importProgress, toggleFilterTag, removeActiveFilter, resetFilters,
+  fetchCourses, openCourseModal, closeCourseModal, toggleModule, markAllModules, saveCourseNotes, exportProgress, importProgress, toggleFilterTag, removeActiveFilter, resetFilters, toggleTagsExpand,
 };

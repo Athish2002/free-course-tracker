@@ -53,7 +53,7 @@
   <canvas id="confetti-canvas"></canvas>
 
   <!-- Toast Notification Region with ARIA-Live -->
-  <div id="toast-container" class="toast toast-top toast-end z-50 p-4" aria-live="polite"></div>
+  <div id="toast-container" class="toast toast-bottom toast-end z-50 p-4" aria-live="polite"></div>
 
   <!-- Hidden File Input for Progress Import -->
   <input type="file" id="import-file-input" accept=".json" class="hidden" aria-hidden="true">
@@ -100,17 +100,25 @@
         </select>
       </div>
 
-      <!-- Export Button -->
-      <button id="btn-export-progress" class="btn btn-sm btn-ghost btn-square sm:btn-auto sm:px-3 text-xs gap-1.5 min-h-[44px]" title="Export Progress JSON" aria-label="Export progress">
-        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span class="hidden sm:inline">Export</span>
-      </button>
-
-      <!-- Import Button -->
-      <button id="btn-import-progress" class="btn btn-sm btn-ghost btn-square sm:btn-auto sm:px-3 text-xs gap-1.5 min-h-[44px]" title="Import Progress JSON" aria-label="Import progress">
-        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-        <span class="hidden sm:inline">Import</span>
-      </button>
+      <!-- Export & Import Action Buttons -->
+      <div class="join border border-base-300 rounded-lg bg-base-100 shadow-xs">
+        <button id="btn-export-progress" class="join-item btn btn-sm btn-ghost text-xs gap-1.5 px-3 h-8 min-h-[32px] font-medium hover:bg-base-200 transition" title="Export Progress JSON" aria-label="Export progress">
+          <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span class="hidden sm:inline">Export</span>
+        </button>
+        <button id="btn-import-progress" class="join-item btn btn-sm btn-ghost text-xs gap-1.5 px-3 h-8 min-h-[32px] font-medium border-l border-base-300 hover:bg-base-200 transition" title="Import Progress JSON" aria-label="Import progress">
+          <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+          <span class="hidden sm:inline">Import</span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -242,8 +250,13 @@
       </div>
 
       <!-- Multi-Select Tags Chip Row -->
-      <div class="flex flex-col gap-1.5 pt-1 border-t border-base-200/60">
-        <span class="text-[11px] font-semibold text-base-content/60 uppercase tracking-wider font-mono">Topic Tags:</span>
+      <div class="flex flex-col gap-2 pt-2 border-t border-base-200/70">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-base-content/70">Filter by Topic:</span>
+          <button type="button" id="btn-toggle-all-tags" class="text-xs text-primary hover:underline font-medium cursor-pointer" onclick="window.coursePulseApp.toggleTagsExpand()">
+            Show all topics
+          </button>
+        </div>
         <div class="flex flex-wrap items-center gap-1.5" id="tags-chips-container">
           <!-- Rendered dynamically -->
         </div>
