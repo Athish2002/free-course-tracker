@@ -1,0 +1,112 @@
+[
+  {
+    "lead_id": "030c8d248a63c0a6",
+    "title": "Learn Model Context Protocol (MCP) Security",
+    "url": "https://www.freecodecamp.org/news/learn-model-context-protocol-mcp-security/",
+    "institution": "freeCodeCamp",
+    "platform": "freeCodeCamp.org",
+    "category": "Web Development",
+    "discovered_at": "2026-10-24T12:32:27.513088+00:00",
+    "status": "Discovered",
+    "authenticity_notes": "Domain 'freecodecamp.org' verified via institutional trust registry (score: 100)"
+  },
+  {
+    "lead_id": "da7e1c9a801fbf3f",
+    "title": "What Is Model Distillation? A Guide for Developers",
+    "url": "https://www.freecodecamp.org/news/what-is-model-distillation-a-guide-for-developers/",
+    "institution": "freeCodeCamp",
+    "platform": "freeCodeCamp.org",
+    "category": "Web Development",
+    "discovered_at": "2026-10-24T12:32:27.513116+00:00",
+    "status": "Discovered",
+    "authenticity_notes": "Domain 'freecodecamp.org' verified via institutional trust registry (score: 100)"
+  },
+  {
+    "lead_id": "c18f46d5fcab9993",
+    "title": "How to Diagnose vite: not found After npm ci in a Container Build",
+    "url": "https://www.freecodecamp.org/news/diagnose-vite-not-found-npm-ci-container-build/",
+    "institution": "freeCodeCamp",
+    "platform": "freeCodeCamp.org",
+    "category": "Web Development",
+    "discovered_at": "2026-10-24T12:32:27.513127+00:00",
+    "status": "Discovered",
+    "authenticity_notes": "Domain 'freecodecamp.org' verified via institutional trust registry (score: 100)"
+  },
+  {
+    "lead_id": "c507186cd2329eab",
+    "title": "Build a Hybrid Search Engine in PostgreSQL: BM25 + Vector Retrieval",
+    "url": "https://www.freecodecamp.org/news/build-a-hybrid-search-engine-in-postgresql-bm25-vector-retrieval/",
+    "institution": "freeCodeCamp",
+    "platform": "freeCodeCamp.org",
+    "category": "Web Development",
+    "discovered_at": "2026-10-24T12:32:27.513135+00:00",
+    "status": "Discovered",
+    "authenticity_notes": "Domain 'freecodecamp.org' verified via institutional trust registry (score: 100)"
+  },
+  {
+    "lead_id": "ec79230968b9da52",
+    "title": "How Neural Networks Work: Why Straight Lines Aren't Enough",
+    "url": "https://www.freecodecamp.org/news/how-neural-networks-work-why-straight-lines-aren-t-enough/",
+    "institution": "freeCodeCamp",
+    "platform": "freeCodeCamp.org",
+    "category": "Web Development",
+    "discovered_at": "2026-10-24T12:32:27.513143+00:00",
+    "status": "Discovered",
+    "authenticity_notes": "Domain 'freecodecamp.org' verified via institutional trust registry (score: 100)"
+  },
+  {
+    "lead_id": "0a342253ea7fe079",
+    "title": "How Wearables Can Adapt When Pregnancy Changes a User's Regular Baseline",
+    "url": "https://www.freecodecamp.org/news/how-wearables-can-adapt-when-pregnancy-changes-a-user-s-regular-baseline/",
+    "institution": "freeCodeCamp",
+    "platform": "freeCodeCamp.org",
+    "category": "Web Development",
+    "discovered_at": "2026-10-24T12:32:27.513153+00:00",
+    "status": "Discovered",
+    "authenticity_notes": "Domain 'freecodecamp.org' verified via institutional trust registry (score: 100)"
+  },
+  {
+    "lead_id": "01c7deb05f044d2d",
+    "title": "How to Build an AI Agent Harness from Scratch in TypeScript",
+    "url": "https://www.freecodecamp.org/news/how-to-build-an-ai-agent-harness-from-scratch-in-typescript/",
+    "institution": "freeCodeCamp",
+    "platform": "freeCodeCamp.org",
+    "category": "Web Development",
+    "discovered_at": "2026-10-24T12:32:27.513160+00:00",
+    "status": "Discovered",
+    "authenticity_notes": "Domain 'freecodecamp.org' verified via institutional trust registry (score: 100)"
+  },
+  {
+    "lead_id": "48aed6b6aefad50d",
+    "title": "How to Make Your Coding Agent Check Its Work in the Browser",
+    "url": "https://www.freecodecamp.org/news/how-to-make-your-coding-agent-check-its-work-in-the-browser/",
+    "institution": "freeCodeCamp",
+    "platform": "freeCodeCamp.org",
+    "category": "Web Development",
+    "discovered_at": "2026-10-24T12:32:27.513167+00:00",
+    "status": "Discovered",
+    "authenticity_notes": "Domain 'freecodecamp.org' verified via institutional trust registry (score: 100)"
+  },
+  {
+    "lead_id": "e78fe3d627f2c78b",
+    "title": "How to Build and Publish a Native Android App in 2026: From Jetpack Compose to the Google Play Store",
+    "url": "https://www.freecodecamp.org/news/build-publish-native-android-app-from-jetpack-compose-to-google-play-store-handbook/",
+    "institution": "freeCodeCamp",
+    "platform": "freeCodeCamp.org",
+    "category": "Web Development",
+    "discovered_at": "2026-10-24T12:32:27.513173+00:00",
+    "status": "Discovered",
+    "authenticity_notes": "Domain 'freecodecamp.org' verified via institutional trust registry (score: 100)"
+  },
+  {
+    "lead_id": "6cb4772fee18ee63",
+    "title": "How to Detect Operational Drift Before It Becomes an Incident",
+    "url": "https://www.freecodecamp.org/news/detect-operational-drift-before-incident/",
+    "institution": "freeCodeCamp",
+    "platform": "freeCodeCamp.org",
+    "category": "Web Development",
+    "discovered_at": "2026-10-24T12:32:27.513180+00:00",
+    "status": "Discovered",
+    "authenticity_notes": "Domain 'freecodecamp.org' verified via institutional trust registry (score: 100)"
+  }
+]

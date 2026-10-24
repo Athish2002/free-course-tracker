@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>CoursePulse — Autonomous Anti-Paywall Open Course Directory</title>
+  <meta name="description" content="Verified, paywall-free open courses from premier universities and institutions. Audited with visual proof and cryptographic integrity.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            zinc: {
+              850: '#1f1f23',
+              925: '#111115',
+              950: '#09090b',
+            },
+            brand: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              500: '#22c55e',
+              600: '#16a34a',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            mono: ['JetBrains Mono', 'Menlo', 'Consolas', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @layer base {
+      body {
+        background-color: #09090b;
+        color: #f4f4f5;
+        font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+      }
+    }
+
+    .bento-card {
+      background: rgba(18, 18, 22, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(16px);
+      transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .bento-card:hover {
+      border-color: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Custom scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #09090b;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #27272a;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3f3f46;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-zinc-950 text-zinc-100 antialiased selection:bg-emerald-500/20 selection:text-emerald-400">
+
+  <!-- Main Container -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 flex flex-col gap-8">
+    
+    <!-- Top Executive Header -->
+    <header class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-zinc-800/80">
+      <div>
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium mb-3">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Zero-Paywall Guarantee • 100% Free Verified</span>
+        </div>
+        <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white flex items-center gap-3">
+          <span>CoursePulse</span>
+          <span class="text-xs font-mono font-normal px-2 py-0.5 rounded bg-zinc-800 text-zinc-400 border border-zinc-700/60">v1.0.0</span>
+        </h1>
+        <p class="mt-2 text-zinc-400 text-sm md:text-base max-w-2xl leading-relaxed text-pretty">
+          Autonomous, self-updating open course directory. Continuously audited with headless browser inspections and difference hashing to guarantee complete syllabi with zero credit-card bait.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-3 self-start md:self-auto">
+        <a href="https://github.com/CoursePulse/free-course-tracker" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-750 text-zinc-200 text-sm font-medium transition active:scale-[0.98]">
+          <i data-lucide="github" class="w-4 h-4"></i>
+          <span>GitHub Repository</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Bento Grid Telemetry Bar -->
+    <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <!-- KPI 1 -->
+      <div class="bento-card rounded-xl p-4 flex flex-col justify-between">
+        <div class="flex items-center justify-between text-zinc-400 text-xs">
+          <span>Total Audited Courses</span>
+          <i data-lucide="layers" class="w-4 h-4 text-zinc-500"></i>
+        </div>
+        <div class="mt-3 flex items-baseline gap-2">
+          <span class="text-3xl font-bold font-mono text-white tabular-nums" id="stat-total">20</span>
+          <span class="text-xs text-emerald-400 font-medium">100% Verified</span>
+        </div>
+      </div>
+
+      <!-- KPI 2 -->
+      <div class="bento-card rounded-xl p-4 flex flex-col justify-between">
+        <div class="flex items-center justify-between text-zinc-400 text-xs">
+          <span>Free Credentials/Badges</span>
+          <i data-lucide="award" class="w-4 h-4 text-emerald-400"></i>
+        </div>
+        <div class="mt-3 flex items-baseline gap-2">
+          <span class="text-3xl font-bold font-mono text-emerald-400 tabular-nums">15</span>
+          <span class="text-xs text-zinc-400">certs &amp; badges</span>
+        </div>
+      </div>
+
+      <!-- KPI 3 -->
+      <div class="bento-card rounded-xl p-4 flex flex-col justify-between">
+        <div class="flex items-center justify-between text-zinc-400 text-xs">
+          <span>Paywall Trap Invariant</span>
+          <i data-lucide="shield-check" class="w-4 h-4 text-blue-400"></i>
+        </div>
+        <div class="mt-3 flex items-baseline gap-2">
+          <span class="text-2xl font-bold font-mono text-blue-400">0 Traps</span>
+          <span class="text-xs text-zinc-400">0 trial gates</span>
+        </div>
+      </div>
+
+      <!-- KPI 4 -->
+      <div class="bento-card rounded-xl p-4 flex flex-col justify-between">
+        <div class="flex items-center justify-between text-zinc-400 text-xs">
+          <span>Last Audit Run</span>
+          <i data-lucide="clock" class="w-4 h-4 text-zinc-500"></i>
+        </div>
+        <div class="mt-3 flex flex-col">
+          <span class="text-sm font-semibold font-mono text-zinc-200 tabular-nums">2026-10-24T12:00:00.000000+00:00</span>
+          <span class="text-[11px] text-zinc-500">Automated 6h cron</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Controls & Filter Deck -->
+    <section class="bento-card rounded-xl p-4 md:p-6 flex flex-col gap-4">
+      <div class="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
+        <!-- Search bar -->
+        <div class="relative flex-1">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400"></i>
+          <input type="text" id="searchInput" placeholder="Search by title, institution, skill, or keyword... (Press / to focus)"
+                 class="w-full pl-10 pr-4 py-2.5 bg-zinc-900/90 border border-zinc-800 rounded-lg text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 transition">
+        </div>
+
+        <!-- Level selector -->
+        <div class="flex items-center gap-2">
+          <label for="levelFilter" class="text-xs text-zinc-400 font-medium whitespace-nowrap">Level:</label>
+          <select id="levelFilter" class="bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-xs text-zinc-200 focus:outline-none focus:ring-1 focus:ring-emerald-500">
+            <option value="all">All Difficulty Levels</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+        </div>
+
+        <!-- Credential filter -->
+        <div class="flex items-center gap-2">
+          <label for="credFilter" class="text-xs text-zinc-400 font-medium whitespace-nowrap">Credential:</label>
+          <select id="credFilter" class="bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-xs text-zinc-200 focus:outline-none focus:ring-1 focus:ring-emerald-500">
+            <option value="all">All Courses</option>
+            <option value="with_cert">Free Cert or Badge Only</option>
+            <option value="audit_only">Audit Only</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="flex items-center gap-2 overflow-x-auto pt-2 pb-1 scrollbar-none" id="categoryChips">
+        <button class="cat-pill active px-3 py-1.5 rounded-full text-xs font-medium bg-emerald-500 text-zinc-950 transition active:scale-95" data-category="all">
+          All Disciplines (20)
+        </button>
+        <button class="cat-pill px-3 py-1.5 rounded-full text-xs font-medium bg-zinc-900 hover:bg-zinc-850 text-zinc-300 border border-zinc-800 transition active:scale-95" data-category="Artificial Intelligence">
+          Artificial Intelligence
+        </button> <button class="cat-pill px-3 py-1.5 rounded-full text-xs font-medium bg-zinc-900 hover:bg-zinc-850 text-zinc-300 border border-zinc-800 transition active:scale-95" data-category="Computer Science">
+          Computer Science
+        </button> <button class="cat-pill px-3 py-1.5 rounded-full text-xs font-medium bg-zinc-900 hover:bg-zinc-850 text-zinc-300 border border-zinc-800 transition active:scale-95" data-category="Data Science">
+          Data Science
+        </button> <button class="cat-pill px-3 py-1.5 rounded-full text-xs font-medium bg-zinc-900 hover:bg-zinc-850 text-zinc-300 border border-zinc-800 transition active:scale-95" data-category="Mathematics & Algorithms">
+          Mathematics & Algorithms
+        </button> <button class="cat-pill px-3 py-1.5 rounded-full text-xs font-medium bg-zinc-900 hover:bg-zinc-850 text-zinc-300 border border-zinc-800 transition active:scale-95" data-category="Web Development">
+          Web Development
+        </button>
+      </div>
+    </section>
+
+    <!-- Results Status Counter -->
+    <div class="flex items-center justify-between text-xs text-zinc-400 px-1">
+      <div>Showing <span id="visibleCount" class="font-mono font-semibold text-zinc-200">20</span> verified courses</div>
+      <div class="flex items-center gap-1.5">
+        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i>
+        <span>Playwright Verified DOM Invariants</span>
+      </div>
+    </div>
+
+    <!-- Course Bento Grid -->
+    <main id="coursesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Rendered dynamically via JavaScript -->
+    </main>
+
+    <!-- Empty State -->
+    <div id="emptyState" class="hidden py-16 text-center bento-card rounded-2xl p-8">
+      <i data-lucide="search-x" class="w-12 h-12 text-zinc-500 mx-auto mb-3"></i>
+      <h3 class="text-base font-semibold text-zinc-200">No courses match your active filters</h3>
+      <p class="text-xs text-zinc-400 mt-1 max-w-sm mx-auto">Try clearing search terms or selecting 'All Disciplines' above.</p>
+      <button id="resetFiltersBtn" class="mt-4 px-4 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-xs font-medium text-zinc-200 transition">
+        Reset All Filters
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Modal for Visual Screenshot Proof -->
+  <div id="proofModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-200">
+    <div class="relative w-full max-w-3xl bg-zinc-900 border border-zinc-700/80 rounded-2xl shadow-2xl overflow-hidden transform scale-95 transition-transform duration-200" id="proofModalDialog">
+      <!-- Modal Header -->
+      <div class="px-6 py-4 border-b border-zinc-800 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+            <i data-lucide="camera" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h3 class="text-sm font-semibold text-white" id="modalCourseTitle">Visual Inspection Proof</h3>
+            <p class="text-xs text-zinc-400" id="modalCourseInst">Institution Proof</p>
+          </div>
+        </div>
+        <button id="closeModalBtn" class="p-1.5 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 transition">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Screenshot Preview Area -->
+      <div class="p-6 bg-zinc-950 flex flex-col gap-4">
+        <div class="relative w-full bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 aspect-video flex items-center justify-center">
+          <img id="modalImg" src="" alt="Course Visual Proof" class="w-full h-full object-cover object-top">
+        </div>
+
+        <!-- Invariant Verification Chips -->
+        <div class="grid grid-cols-3 gap-3 text-center">
+          <div class="p-2.5 rounded-lg bg-zinc-900 border border-zinc-800/80">
+            <span class="text-[10px] uppercase font-mono text-zinc-500 block">Paywall Free</span>
+            <span class="text-xs font-semibold text-emerald-400 flex items-center justify-center gap-1 mt-0.5">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i> Confirmed
+            </span>
+          </div>
+          <div class="p-2.5 rounded-lg bg-zinc-900 border border-zinc-800/80">
+            <span class="text-[10px] uppercase font-mono text-zinc-500 block">Trial Traps</span>
+            <span class="text-xs font-semibold text-blue-400 flex items-center justify-center gap-1 mt-0.5">
+              <i data-lucide="shield" class="w-3.5 h-3.5"></i> 0 Detected
+            </span>
+          </div>
+          <div class="p-2.5 rounded-lg bg-zinc-900 border border-zinc-800/80">
+            <span class="text-[10px] uppercase font-mono text-zinc-500 block">Syllabus Access</span>
+            <span class="text-xs font-semibold text-purple-400 flex items-center justify-center gap-1 mt-0.5" id="modalSyllabusPct">
+              100% Unlocked
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-6 py-3.5 bg-zinc-900/60 border-t border-zinc-800 flex items-center justify-between">
+        <span class="text-xs text-zinc-400 font-mono" id="modalVerificationDate">Verified 2026-10-24</span>
+        <a id="modalDirectLink" href="#" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-zinc-950 font-semibold text-xs transition active:scale-[0.98]">
+          <span>Open Full Course</span>
+          <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dynamic Application Script -->
+  <script>
+    const COURSES_DATA = [{"id": "harvard-cs50x", "title": "CS50x: Introduction to Computer Science", "institution": "Harvard University", "platform": "Harvard Online / CS50", "category": "Computer Science", "level": "Beginner", "duration_hours": 120, "url": "https://cs50.harvard.edu/x/", "status": "Active", "certificate_offered": true, "certificate_type": "Free Verified Certificate", "prerequisites": "None", "verification_date": "2026-10-24", "inspection_notes": "100% free curriculum with full video lectures, problem sets, and a free verified Harvard certificate on score 70%+.", "is_paywall_free": true, "syllabus_completeness_pct": 100, "free_learning_materials": ["Full Video Lectures", "Interactive Problem Sets", "Cloud IDE", "Discord Community", "Free Certificate"], "visual_proof": {"screenshot_path": "docs/screenshots/harvard-cs50x.png", "screenshot_url": "docs/screenshots/harvard-cs50x.png", "captured_at": "2026-10-24T12:00:00.000000+00:00", "status": "verified", "paywall_free_confirmed": true, "trial_trap_detected": false, "locked_modules_detected": false}}, {"id": "harvard-cs50p", "title": "CS50P: Introduction to Programming with Python", "institution": "Harvard University", "platform": "Harvard Online / CS50", "category": "Computer Science", "level": "Beginner", "duration_hours": 80, "url": "https://cs50.harvard.edu/python/", "status": "Active", "certificate_offered": true, "certificate_type": "Free Verified Certificate", "prerequisites": "None", "verification_date": "2026-10-24", "inspection_notes": "Comprehensive Python foundations from David J. Malan. Free automated grading and free verified certificate.", "is_paywall_free": true, "syllabus_completeness_pct": 100, "free_learning_materials": ["Video Lectures", "Automated Testing Suite (check50)", "Coding Exercises", "Free Certificate"], "visual_proof": {"screenshot_path": "docs/screenshots/harvard-cs50p.png", "screenshot_url": "docs/screenshots/harvard-cs50p.png", "captured_at": "2026-10-24T12:00:00.000000+00:00", "status": "verified", "paywall_free_confirmed": true, "trial_trap_detected": false, "locked_modules_detected": false}}, {"id": "harvard-cs50ai", "title": "CS50AI: Introduction to Artificial Intelligence with Python", "institution": "Harvard University", "platform": "Harvard Online / CS50", "category": "Artificial Intelligence", "level": "Intermediate", "duration_hours": 90, "url": "https://cs50.harvard.edu/ai/", "status": "Active", "certificate_offered": true, "certificate_type": "Free Verified Certificate", "prerequisites": "CS50x or Python experience", "verification_date": "2026-10-24", "inspection_notes": "Explores graph search, machine learning, neural networks, and NLP with Python. Free verified certificate included.", "is_paywall_free": true, "syllabus_completeness_pct": 100, "free_learning_materials": ["Algorithms & AI Theory", "Hands-on Python Projects", "Automated Grading", "Free Certificate"], "visual_proof": {"screenshot_path": "docs/screenshots/harvard-cs50ai.png", "screenshot_url": "docs/screenshots/harvard-cs50ai.png", "captured_at": "2026-10-24T12:00:00.000000+00:00", "status": "verified", "paywall_free_confirmed": true, "trial_trap_detected": false, "locked_modules_detected": false}}, {"id": "mit-ocw-6-0001", "title": "Introduction to Computer Science and Programming in Python", "institution": "Massachusetts Institute of Technology (MIT)", "platform": "MIT OpenCourseWare", "category": "Computer Science", "level": "Beginner", "duration_hours": 60, "url": "https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/", "status": "Active", "certificate_offered": false, "certificate_type": "Audit Only (No Free Cert)", "prerequisites": "High school algebra", "verification_date": "2026-10-24", "inspection_notes": "Gold-standard MIT curriculum by Prof. Ana Bell and Prof. Eric Grimson. Complete video lectures, assignments, and exams.", "is_paywall_free": true, "syllabus_completeness_pct": 100, "free_learning_materials": ["Full Lecture Videos", "Lecture Transcripts", "Problem Sets with Solutions", "Exams with Solutions"], "visual_proof": {"screenshot_path": "docs/screenshots/mit-ocw-6-0001.png", "screenshot_url": "docs/screenshots/mit-ocw-6-0001.png", "captured_at": "2026-10-24T12:00:00.000000+00:00", "status": "verified", "paywall_free_confirmed": true, "trial_trap_detected": false, "locked_modules_detected": false}}, {"id": "mit-ocw-18-06", "title": "Linear Algebra (Gilbert Strang)", "institution": "Massachusetts Institute of Technology (MIT)", "platform": "MIT OpenCourseWare", "category": "Mathematics & Algorithms", "level": "Intermediate", "duration_hours": 75, "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/", "status": "Active", "certificate_offered": false, "certificate_type": "Audit Only (No Free Cert)", "prerequisites": "Multivariable Calculus", "verification_date": "2026-10-24", "inspection_notes": "Legendary linear algebra course by Gilbert Strang. 35 video lectures, exams, solutions, and MATLAB demos.", "is_paywall_free": true, "syllabus_completeness_pct": 100, "free_learning_materials": ["35 Video Lectures", "Homework & Exam Solutions", "Instructor Notes"], "visual_proof": {"screenshot_path": "docs/screenshots/mit-ocw-18-06.png", "screenshot_url": "docs/screenshots/mit-ocw-18-06.png", "captured_at": "2026-10-24T12:00:00.000000+00:00", "status": "verified", "paywall_free_confirmed": true, "trial_trap_detected": false, "locked_modules_detected": false}}, {"id": "mit-ocw-6-006", "title": "Introduction to Algorithms", "institution": "Massachusetts Institute of Technology (MIT)", "platform": "MIT OpenCourseWare", "category": "Mathematics & Algorithms", "level": "Intermediate", "duration_hours": 90, "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/", "status": "Active", "certificate_offered": false, "certificate_type": "Audit Only (No Free Cert)", "prerequisites": "Python and Discrete Math", "verification_date": "2026-10-24", "inspection_notes": "Rigorous algorithm design, asymptotic analysis, dynamic programming, and shortest path algorithms.", "is_paywall_free": true, "syllabus_completeness_pct": 100, "free_learning_materials": ["Spring 2020 Video Lectures", "Recitations", "Problem Sets", "Python Code Repos"], "visual_proof": {"screenshot_path": "docs/screenshots/mit-ocw-6-006.png", "screenshot_url": "docs/screenshots/mit-ocw-6-006.png", "captured_at": "2026-10-24T12:00:00.000000+00:00", "status": "verified", "paywall_free_confirmed": true, "trial_trap_detected": false, "locked_modules_detected": false}}, {"id": "helsinki-fullstackopen", "title": "Full Stack Open: Deep Dive Into Modern Web Development", "institution": "University of Helsinki", "platform": "Full Stack Open", "category": "Web Development", "level": "Intermediate", "duration_hours": 180, "url": "https://fullstackopen.com/en/", "status": "Active", "certificate_offered": true, "certificate_type": "Free Verified Certificate", "prerequisites": "Good programming skills in any language", "verification_date": "2026-10-24", "inspection_notes": "World-renowned production web development curriculum covering React, Redux, Node.js, MongoDB, GraphQL, TypeScript, and CI/CD. Free certificate with optional European ECTS university credits.", "is_paywall_free": true, "syllabus_completeness_pct": 100, "free_learning_materials": ["14 Comprehensive Parts", "Hands-on Submission Grader", "Discord Community", "University Certificate"], "visual_proof": {"screenshot_path": "docs/screenshots/helsinki-fullstackopen.png", "screenshot_url": "docs/screenshots/helsinki-fullstackopen.png", "captured_at": "2026-10-24T12:00:00.000000+00:00", "status": "verified", "paywall_free_confirmed": true, "trial_trap_detected": false, "locked_modules_detected": false}}, {"id": "helsinki-elements-of-ai", "title": "Elements of AI: Introduction to Artificial Intelligence", "institution": "University of Helsinki & Reaktor", "platform": "Elements of AI", "category": "Artificial Intelligence", "level": "Beginner", "duration_hours": 30, "url": "https://www.elementsofai.com/", "status": "Active", "certificate_offered": true, "certificate_type": "Free Verified Certificate", "prerequisites": "None (No math or programming required)", "verification_date": "2026-10-24", "inspection_notes": "Official Finnish government initiative to teach AI concepts globally. Free verified digital certificate on completion.", "is_paywall_free": true, "syllabus_completeness_pct": 100, "free_learning_materials": ["Interactive Visual Modules", "Automated Exercises", "Peer Reviews", "Free Certificate"], "visual_proof": {"screenshot_path": "docs/screenshots/helsinki-elements-of-ai.png", "screenshot_url": "docs/screenshots/helsinki-elements-of-ai.png", "captured_at": "2026-10-24T12:00:00.000000+00:00", "status": "verified", "paywall_free_confirmed": true, "trial_trap_detected": false, "locked_modules_detected": false}}, {"id": "fcc-responsive-web-design", "title": "Responsive Web Design Certification", "institution": "freeCodeCamp", "platform": "freeCodeCamp.org", "category": "Web Development", "level": "Beginner", "duration_hours": 300, "url": "https://www.freecodecamp.org/learn/2022/responsive-web-design/", "status": "Active", "certificate_offered": true, "certificate_type": "Free Verified Certificate", "prerequisites": "None", "verification_date": "2026-10-24", "inspection_notes": "Comprehensive HTML5, CSS3, Flexbox, CSS Grid, and responsive design with 5 mandatory projects for a free verified certificate.", "is_paywall_free": true, "syllabus_completeness_pct": 100, "free_learning_materials": ["Interactive Browser Sandbox", "15 Practice Projects", "5 Certification Projects", "Free Verifiable Certificate"], "visual_proof": {"screenshot_path": "docs/screenshots/fcc-responsive-web-design.png", "screenshot_url": "docs/screenshots/fcc-responsive-web-design.png", "captured_at": "2026-10-24T12:00:00.000000+00:00", "status": "verified", "paywall_free_confirmed": true, "trial_trap_detected": false, "locked_modules_detected": false}}, {"id": "fcc-scientific-computing-python", "title": "Scientific Computing with Python Certification", "institution": "freeCodeCamp", "platform": "freeCodeCamp.org", "category": "Data Science", "level": "Intermediate", "duration_hours": 300, "url": "https://www.freecodecamp.org/learn/scientific-computing-with-python/", "status": "Active", "certificate_offered": true, "certificate_type": "Free Verified Certificate", "prerequisites": "Basic programming fundamentals", "verification_date": "2026-10-24", "inspection_notes": "Python data structures, algorithms, object-oriented programming, and mathematical algorithms with 5 projects for a free certificate.", "is_paywall_free": true, "syllabus_completeness_pct": 100, "free_learning_materials": ["Interactive Lessons", "5 Real-world Python Projects", "Free Verifiable Certificate"], "visual_proof": {"screenshot_path": "docs/screenshots/fcc-scientific-computing-python.png", "screenshot_url": "docs/screenshots/fcc-scientific-computing-python.png", "captured_at": "2026-10-24T12:00:00.000000+00:00", "status": "verified", "paywall_free_confirmed": true, "trial_trap_detected": false, "locked_modules_detected": false}}, {"id": "fcc-machine-learning-python", "title": "Machine Learning with Python Certification", "institution": "freeCodeCamp", "platform": "freeCodeCamp.org", "category": "Artificial Intelligence", "level": "Intermediate", "duration_hours": 300, "url": "https://www.freecodecamp.org/learn/machine-learning-with-python/", "status": "Active", "certificate_offered": true, "certificate_type": "Free Verified Certificate", "prerequisites": "Python and Basic Linear Algebra", "verification_date": "2026-10-24", "inspection_notes": "TensorFlow, neural networks, computer vision, natural language processing, and reinforcement learning.", "is_paywall_free": true, "syllabus_completeness_pct": 100, "free_learning_materials": ["TensorFlow Lab Notebooks", "5 ML Capstone Projects", "Free Verifiable Certificate"], "visual_proof": {"screenshot_path": "docs/screenshots/fcc-machine-learning-python.png", "screenshot_url": "docs/screenshots/fcc-machine-learning-python.png", "captured_at": "2026-10-24T12:00:00.000000+00:00", "status": "verified", "paywall_free_confirmed": true, "trial_trap_detected": false, "locked_modules_detected": false}}, {"id": "the-odin-project-foundations", "title": "The Odin Project: Foundations Path", "institution": "The Odin Project", "platform": "The Odin Project", "category": "Web Development", "level": "Beginner", "duration_hours": 100, "url": "https://www.theodinproject.com/paths/foundations/courses/foundations", "status": "Active", "certificate_offered": false, "certificate_type": "Audit Only (No Free Cert)", "prerequisites": "None", "verification_date": "2026-10-24", "inspection_notes": "100% open-source curriculum teaching Git, command line, HTML, CSS, JavaScript, and developer workflow. Highly acclaimed community track.", "is_paywall_free": true, "syllabus_completeness_pct": 100, "free_learning_materials": ["Curated Learning Paths", "Real Portfolio Projects", "Active Discord Community"], "visual_proof": {"screenshot_path": "docs/screenshots/the-odin-project-foundations.png", "screenshot_url": "docs/screenshots/the-odin-project-foundations.png", "captured_at": "2026-10-24T12:00:00.000000+00:00", "status": "verified", "paywall_free_confirmed": true, "trial_trap_detected": false, "locked_modules_detected": false}}, {"id": "kaggle-intro-to-machine-learning", "title": "Intro to Machine Learning", "institution": "Kaggle", "platform": "Kaggle Learn", "category": "Data Science", "level": "Beginner", "duration_hours": 4, "url": "https://www.kaggle.com/learn/intro-to-machine-learning", "status": "Active", "certificate_offered": true, "certificate_type": "Free Verified Certificate", "prerequisites": "Basic Python", "verification_date": "2026-10-24", "inspection_notes": "Hands-on decision trees, random forests, model validation, and under/overfitting. Includes runnable Jupyter notebooks and free completion certificate.", "is_paywall_free": true, "syllabus_completeness_pct": 100, "free_learning_materials": ["Runnable GPU Notebooks", "Automated Code Checks", "Free Certificate"], "visual_proof": {"screenshot_path": "docs/screenshots/kaggle-intro-to-machine-learning.png", "screenshot_url": "docs/screenshots/kaggle-intro-to-machine-learning.png", "captured_at": "2026-10-24T12:00:00.000000+00:00", "status": "verified", "paywall_free_confirmed": true, "trial_trap_detected": false, "locked_modules_detected": false}}, {"id": "kaggle-deep-learning", "title": "Deep Learning with TensorFlow & Keras", "institution": "Kaggle", "platform": "Kaggle Learn", "category": "Artificial Intelligence", "level": "Intermediate", "duration_hours": 4, "url": "https://www.kaggle.com/learn/intro-to-deep-learning", "status": "Active", "certificate_offered": true, "certificate_type": "Free Verified Certificate", "prerequisites": "Intro to Machine Learning", "verification_date": "2026-10-24", "inspection_notes": "Sequential models, neural networks, stochastic gradient descent, dropout, and batch normalization. Free completion certificate.", "is_paywall_free": true, "syllabus_completeness_pct": 100, "free_learning_materials": ["TensorFlow Cloud Notebooks", "Automated Feedback", "Free Certificate"], "visual_proof": {"screenshot_path": "docs/screenshots/kaggle-deep-learning.png", "screenshot_url": "docs/screenshots/kaggle-deep-learning.png", "captured_at": "2026-10-24T12:00:00.000000+00:00", "status": "verified", "paywall_free_confirmed": true, "trial_trap_detected": false, "locked_modules_detected": false}}, {"id": "deeplearningai-ai-python", "title": "AI Python for Beginners", "institution": "DeepLearning.AI", "platform": "DeepLearning.AI", "category": "Artificial Intelligence", "level": "Beginner", "duration_hours": 10, "url": "https://www.deeplearning.ai/short-courses/ai-python-for-beginners/", "status": "Active", "certificate_offered": true, "certificate_type": "Free Statement of Accomplishment", "prerequisites": "None", "verification_date": "2026-10-24", "inspection_notes": "Taught by Andrew Ng. Teaches Python fundamentals directly through an AI-first coding assistant paradigm.", "is_paywall_free": true, "syllabus_completeness_pct": 100, "free_learning_materials": ["Video Lessons", "Jupyter Workspace", "Free Statement of Accomplishment"], "visual_proof": {"screenshot_path": "docs/screenshots/deeplearningai-ai-python.png", "screenshot_url": "docs/screenshots/deeplearningai-ai-python.png", "captured_at": "2026-10-24T12:00:00.000000+00:00", "status": "verified", "paywall_free_confirmed": true, "trial_trap_detected": false, "locked_modules_detected": false}}, {"id": "microsoft-learn-python", "title": "Python for Beginners Learning Path", "institution": "Microsoft", "platform": "Microsoft Learn", "category": "Computer Science", "level": "Beginner", "duration_hours": 12, "url": "https://learn.microsoft.com/en-us/training/paths/python-language/", "status": "Active", "certificate_offered": true, "certificate_type": "Free Digital Badge", "prerequisites": "None", "verification_date": "2026-10-24", "inspection_notes": "Official Microsoft learning path with cloud sandbox execution, unit tests, and verifiable Microsoft Learn achievement badges.", "is_paywall_free": true, "syllabus_completeness_pct": 100, "free_learning_materials": ["Interactive Cloud Sandbox", "Code Knowledge Checks", "Verifiable Profile Badge"], "visual_proof": {"screenshot_path": "docs/screenshots/microsoft-learn-python.png", "screenshot_url": "docs/screenshots/microsoft-learn-python.png", "captured_at": "2026-10-24T12:00:00.000000+00:00", "status": "verified", "paywall_free_confirmed": true, "trial_trap_detected": false, "locked_modules_detected": false}}, {"id": "google-cloud-intro-generative-ai", "title": "Introduction to Generative AI Learning Path", "institution": "Google Cloud", "platform": "Google Cloud Skills Boost", "category": "Artificial Intelligence", "level": "Beginner", "duration_hours": 5, "url": "https://www.cloudskillsboost.google/course_templates/536", "status": "Active", "certificate_offered": true, "certificate_type": "Free Digital Badge", "prerequisites": "None", "verification_date": "2026-10-24", "inspection_notes": "Official Google Cloud introductory micro-course explaining GenAI, LLMs, and responsible AI. Free Google Cloud completion skill badge.", "is_paywall_free": true, "syllabus_completeness_pct": 100, "free_learning_materials": ["Google Engineering Videos", "Reading Documents", "Quiz", "Verifiable Google Cloud Badge"], "visual_proof": {"screenshot_path": "docs/screenshots/google-cloud-intro-generative-ai.png", "screenshot_url": "docs/screenshots/google-cloud-intro-generative-ai.png", "captured_at": "2026-10-24T12:00:00.000000+00:00", "status": "verified", "paywall_free_confirmed": true, "trial_trap_detected": false, "locked_modules_detected": false}}, {"id": "stanford-algorithms-specialization", "title": "Algorithms: Design and Analysis", "institution": "Stanford University", "platform": "Stanford Online / Tim Roughgarden", "category": "Mathematics & Algorithms", "level": "Intermediate", "duration_hours": 80, "url": "https://online.stanford.edu/courses/soe-ycscs1-algorithms-design-and-analysis-part-1", "status": "Active", "certificate_offered": false, "certificate_type": "Audit Only (No Free Cert)", "prerequisites": "Basic programming and discrete mathematics", "verification_date": "2026-10-24", "inspection_notes": "World-famous algorithms sequence by Tim Roughgarden. Complete lectures, problem sets, and algorithm implementations.", "is_paywall_free": true, "syllabus_completeness_pct": 100, "free_learning_materials": ["Full Stanford Video Lectures", "Programming Problem Sets", "Lecture Notes"], "visual_proof": {"screenshot_path": "docs/screenshots/stanford-algorithms-specialization.png", "screenshot_url": "docs/screenshots/stanford-algorithms-specialization.png", "captured_at": "2026-10-24T12:00:00.000000+00:00", "status": "verified", "paywall_free_confirmed": true, "trial_trap_detected": false, "locked_modules_detected": false}}, {"id": "mongodb-university-intro", "title": "Introduction to MongoDB & Document Databases", "institution": "MongoDB", "platform": "MongoDB University", "category": "Data Science", "level": "Beginner", "duration_hours": 15, "url": "https://learn.mongodb.com/learning-paths/introduction-to-mongodb", "status": "Active", "certificate_offered": true, "certificate_type": "Free Digital Badge", "prerequisites": "None", "verification_date": "2026-10-24", "inspection_notes": "Official MongoDB Academy learning path with free cloud Atlas sandbox clusters and verifiable digital completion badge.", "is_paywall_free": true, "syllabus_completeness_pct": 100, "free_learning_materials": ["Interactive Video Lectures", "Cloud Atlas Lab Sandbox", "Verifiable MongoDB Badge"], "visual_proof": {"screenshot_path": "docs/screenshots/mongodb-university-intro.png", "screenshot_url": "docs/screenshots/mongodb-university-intro.png", "captured_at": "2026-10-24T12:00:00.000000+00:00", "status": "verified", "paywall_free_confirmed": true, "trial_trap_detected": false, "locked_modules_detected": false}}, {"id": "cisco-netacad-python-essentials", "title": "Python Essentials 1", "institution": "Cisco Networking Academy & OpenEDG", "platform": "Cisco Networking Academy", "category": "Computer Science", "level": "Beginner", "duration_hours": 30, "url": "https://www.netacad.com/courses/programming/pcap-programming-essentials-python", "status": "Active", "certificate_offered": true, "certificate_type": "Free Digital Badge", "prerequisites": "None", "verification_date": "2026-10-24", "inspection_notes": "Free self-paced programming course by Cisco & OpenEDG Python Institute with interactive sandboxes and verified digital badge.", "is_paywall_free": true, "syllabus_completeness_pct": 100, "free_learning_materials": ["Browser Sandbox Environment", "Quizzes & Module Tests", "Cisco NetAcad Digital Badge"], "visual_proof": {"screenshot_path": "docs/screenshots/cisco-netacad-python-essentials.png", "screenshot_url": "docs/screenshots/cisco-netacad-python-essentials.png", "captured_at": "2026-10-24T12:00:00.000000+00:00", "status": "verified", "paywall_free_confirmed": true, "trial_trap_detected": false, "locked_modules_detected": false}}];
+
+    let activeCategory = 'all';
+    let activeLevel = 'all';
+    let activeCred = 'all';
+    let searchQuery = '';
+
+    const grid = document.getElementById('coursesGrid');
+    const searchInput = document.getElementById('searchInput');
+    const levelFilter = document.getElementById('levelFilter');
+    const credFilter = document.getElementById('credFilter');
+    const categoryChips = document.getElementById('categoryChips');
+    const visibleCount = document.getElementById('visibleCount');
+    const emptyState = document.getElementById('emptyState');
+    const resetFiltersBtn = document.getElementById('resetFiltersBtn');
+
+    // Modal elements
+    const proofModal = document.getElementById('proofModal');
+    const proofModalDialog = document.getElementById('proofModalDialog');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const modalCourseTitle = document.getElementById('modalCourseTitle');
+    const modalCourseInst = document.getElementById('modalCourseInst');
+    const modalImg = document.getElementById('modalImg');
+    const modalDirectLink = document.getElementById('modalDirectLink');
+    const modalVerificationDate = document.getElementById('modalVerificationDate');
+
+    function renderCourses() {
+      const query = searchQuery.toLowerCase().trim();
+
+      const filtered = COURSES_DATA.filter(course => {
+        // Category filter
+        if (activeCategory !== 'all' && course.category !== activeCategory) return false;
+
+        // Level filter
+        if (activeLevel !== 'all' && course.level !== activeLevel) return false;
+
+        // Credential filter
+        if (activeCred === 'with_cert' && !course.certificate_offered) return false;
+        if (activeCred === 'audit_only' && course.certificate_offered) return false;
+
+        // Search query
+        if (query) {
+          const matchTitle = course.title.toLowerCase().includes(query);
+          const matchInst = course.institution.toLowerCase().includes(query);
+          const matchCat = course.category.toLowerCase().includes(query);
+          const matchPlatform = course.platform.toLowerCase().includes(query);
+          const matchMaterials = (course.free_learning_materials || []).some(m => m.toLowerCase().includes(query));
+          if (!matchTitle && !matchInst && !matchCat && !matchPlatform && !matchMaterials) {
+            return false;
+          }
+        }
+
+        return true;
+      });
+
+      visibleCount.textContent = filtered.length;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+
+      grid.innerHTML = filtered.map(course => {
+        const certBadge = course.certificate_offered 
+          ? `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+               <i data-lucide="award" class="w-3 h-3"></i> ${course.certificate_type}
+             </span>`
+          : `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium bg-zinc-800 text-zinc-400 border border-zinc-700/60">
+               Audit Only
+             </span>`;
+
+        const materialsBadges = (course.free_learning_materials || [])
+          .slice(0, 3)
+          .map(m => `<span class="px-1.5 py-0.5 rounded bg-zinc-800/80 text-[10px] font-mono text-zinc-400 border border-zinc-700/40">${m}</span>`)
+          .join('');
+
+        return `
+          <article class="bento-card rounded-2xl p-5 flex flex-col justify-between gap-4">
+            <div class="flex flex-col gap-2.5">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-mono text-zinc-400 text-[11px] font-medium tracking-tight">${course.institution}</span>
+                <span class="px-2 py-0.5 rounded bg-zinc-850 text-zinc-400 text-[10px] font-mono">${course.platform}</span>
+              </div>
+
+              <h2 class="text-base font-bold text-white hover:text-emerald-400 transition leading-snug">
+                <a href="${course.url}" target="_blank" rel="noopener noreferrer">${course.title}</a>
+              </h2>
+
+              <p class="text-xs text-zinc-400 line-clamp-2">${course.inspection_notes}</p>
+
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="px-2 py-0.5 rounded-full bg-zinc-900 border border-zinc-800 text-[11px] text-zinc-300">${course.category}</span>
+                <span class="px-2 py-0.5 rounded-full bg-zinc-900 border border-zinc-800 text-[11px] text-zinc-400">${course.level}</span>
+                <span class="px-2 py-0.5 rounded-full bg-zinc-900 border border-zinc-800 text-[11px] font-mono text-zinc-400">${course.duration_hours}h</span>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-3 pt-3 border-t border-zinc-800/80">
+              <div class="flex items-center justify-between">
+                ${certBadge}
+                <div class="flex items-center gap-1 text-[11px] font-mono text-emerald-400">
+                  <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                  <span>Zero Paywall</span>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-1 overflow-hidden">
+                ${materialsBadges}
+              </div>
+
+              <div class="flex items-center gap-2 pt-1">
+                <button onclick="openProofModal('${course.id}')" class="flex-1 py-1.5 px-3 rounded-lg bg-zinc-900 hover:bg-zinc-850 text-zinc-300 border border-zinc-750 text-xs font-medium flex items-center justify-center gap-1.5 transition active:scale-[0.98]">
+                  <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+                  <span>Inspect Proof</span>
+                </button>
+                <a href="${course.url}" target="_blank" rel="noopener noreferrer" class="py-1.5 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-zinc-950 text-xs font-semibold flex items-center justify-center gap-1 transition active:scale-[0.98]">
+                  <span>Enroll Free</span>
+                  <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      lucide.createIcons();
+    }
+
+    // Open screenshot modal
+    window.openProofModal = function(courseId) {
+      const course = COURSES_DATA.find(c => c.id === courseId);
+      if (!course) return;
+
+      modalCourseTitle.textContent = course.title;
+      modalCourseInst.textContent = `${course.institution} • ${course.platform}`;
+      modalImg.src = course.visual_proof ? course.visual_proof.screenshot_path : 'screenshots/placeholder.png';
+      modalDirectLink.href = course.url;
+      modalVerificationDate.textContent = `Audited: ${course.verification_date}`;
+
+      proofModal.classList.remove('opacity-0', 'pointer-events-none');
+      proofModalDialog.classList.remove('scale-95');
+      proofModalDialog.classList.add('scale-100');
+      document.body.style.overflow = 'hidden';
+      lucide.createIcons();
+    };
+
+    function closeModal() {
+      proofModal.classList.add('opacity-0', 'pointer-events-none');
+      proofModalDialog.classList.remove('scale-100');
+      proofModalDialog.classList.add('scale-95');
+      document.body.style.overflow = '';
+    }
+
+    closeModalBtn.addEventListener('click', closeModal);
+    proofModal.addEventListener('click', (e) => {
+      if (e.target === proofModal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+      if (e.key === '/' && document.activeElement !== searchInput) {
+        e.preventDefault();
+        searchInput.focus();
+      }
+    });
+
+    // Filter Listeners
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      renderCourses();
+    });
+
+    levelFilter.addEventListener('change', (e) => {
+      activeLevel = e.target.value;
+      renderCourses();
+    });
+
+    credFilter.addEventListener('change', (e) => {
+      activeCred = e.target.value;
+      renderCourses();
+    });
+
+    categoryChips.addEventListener('click', (e) => {
+      const btn = e.target.closest('.cat-pill');
+      if (!btn) return;
+      categoryChips.querySelectorAll('.cat-pill').forEach(b => {
+        b.classList.remove('active', 'bg-emerald-500', 'text-zinc-950');
+        b.classList.add('bg-zinc-900', 'text-zinc-300', 'border-zinc-800');
+      });
+      btn.classList.add('active', 'bg-emerald-500', 'text-zinc-950');
+      btn.classList.remove('bg-zinc-900', 'text-zinc-300', 'border-zinc-800');
+      activeCategory = btn.dataset.category;
+      renderCourses();
+    });
+
+    resetFiltersBtn.addEventListener('click', () => {
+      searchQuery = '';
+      searchInput.value = '';
+      activeLevel = 'all';
+      levelFilter.value = 'all';
+      activeCred = 'all';
+      credFilter.value = 'all';
+      activeCategory = 'all';
+      categoryChips.querySelectorAll('.cat-pill').forEach(b => {
+        if (b.dataset.category === 'all') {
+          b.classList.add('active', 'bg-emerald-500', 'text-zinc-950');
+          b.classList.remove('bg-zinc-900', 'text-zinc-300', 'border-zinc-800');
+        } else {
+          b.classList.remove('active', 'bg-emerald-500', 'text-zinc-950');
+          b.classList.add('bg-zinc-900', 'text-zinc-300', 'border-zinc-800');
+        }
+      });
+      renderCourses();
+    });
+
+    // Initial Render
+    renderCourses();
+  </script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CoursePulseCoursesDatabase",
+  "description": "Strict schema for CoursePulse Verified Anti-Paywall Open Course Registry.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "last_updated",
+    "total_courses",
+    "active_courses",
+    "courses"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "last_updated": {
+      "type": "string"
+    },
+    "total_courses": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "active_courses": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "courses": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Course"
+      }
+    }
+  },
+  "definitions": {
+    "Course": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "institution",
+        "platform",
+        "category",
+        "level",
+        "url",
+        "status",
+        "certificate_offered",
+        "certificate_type",
+        "verification_date",
+        "is_paywall_free",
+        "visual_proof"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 3
+        },
+        "institution": {
+          "type": "string"
+        },
+        "platform": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "Computer Science",
+            "Artificial Intelligence",
+            "Web Development",
+            "Data Science",
+            "Cloud Computing",
+            "Cybersecurity",
+            "Mathematics & Algorithms"
+          ]
+        },
+        "level": {
+          "type": "string",
+          "enum": ["Beginner", "Intermediate", "Advanced", "All Levels"]
+        },
+        "duration_hours": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "Active",
+            "Review Needed",
+            "Paywalled",
+            "Broken Link",
+            "Archived"
+          ]
+        },
+        "certificate_offered": {
+          "type": "boolean"
+        },
+        "certificate_type": {
+          "type": "string",
+          "enum": [
+            "Free Verified Certificate",
+            "Free Digital Badge",
+            "Free Statement of Accomplishment",
+            "Audit Only (No Free Cert)"
+          ]
+        },
+        "prerequisites": {
+          "type": "string"
+        },
+        "verification_date": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "inspection_notes": {
+          "type": "string"
+        },
+        "is_paywall_free": {
+          "type": "boolean"
+        },
+        "syllabus_completeness_pct": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "free_learning_materials": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "visual_proof": {
+          "type": "object",
+          "required": [
+            "screenshot_path",
+            "status",
+            "paywall_free_confirmed"
+          ],
+          "properties": {
+            "screenshot_path": {
+              "type": "string"
+            },
+            "screenshot_url": {
+              "type": ["string", "null"]
+            },
+            "captured_at": {
+              "type": ["string", "null"]
+            },
+            "status": {
+              "type": "string",
+              "enum": ["verified", "missing", "failed", "placeholder"]
+            },
+            "paywall_free_confirmed": {
+              "type": "boolean"
+            },
+            "trial_trap_detected": {
+              "type": "boolean"
+            },
+            "locked_modules_detected": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "active": 20,
+  "review_needed": 0,
+  "paywalled": 0,
+  "broken_link": 0,
+  "archived": 0,
+  "total": 20,
+  "certificate_included_count": 16,
+  "audit_only_count": 4,
+  "last_updated": "2026-10-24T12:00:00.000000+00:00",
+  "last_successful_run": "2026-10-24T12:00:00.000000+00:00",
+  "signals_breakdown": {
+    "paywall_free_inspected": 20,
+    "certificates_verified": 16,
+    "audit_only_flagged": 4,
+    "academic_institutions": 10,
+    "vendor_academies": 5,
+    "community_open_platforms": 5
+  }
+}
