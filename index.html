@@ -4,77 +4,91 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CoursePulse — Free Course &amp; Learning Progress Tracker</title>
-  <meta name="description" content="Autonomous, paywall-free open course directory and learning progress tracker. Track your modules, save personal notes, and master free university curricula with zero login required.">
-  <meta name="theme-color" content="#10b981">
+  <meta name="description" content="A curated, paywall-free open course directory &amp; learning tracker. Track syllabi from Harvard, MIT, freeCodeCamp and Helsinki with zero login.">
+  <meta name="theme-color" content="#1d232a">
 
   <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="CoursePulse — Free Course &amp; Learning Progress Tracker">
-  <meta property="og:description" content="Track your progress through 100% free open university courses, computer science syllabi, and certifications with zero paywalls.">
+  <meta property="og:title" content="CoursePulse — Free Course Tracker">
+  <meta property="og:description" content="Autonomous, paywall-free open course directory and learning progress tracker.">
   <meta property="og:type" content="website">
 
-  <!-- Inline SVG Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  <!-- Inline SVG Favicon (Heartbeat / Pulse) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2322c55e%22 stroke-width=%222.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22M22 12h-4l-3 9L9 3l-3 9H2%22/></svg>">
 
-  <!-- Instant Theme Hydration Before First Paint to Prevent Flash -->
+  <!-- Google Fonts: Inter with font-display: swap -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <!-- Instant Pre-paint Theme Hydration (No Flash) -->
   <script>
     (function() {
       try {
+        const THEME_COLORS = { light: '#ffffff', dark: '#1d232a', cupcake: '#faf7f5', emerald: '#ffffff', synthwave: '#1a103c', nord: '#eceff4', dracula: '#282a36', forest: '#171212' };
         const saved = localStorage.getItem('coursepulse_theme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const theme = saved || (prefersDark ? 'dark' : 'light');
         document.documentElement.setAttribute('data-theme', theme);
-      } catch (e) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-      }
+        const meta = document.querySelector('meta[name="theme-color"]');
+        if (meta && THEME_COLORS[theme]) meta.setAttribute('content', THEME_COLORS[theme]);
+      } catch (e) {}
     })();
   </script>
 
-  <!-- Pinned DaisyUI 4.12.14 & Tailwind CSS CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <!-- Pinned CDN Dependencies: DaisyUI 4.12.23 & Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Custom Stylesheet Overrides -->
+  <!-- Stylesheet Overrides & Motion Tokens -->
   <link rel="stylesheet" href="./assets/styles.css">
 </head>
-<body class="min-h-screen bg-base-200/40 text-base-content antialiased flex flex-col font-sans">
+<body class="min-h-screen bg-base-200/50 text-base-content antialiased flex flex-col font-sans selection:bg-primary/20 selection:text-primary">
+
+  <!-- Skip-to-content Link for WCAG Accessibility -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-content focus:rounded-lg focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2">
+    Skip to main content
+  </a>
 
   <!-- Confetti Canvas for 100% Celebration -->
   <canvas id="confetti-canvas"></canvas>
 
-  <!-- Toast Container with ARIA-Live for Accessibility -->
+  <!-- Toast Notification Region with ARIA-Live -->
   <div id="toast-container" class="toast toast-top toast-end z-50 p-4" aria-live="polite"></div>
 
   <!-- Hidden File Input for Progress Import -->
   <input type="file" id="import-file-input" accept=".json" class="hidden" aria-hidden="true">
 
-  <!-- Navigation & Header Bar -->
-  <header class="navbar bg-base-100 border-b border-base-200 sticky top-0 z-40 px-4 sm:px-8 shadow-sm">
+  <!-- Header: Sticky with Scroll Blur & Elevation -->
+  <header class="navbar bg-base-100/90 border-b border-base-200 sticky top-0 z-40 px-4 sm:px-8 transition-shadow duration-200">
     <div class="navbar-start flex items-center gap-3">
       <a href="./index.html" class="flex items-center gap-2.5 font-extrabold text-lg sm:text-xl tracking-tight text-base-content hover:opacity-90 transition">
-        <span class="w-8 h-8 rounded-xl bg-primary text-primary-content flex items-center justify-center font-black text-base shadow-sm">
-          ⚡
+        <span class="w-8 h-8 rounded-xl bg-primary text-primary-content flex items-center justify-center shadow-sm">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
         </span>
         <span>CoursePulse</span>
       </a>
-      <span class="badge badge-sm badge-outline hidden sm:inline-flex text-[11px] font-mono">Static &amp; Local</span>
+      <span class="badge badge-sm badge-outline hidden sm:inline-flex text-[11px] font-mono">Free &amp; Open</span>
     </div>
 
-    <!-- Center: Global Search Input -->
+    <!-- Center: Global Search Bar -->
     <div class="navbar-center hidden md:flex flex-1 max-w-md mx-4">
       <div class="relative w-full">
         <svg class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-base-content/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        <input type="text" id="search-input" placeholder="Search courses, providers, topics, or skills..." 
-               class="input input-sm input-bordered w-full pl-10 pr-4 text-xs rounded-lg focus:input-primary transition"
+        <input type="text" id="search-input" placeholder="Search courses, providers, topics... (Press / to focus)" 
+               class="input input-sm input-bordered w-full pl-10 pr-8 text-xs rounded-lg focus:input-primary transition"
                aria-label="Search courses by keyword">
+        <kbd class="kbd kbd-xs absolute right-2.5 top-1/2 -translate-y-1/2 text-[10px] text-base-content/40 font-mono">/</kbd>
       </div>
     </div>
 
-    <!-- Right Controls: Theme Selector, Export & Import -->
-    <div class="navbar-end flex items-center gap-2">
+    <!-- Right Controls: Theme Selector, Export, Import -->
+    <div class="navbar-end flex items-center gap-1.5 sm:gap-2">
       <!-- Theme Switcher Dropdown -->
       <div class="dropdown dropdown-end">
         <label for="theme-select" class="sr-only">Select Theme</label>
-        <select id="theme-select" class="select select-sm select-bordered text-xs rounded-lg cursor-pointer font-medium" title="Change Theme">
+        <select id="theme-select" class="select select-sm select-bordered text-xs rounded-lg cursor-pointer font-medium" title="Change Visual Theme">
           <option value="light">☀️ Light</option>
           <option value="dark">🌙 Dark</option>
           <option value="cupcake">🧁 Cupcake</option>
@@ -86,24 +100,24 @@
         </select>
       </div>
 
-      <!-- Export Progress Button -->
-      <button id="btn-export-progress" class="btn btn-sm btn-ghost btn-square sm:btn-auto sm:px-3 text-xs gap-1.5" title="Export Progress JSON" aria-label="Export learning progress">
+      <!-- Export Button -->
+      <button id="btn-export-progress" class="btn btn-sm btn-ghost btn-square sm:btn-auto sm:px-3 text-xs gap-1.5 min-h-[44px]" title="Export Progress JSON" aria-label="Export progress">
         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         <span class="hidden sm:inline">Export</span>
       </button>
 
-      <!-- Import Progress Button -->
-      <button id="btn-import-progress" class="btn btn-sm btn-ghost btn-square sm:btn-auto sm:px-3 text-xs gap-1.5" title="Import Progress JSON" aria-label="Import learning progress">
+      <!-- Import Button -->
+      <button id="btn-import-progress" class="btn btn-sm btn-ghost btn-square sm:btn-auto sm:px-3 text-xs gap-1.5 min-h-[44px]" title="Import Progress JSON" aria-label="Import progress">
         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
         <span class="hidden sm:inline">Import</span>
       </button>
     </div>
   </header>
 
-  <!-- Main Application Content Container -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex-1 flex flex-col gap-6 w-full">
+  <!-- Main Content Landmark -->
+  <main id="main-content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex-1 flex flex-col gap-6 w-full">
 
-    <!-- Mobile Search Bar (Only shown on small screens) -->
+    <!-- Mobile Search Bar -->
     <div class="md:hidden w-full">
       <div class="relative w-full">
         <svg class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-base-content/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
@@ -114,7 +128,7 @@
       </div>
     </div>
 
-    <!-- Overall Statistics Row (DaisyUI Stats) -->
+    <!-- Overall Statistics Row (DaisyUI Stats with Radial Progress) -->
     <section class="grid grid-cols-2 md:grid-cols-4 gap-4" aria-label="Overall Learning Statistics">
       <!-- Total Courses -->
       <div class="stats bg-base-100 border border-base-200 shadow-sm rounded-2xl">
@@ -123,8 +137,8 @@
             <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
           </div>
           <div class="stat-title text-xs font-medium">Total Courses</div>
-          <div class="stat-value text-2xl sm:text-3xl font-bold font-mono" id="stat-total-courses">0</div>
-          <div class="stat-desc text-[11px]">Free open curricula</div>
+          <div class="stat-value text-2xl sm:text-3xl font-bold font-mono tabular-nums" id="stat-total-courses">0</div>
+          <div class="stat-desc text-[11px]">Free open syllabi</div>
         </div>
       </div>
 
@@ -135,8 +149,8 @@
             <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
           <div class="stat-title text-xs font-medium">In Progress</div>
-          <div class="stat-value text-2xl sm:text-3xl font-bold font-mono text-warning" id="stat-in-progress">0</div>
-          <div class="stat-desc text-[11px]">Active courses</div>
+          <div class="stat-value text-2xl sm:text-3xl font-bold font-mono text-warning tabular-nums" id="stat-in-progress">0</div>
+          <div class="stat-desc text-[11px]">Active modules</div>
         </div>
       </div>
 
@@ -147,7 +161,7 @@
             <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           </div>
           <div class="stat-title text-xs font-medium">Completed</div>
-          <div class="stat-value text-2xl sm:text-3xl font-bold font-mono text-success" id="stat-completed">0</div>
+          <div class="stat-value text-2xl sm:text-3xl font-bold font-mono text-success tabular-nums" id="stat-completed">0</div>
           <div class="stat-desc text-[11px]">100% finished</div>
         </div>
       </div>
@@ -157,7 +171,7 @@
         <div class="stat p-4 sm:p-5 flex items-center justify-between">
           <div>
             <div class="stat-title text-xs font-medium">Overall Progress</div>
-            <div class="stat-value text-xl sm:text-2xl font-bold font-mono text-primary" id="stat-radial-text">0%</div>
+            <div class="stat-value text-xl sm:text-2xl font-bold font-mono text-primary tabular-nums" id="stat-radial-text">0%</div>
             <div class="stat-desc text-[11px]">Across all modules</div>
           </div>
           <div class="stat-figure">
@@ -169,14 +183,16 @@
       </div>
     </section>
 
-    <!-- Filters, Tags & Sorting Deck -->
-    <section class="card bg-base-100 border border-base-200 shadow-sm p-4 sm:p-5 flex flex-col gap-3.5" aria-label="Course Filter Controls">
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+    <!-- Controls: Filter Dropdowns, Multi-Select Tags, Active Filter Chips -->
+    <section class="card bg-base-100 border border-base-200 shadow-sm p-4 sm:p-5 flex flex-col gap-3.5" aria-label="Filter Controls">
+      
+      <!-- Top Controls Row -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-2.5">
         
         <!-- Status Filter -->
         <div class="form-control">
           <label for="filter-status" class="label py-1 text-[11px] font-semibold text-base-content/70">Status</label>
-          <select id="filter-status" class="select select-sm select-bordered text-xs rounded-lg">
+          <select id="filter-status" class="select select-sm select-bordered text-xs rounded-lg min-h-[44px]">
             <option value="all">All Statuses</option>
             <option value="not-started">Not Started</option>
             <option value="in-progress">In Progress</option>
@@ -187,7 +203,7 @@
         <!-- Category Filter -->
         <div class="form-control">
           <label for="filter-category" class="label py-1 text-[11px] font-semibold text-base-content/70">Category</label>
-          <select id="filter-category" class="select select-sm select-bordered text-xs rounded-lg">
+          <select id="filter-category" class="select select-sm select-bordered text-xs rounded-lg min-h-[44px]">
             <option value="all">All Categories</option>
           </select>
         </div>
@@ -195,7 +211,7 @@
         <!-- Level Filter -->
         <div class="form-control">
           <label for="filter-level" class="label py-1 text-[11px] font-semibold text-base-content/70">Level</label>
-          <select id="filter-level" class="select select-sm select-bordered text-xs rounded-lg">
+          <select id="filter-level" class="select select-sm select-bordered text-xs rounded-lg min-h-[44px]">
             <option value="all">All Levels</option>
             <option value="Beginner">Beginner</option>
             <option value="Intermediate">Intermediate</option>
@@ -203,18 +219,10 @@
           </select>
         </div>
 
-        <!-- Tag Filter -->
-        <div class="form-control">
-          <label for="filter-tag" class="label py-1 text-[11px] font-semibold text-base-content/70">Tag</label>
-          <select id="filter-tag" class="select select-sm select-bordered text-xs rounded-lg">
-            <option value="all">All Tags</option>
-          </select>
-        </div>
-
         <!-- Sorting -->
         <div class="form-control">
           <label for="sort-select" class="label py-1 text-[11px] font-semibold text-base-content/70">Sort By</label>
-          <select id="sort-select" class="select select-sm select-bordered text-xs rounded-lg">
+          <select id="sort-select" class="select select-sm select-bordered text-xs rounded-lg min-h-[44px]">
             <option value="title-asc">Title (A &rarr; Z)</option>
             <option value="title-desc">Title (Z &rarr; A)</option>
             <option value="progress-desc">Progress (Highest)</option>
@@ -225,32 +233,52 @@
         </div>
 
         <!-- Reset Button -->
-        <div class="form-control flex flex-col justify-end">
-          <button id="btn-reset-filters" class="btn btn-sm btn-ghost border border-base-300 text-xs rounded-lg font-medium">
+        <div class="form-control col-span-2 sm:col-span-4 lg:col-span-1 flex flex-col justify-end">
+          <button id="btn-reset-filters" class="btn btn-sm btn-ghost border border-base-300 text-xs rounded-lg font-medium min-h-[44px]">
             Reset Filters
           </button>
         </div>
 
       </div>
+
+      <!-- Multi-Select Tags Chip Row -->
+      <div class="flex flex-col gap-1.5 pt-1 border-t border-base-200/60">
+        <span class="text-[11px] font-semibold text-base-content/60 uppercase tracking-wider font-mono">Topic Tags:</span>
+        <div class="flex flex-wrap items-center gap-1.5" id="tags-chips-container">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- Active Filters Chips & Clear All Action -->
+      <div class="flex flex-wrap items-center gap-2 pt-1 border-t border-base-200/60">
+        <div id="active-filters-chips" class="flex flex-wrap items-center gap-1.5"></div>
+        <button id="btn-clear-active-filters" class="hidden btn btn-xs btn-ghost text-error text-[11px] font-medium">
+          Clear All
+        </button>
+      </div>
+
     </section>
 
+    <!-- Screen Reader Results Counter -->
+    <div id="results-count-announcer" class="sr-only" aria-live="polite"></div>
+
     <!-- Course Grid Section -->
-    <section>
-      <div id="courses-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5" aria-live="polite">
-        <!-- Rendered dynamically by assets/app.js (with skeletons initial state) -->
+    <section aria-label="Course Catalog Grid">
+      <div id="courses-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <!-- Rendered dynamically by app.js (with skeletons initial state) -->
       </div>
     </section>
 
   </main>
 
-  <!-- Course Detail & Module Checklist Modal (DaisyUI <dialog>) -->
+  <!-- Course Detail & Module Checklist Modal -->
   <dialog id="course_modal" class="modal modal-bottom sm:modal-middle" aria-labelledby="modal-course-title">
-    <div class="modal-box max-w-2xl bg-base-100 p-6 flex flex-col gap-4 border border-base-200">
+    <div class="modal-box max-w-2xl bg-base-100 p-6 flex flex-col gap-4 border border-base-200 shadow-2xl">
       
       <!-- Modal Header -->
       <div class="flex items-start justify-between gap-4 pb-3 border-b border-base-200">
         <div>
-          <div class="flex flex-wrap items-center gap-2 mb-1">
+          <div class="flex flex-wrap items-center gap-1.5 mb-1.5">
             <span class="badge badge-sm badge-outline font-mono text-[11px]" id="modal-course-provider">Provider</span>
             <span class="badge badge-sm badge-ghost text-[11px]" id="modal-course-category">Category</span>
             <span class="badge badge-sm badge-ghost text-[11px]" id="modal-course-level">Level</span>
@@ -260,9 +288,7 @@
             Course Title
           </h3>
         </div>
-        <form method="dialog">
-          <button class="btn btn-sm btn-circle btn-ghost" aria-label="Close modal">✕</button>
-        </form>
+        <button onclick="window.coursePulseApp.closeCourseModal()" class="btn btn-sm btn-circle btn-ghost min-h-[44px] min-w-[44px]" aria-label="Close dialog">✕</button>
       </div>
 
       <!-- Description -->
@@ -287,51 +313,53 @@
         </div>
       </div>
 
-      <!-- Module Checklist -->
+      <!-- Module Checklist with Custom Scrollbar -->
       <div class="flex flex-col gap-2">
         <h4 class="text-xs font-bold uppercase tracking-wider text-base-content/60 font-mono">
           Module Checklist
         </h4>
-        <div class="modal-checklist flex flex-col gap-1.5 max-h-56 overflow-y-auto pr-1" id="modal-modules-list">
+        <div class="custom-scrollbar flex flex-col gap-1.5 max-h-56 overflow-y-auto pr-1" id="modal-modules-list">
           <!-- Rendered dynamically -->
         </div>
       </div>
 
-      <!-- Personal Study Notes Area -->
+      <!-- Personal Study Notes Area with Autosave Indicator -->
       <div class="flex flex-col gap-1.5 pt-2 border-t border-base-200">
-        <label for="modal-course-notes" class="text-xs font-bold uppercase tracking-wider text-base-content/60 font-mono flex items-center justify-between">
-          <span>Personal Study Notes</span>
-          <span class="text-[10px] lowercase font-normal opacity-60">Auto-saved to localStorage</span>
-        </label>
-        <textarea id="modal-course-notes" rows="3" placeholder="Write key takeaways, problem set solutions, links, or study notes..."
+        <div class="flex items-center justify-between">
+          <label for="modal-course-notes" class="text-xs font-bold uppercase tracking-wider text-base-content/60 font-mono">
+            Personal Study Notes
+          </label>
+          <span id="notes-saved-indicator" class="text-[11px] font-mono text-success opacity-0 transition-opacity duration-200 flex items-center gap-1">
+            ✓ Saved
+          </span>
+        </div>
+        <textarea id="modal-course-notes" rows="3" placeholder="Write key concepts, problem set notes, or links... (auto-saved)"
                   class="textarea textarea-bordered textarea-sm w-full text-xs font-sans rounded-lg focus:textarea-primary"></textarea>
       </div>
 
       <!-- Modal Footer -->
       <div class="modal-action mt-2 pt-3 border-t border-base-200 flex items-center justify-between">
         <a id="modal-external-link" href="#" target="_blank" rel="noopener noreferrer" 
-           class="btn btn-sm btn-ghost gap-1.5 text-xs">
+           class="btn btn-sm btn-ghost gap-1.5 text-xs min-h-[44px]">
           <span>Open Official Website</span>
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
         </a>
-        <form method="dialog">
-          <button class="btn btn-sm btn-primary">Done</button>
-        </form>
+        <button onclick="window.coursePulseApp.closeCourseModal()" class="btn btn-sm btn-primary min-h-[44px] px-4">
+          Done
+        </button>
       </div>
 
     </div>
 
     <!-- Backdrop Click to Close -->
-    <form method="dialog" class="modal-backdrop">
-      <button>close</button>
-    </form>
+    <div class="modal-backdrop" onclick="window.coursePulseApp.closeCourseModal()"></div>
   </dialog>
 
   <!-- Footer -->
   <footer class="footer footer-center p-6 bg-base-100 text-base-content/70 border-t border-base-200 text-xs">
     <div class="flex flex-col sm:flex-row items-center justify-between gap-3 max-w-7xl w-full px-4">
-      <p>CoursePulse &bull; Open-source, self-hosted, paywall-free educational tracker.</p>
-      <p class="font-mono text-[11px]">All course materials belong to their respective universities &amp; platforms.</p>
+      <p>CoursePulse &bull; Open-source, paywall-free educational progress tracker.</p>
+      <p class="font-mono text-[11px]">All course materials belong to their respective universities &amp; foundations.</p>
     </div>
   </footer>
 
