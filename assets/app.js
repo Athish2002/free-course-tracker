@@ -2,6 +2,146 @@
 const K_PROG = 'coursepulse_progress', K_THM = 'coursepulse_theme', K_STREAK = 'coursepulse_streak', DATA_URL = './data/courses.json';
 const THEME_COLORS = { light: '#f8fafc', dark: '#0b0f19' };
 
+// --- Authentic University & Educational Institution Vector Logo Bank ---
+export const PROVIDER_LOGOS = {
+  "Harvard University": `<svg viewBox="0 0 32 32" fill="none" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+  <path d="M16 2C9 2 4 4.5 4 8v10c0 7.5 12 12 12 12s12-4.5 12-12V8c0-3.5-5-6-12-6z" fill="#A51C30"/>
+  <rect x="7.5" y="8" width="7" height="5.5" rx="0.8" fill="#ffffff"/>
+  <line x1="11" y1="8" x2="11" y2="13.5" stroke="#A51C30" stroke-width="0.7"/>
+  <path d="M8.5 9.5h1.5M8.5 11h1.5M12 9.5h1.5M12 11h1.5" stroke="#A51C30" stroke-width="0.5" stroke-linecap="round"/>
+  <rect x="17.5" y="8" width="7" height="5.5" rx="0.8" fill="#ffffff"/>
+  <line x1="21" y1="8" x2="21" y2="13.5" stroke="#A51C30" stroke-width="0.7"/>
+  <path d="M18.5 9.5h1.5M18.5 11h1.5M22 9.5h1.5M22 11h1.5" stroke="#A51C30" stroke-width="0.5" stroke-linecap="round"/>
+  <rect x="12.5" y="16" width="7" height="5.5" rx="0.8" fill="#ffffff"/>
+  <line x1="16" y1="16" x2="16" y2="21.5" stroke="#A51C30" stroke-width="0.7"/>
+  <path d="M13.5 17.5h1.5M13.5 19h1.5M17 17.5h1.5M17 19h1.5" stroke="#A51C30" stroke-width="0.5" stroke-linecap="round"/>
+</svg>`,
+
+  "MIT": `<svg viewBox="0 0 32 32" fill="none" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+  <rect x="3" y="6" width="3.2" height="20" fill="#A31F34"/>
+  <rect x="8.2" y="6" width="3.2" height="13" fill="#A31F34"/>
+  <rect x="13.4" y="6" width="3.2" height="20" fill="#A31F34"/>
+  <rect x="18.6" y="13" width="3.2" height="13" fill="#000000"/>
+  <rect x="23.8" y="13" width="3.2" height="13" fill="#A31F34"/>
+  <rect x="18.6" y="6" width="10.4" height="3.5" fill="#000000"/>
+</svg>`,
+
+  "Stanford": `<svg viewBox="0 0 32 32" fill="none" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+  <path d="M8 9C8 5.8 10.8 3.5 15.5 3.5h8.5v6h-7.5c-2.2 0-3 .8-3 1.8 0 1.2.8 1.7 3 2.2l3.5.8c4.5 1 6.5 2.8 6.5 6.2 0 4-3 6.5-8.5 6.5H8v-6h8c2.2 0 3.2-.8 3.2-1.8 0-1.2-.8-1.7-3-2.2l-3.5-.8C9.5 14.5 8 12.8 8 9z" fill="#8C1515"/>
+  <path d="M16 5.5l-3.8 6.5h2.2l-2.8 5.5h2.2L11 25h10l-2.8-7.5h2.2l-2.8-5.5h2.2L16 5.5z" fill="#007C66"/>
+  <rect x="15.2" y="24" width="1.6" height="4.5" fill="#5E3929"/>
+</svg>`,
+
+  "Carnegie Mellon University": `<svg viewBox="0 0 32 32" fill="none" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="6" fill="#C41230"/>
+  <path d="M16 5c-3.5 4.5-8 7-8 12.5 0 5 4 9 8 9s8-4 8-9c0-5.5-4.5-8-8-12.5z" fill="#ffffff"/>
+  <circle cx="16" cy="17.5" r="5" fill="#C41230"/>
+  <path d="M16 14v7M12.5 17.5h7" stroke="#ffffff" stroke-width="1.3" stroke-linecap="round"/>
+</svg>`,
+
+  "University of Helsinki": `<svg viewBox="0 0 32 32" fill="none" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="6" fill="#002F6C"/>
+  <path d="M7 21c0 4.5 4 8 9 8s9-3.5 9-8v-7l-4.5 3.5-4.5-5.5-4.5 5.5L7 14v7z" fill="#FFCC00"/>
+  <circle cx="16" cy="11.5" r="2.8" fill="#FFCC00"/>
+  <circle cx="8" cy="12.5" r="2" fill="#FFCC00"/>
+  <circle cx="24" cy="12.5" r="2" fill="#FFCC00"/>
+</svg>`,
+
+  "DeepLearning.AI": `<svg viewBox="0 0 32 32" fill="none" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="6" fill="#0F172A"/>
+  <path d="M8 22L16 7l8 15" stroke="#FF4B4B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="16" cy="7" r="3.5" fill="#FF4B4B"/>
+  <circle cx="8" cy="22" r="3.5" fill="#3B82F6"/>
+  <circle cx="24" cy="22" r="3.5" fill="#10B981"/>
+</svg>`,
+
+  "The Linux Foundation": `<svg viewBox="0 0 32 32" fill="none" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="6" fill="#003366"/>
+  <path d="M7 8h18v4H12v12H7V8z" fill="#00A3E0"/>
+  <path d="M14 15h11v11H14V15z" fill="#ffffff" opacity="0.95"/>
+</svg>`,
+
+  "Cisco Networking Academy": `<svg viewBox="0 0 32 32" fill="none" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="6" fill="#049FD9"/>
+  <g fill="#ffffff">
+    <rect x="5" y="15" width="2" height="7" rx="1"/>
+    <rect x="8.5" y="11" width="2" height="11" rx="1"/>
+    <rect x="12" y="17" width="2" height="5" rx="1"/>
+    <rect x="15" y="8" width="2" height="14" rx="1"/>
+    <rect x="18" y="17" width="2" height="5" rx="1"/>
+    <rect x="21.5" y="11" width="2" height="11" rx="1"/>
+    <rect x="25" y="15" width="2" height="7" rx="1"/>
+  </g>
+</svg>`,
+
+  "Google Developers": `<svg viewBox="0 0 32 32" fill="none" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="6" fill="#F8FAFC"/>
+  <path d="M12.5 11l-5 5 5 5" stroke="#4285F4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M19.5 11l5 5-5 5" stroke="#EA4335" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M18 9l-4 14" stroke="#FBBC05" stroke-width="2.5" stroke-linecap="round"/>
+</svg>`,
+
+  "Fast.ai": `<svg viewBox="0 0 32 32" fill="none" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="6" fill="#1E293B"/>
+  <path d="M7 11h18M7 16h13M7 21h8" stroke="#F25244" stroke-width="2.8" stroke-linecap="round"/>
+  <circle cx="23" cy="20" r="2.5" fill="#38BDF8"/>
+</svg>`,
+
+  "Kaggle": `<svg viewBox="0 0 32 32" fill="none" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="6" fill="#0B132B"/>
+  <path d="M9 7v18M23 7l-9 9 9 9" stroke="#20BEFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`,
+
+  "Khan Academy": `<svg viewBox="0 0 32 32" fill="none" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="6" fill="#0B2138"/>
+  <path d="M16 25V13" stroke="#14BF96" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M16 14c-4-4-9-2-9 4 5 0 8-2 9-4z" fill="#14BF96"/>
+  <path d="M16 17c4-4 9-2 9 4-5 0-8-2-9-4z" fill="#14BF96"/>
+</svg>`,
+
+  "The Odin Project": `<svg viewBox="0 0 32 32" fill="none" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="6" fill="#1A202C"/>
+  <path d="M10 16c0 5 2.5 8 6 8s6-3 6-8v-3H10v3z" fill="#E2E8F0"/>
+  <path d="M7 10c2 1 4 4 4 6H9c-1-3-2-4-2-6z" fill="#ECC94B"/>
+  <path d="M25 10c-2 1-4 4-4 6h2c1-3 2-4 2-6z" fill="#ECC94B"/>
+  <rect x="13" y="16" width="6" height="2" fill="#718096"/>
+</svg>`,
+
+  "freeCodeCamp": `<svg viewBox="0 0 32 32" fill="none" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="6" fill="#0A0A23"/>
+  <path d="M16 6c0 4-3 6-3 9 0 3 2 5 3 6 1-1 3-3 3-6 0-3-3-5-3-9z" fill="#FF9C00"/>
+  <path d="M16 15c0 2-1 3-1 4.5 0 1.5 1 2.5 1 3 0-.5 1-1.5 1-3 0-1.5-1-2.5-1-4.5z" fill="#FFFFFF"/>
+  <path d="M10 12l-4 4 4 4" stroke="#00EA87" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M22 12l4 4-4 4" stroke="#00EA87" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`
+};
+
+const DEFAULT_ACADEMIC_LOGO = `<svg viewBox="0 0 32 32" fill="none" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="6" fill="#2563EB"/>
+  <path d="M16 8L5 14l11 6 11-6-11-6z" fill="#FFFFFF"/>
+  <path d="M9 16.5v6c0 2.5 3.5 4.5 7 4.5s7-2 7-4.5v-6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+</svg>`;
+
+export function getProviderLogoSvg(provider) {
+  if (!provider) return DEFAULT_ACADEMIC_LOGO;
+  if (provider.includes('Harvard')) return PROVIDER_LOGOS['Harvard University'];
+  if (provider.includes('MIT')) return PROVIDER_LOGOS['MIT'];
+  if (provider.includes('Stanford')) return PROVIDER_LOGOS['Stanford'];
+  if (provider.includes('Carnegie Mellon')) return PROVIDER_LOGOS['Carnegie Mellon University'];
+  if (provider.includes('Helsinki')) return PROVIDER_LOGOS['University of Helsinki'];
+  if (provider.includes('DeepLearning.AI')) return PROVIDER_LOGOS['DeepLearning.AI'];
+  if (provider.includes('Linux Foundation')) return PROVIDER_LOGOS['The Linux Foundation'];
+  if (provider.includes('Cisco')) return PROVIDER_LOGOS['Cisco Networking Academy'];
+  if (provider.includes('Google')) return PROVIDER_LOGOS['Google Developers'];
+  if (provider.includes('Fast.ai') || provider.includes('fast.ai')) return PROVIDER_LOGOS['Fast.ai'];
+  if (provider.includes('Kaggle')) return PROVIDER_LOGOS['Kaggle'];
+  if (provider.includes('Khan Academy')) return PROVIDER_LOGOS['Khan Academy'];
+  if (provider.includes('Odin')) return PROVIDER_LOGOS['The Odin Project'];
+  if (provider.includes('freeCodeCamp')) return PROVIDER_LOGOS['freeCodeCamp'];
+  return DEFAULT_ACADEMIC_LOGO;
+}
+
+
 const state = {
   courses: [], progress: {}, activeCourseId: null, activeTrigger: null,
   filters: { search: '', status: 'all', category: 'all', level: 'all', tags: new Set(), sort: 'title-asc' },
@@ -346,10 +486,13 @@ function renderCoursesList() {
       <article class="course-card card-animate-in card bg-base-100 border border-base-200 shadow-sm hover:shadow-md hover:border-base-300 transition flex flex-col justify-between" style="animation-delay:${delay}ms;" data-course-id="${esc(c.id)}">
         <div class="card-body p-4 sm:p-5 flex flex-col gap-3">
           
-          <!-- Top Row: Provider & Level (Clean Optical Hierarchy, No Overlap) -->
+          <!-- Top Row: Provider & Level with University Squircle Logo (Clean Optical Hierarchy) -->
           <div class="flex items-center justify-between gap-2">
-            <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-semibold bg-base-200 text-base-content border border-base-300/80 leading-tight" title="${esc(c.provider)}">
-              ${esc(c.provider)}
+            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[11px] font-semibold bg-base-200 text-base-content border border-base-300/80 leading-tight" title="${esc(c.provider)}">
+              <span class="w-4 h-4 rounded-md bg-white shadow-2xs border border-slate-200/80 flex items-center justify-center p-0.5 shrink-0 overflow-hidden">
+                ${getProviderLogoSvg(c.provider)}
+              </span>
+              <span class="truncate max-w-[170px] sm:max-w-[200px]">${esc(c.provider)}</span>
             </span>
             <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold border shrink-0 ${lvlClass}">
               ${esc(c.level)}
@@ -424,7 +567,10 @@ export function openCourseModal(id, trigger = null) {
   const setT = (elId, v) => { const el = document.getElementById(elId); if (el) el.textContent = v; };
 
   setT('modal-course-title', c.title);
-  setT('modal-course-provider', c.provider);
+  const provEl = document.getElementById('modal-course-provider');
+  if (provEl) {
+    provEl.innerHTML = `<span class="w-4 h-4 rounded-md bg-white shadow-2xs border border-slate-200/80 inline-flex items-center justify-center p-0.5 shrink-0 overflow-hidden mr-1.5">${getProviderLogoSvg(c.provider)}</span><span>${esc(c.provider)}</span>`;
+  }
   setT('modal-course-duration', `${c.duration_hours} hours`);
   setT('modal-course-category', c.category);
   setT('modal-course-level', c.level);
@@ -837,21 +983,24 @@ function drawCertificateCanvas(c) {
   ctx.font = '11px "JetBrains Mono", monospace';
   ctx.fillText(hash, 120, 620);
 
-  // Gold Seal on Center-Left
+  // Gold University / Institution Verification Medallion
   ctx.save();
   ctx.translate(520, 585);
   ctx.fillStyle = '#d97706';
   ctx.beginPath();
-  ctx.arc(0, 0, 36, 0, Math.PI * 2);
+  ctx.arc(0, 0, 38, 0, Math.PI * 2);
   ctx.fill();
   ctx.fillStyle = '#f59e0b';
   ctx.beginPath();
-  ctx.arc(0, 0, 30, 0, Math.PI * 2);
+  ctx.arc(0, 0, 32, 0, Math.PI * 2);
   ctx.fill();
   ctx.fillStyle = '#ffffff';
   ctx.textAlign = 'center';
   ctx.font = 'bold 18px "Inter", sans-serif';
-  ctx.fillText('✓', 0, 7);
+  ctx.fillText('🎓', 0, 6);
+  ctx.fillStyle = '#78350f';
+  ctx.font = 'bold 9px "JetBrains Mono", monospace';
+  ctx.fillText('OFFICIAL CURRICULUM', 0, 48);
   ctx.restore();
 
   // Signature on Right
@@ -1060,6 +1209,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.coursePulseApp = {
-  fetchCourses, openCourseModal, closeCourseModal, toggleModule, markAllModules, saveCourseNotes, exportProgress, importProgress, toggleFilterTag, removeActiveFilter, resetFilters, toggleTagsExpand, toggleTheme,
+  getProviderLogoSvg, fetchCourses, openCourseModal, closeCourseModal, toggleModule, markAllModules, saveCourseNotes, exportProgress, importProgress, toggleFilterTag, removeActiveFilter, resetFilters, toggleTagsExpand, toggleTheme,
   exportNotesAsMarkdown, exportCourseCalendar, openCertificateModal, closeCertificateModal, downloadCertificate, toggleTimer, resetTimer,
 };
