@@ -354,6 +354,30 @@
         </div>
       </div>
 
+      <!-- Focus Mode Pomodoro Timer (Client-Side Instrument) -->
+      <div class="bg-base-200/50 border border-base-300/60 rounded-xl p-2.5 flex items-center justify-between gap-3 text-xs">
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center justify-center w-6 h-6 rounded-lg bg-primary/15 text-primary">
+            ⏱️
+          </span>
+          <div>
+            <div class="font-bold text-base-content text-[11px] leading-tight">Focus Sprint</div>
+            <div class="text-[10px] text-base-content/60" id="timer-status">25-minute study block</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 font-mono font-extrabold text-sm text-primary tabular-nums" id="timer-display">
+          25:00
+        </div>
+        <div class="flex items-center gap-1.5">
+          <button type="button" onclick="window.coursePulseApp.toggleTimer()" class="btn btn-xs btn-primary font-bold px-3 text-[11px]" id="btn-timer-toggle">
+            Start
+          </button>
+          <button type="button" onclick="window.coursePulseApp.resetTimer()" class="btn btn-xs btn-ghost text-[11px] px-2" title="Reset timer">
+            ↺
+          </button>
+        </div>
+      </div>
+
       <!-- Module Checklist with Custom Scrollbar -->
       <div class="flex flex-col gap-2">
         <h4 class="text-xs font-bold uppercase tracking-wider text-base-content/60 font-mono">

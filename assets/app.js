@@ -449,6 +449,7 @@ export function openCourseModal(id, trigger = null) {
 export function closeCourseModal() {
   const modal = document.getElementById('course_modal');
   if (!modal?.open) return;
+  if (isTimerRunning) toggleTimer(); // pause timer on close
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     modal.close(); state.activeTrigger?.focus(); return;
   }
@@ -882,6 +883,80 @@ export function downloadCertificate() {
   showToast('🎓 Diploma downloaded successfully (PNG)!');
 }
 
+/* Client-Side Focus Mode Pomodoro Instrument */
+let timerInterval = null;
+let timerSecondsLeft = 25 * 60;
+let isTimerRunning = false;
+
+function playChime() {
+  try {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return;
+    const ctx = new AudioContext();
+    const playTone = (freq, start, duration) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, ctx.currentTime + start);
+      gain.gain.setValueAtTime(0.12, ctx.currentTime + start);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + start + duration);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(ctx.currentTime + start);
+      osc.stop(ctx.currentTime + start + duration);
+    };
+    playTone(587.33, 0, 0.4); // D5
+    playTone(880.00, 0.22, 0.8); // A5
+  } catch {}
+}
+
+export function toggleTimer() {
+  const btn = document.getElementById('btn-timer-toggle');
+  const statusEl = document.getElementById('timer-status');
+  if (isTimerRunning) {
+    clearInterval(timerInterval);
+    isTimerRunning = false;
+    if (btn) btn.textContent = 'Resume';
+    if (statusEl) statusEl.textContent = 'Paused';
+  } else {
+    isTimerRunning = true;
+    if (btn) btn.textContent = 'Pause';
+    if (statusEl) statusEl.textContent = 'Focus sprint in progress...';
+    timerInterval = setInterval(() => {
+      if (timerSecondsLeft > 0) {
+        timerSecondsLeft--;
+        updateTimerDisplay();
+      } else {
+        clearInterval(timerInterval);
+        isTimerRunning = false;
+        playChime();
+        recordStudyActivity();
+        showToast('🎯 Focus sprint completed! Great study session.');
+        resetTimer();
+      }
+    }, 1000);
+  }
+}
+
+export function resetTimer() {
+  clearInterval(timerInterval);
+  isTimerRunning = false;
+  timerSecondsLeft = 25 * 60;
+  updateTimerDisplay();
+  const btn = document.getElementById('btn-timer-toggle');
+  const statusEl = document.getElementById('timer-status');
+  if (btn) btn.textContent = 'Start';
+  if (statusEl) statusEl.textContent = '25-minute study block';
+}
+
+function updateTimerDisplay() {
+  const disp = document.getElementById('timer-display');
+  if (!disp) return;
+  const m = Math.floor(timerSecondsLeft / 60);
+  const s = timerSecondsLeft % 60;
+  disp.textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+}
+
 export function exportProgress() {
   const payload = { version: '1.0', exported_at: new Date().toISOString(), progress: state.progress };
   const a = document.createElement('a');
@@ -931,6 +1006,9 @@ function setupListeners() {
   on('search-input', 'input', debounce((e) => {
     state.filters.search = e.target.value; syncUrlParams(); renderAllWithTransition();
   }, 200));
+
+  on('search-input', 'focus', () => document.body.classList.add('search-focused'));
+  on('search-input', 'blur', () => document.body.classList.remove('search-focused'));
 
   document.addEventListener('keydown', (e) => {
     const sIn = document.getElementById('search-input');
@@ -983,5 +1061,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.coursePulseApp = {
   fetchCourses, openCourseModal, closeCourseModal, toggleModule, markAllModules, saveCourseNotes, exportProgress, importProgress, toggleFilterTag, removeActiveFilter, resetFilters, toggleTagsExpand, toggleTheme,
-  exportNotesAsMarkdown, exportCourseCalendar, openCertificateModal, closeCertificateModal, downloadCertificate,
+  exportNotesAsMarkdown, exportCourseCalendar, openCertificateModal, closeCertificateModal, downloadCertificate, toggleTimer, resetTimer,
 };
