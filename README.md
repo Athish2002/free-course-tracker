@@ -3,6 +3,10 @@
 > **Autonomous, paywall-free open course directory & learning progress tracker.**  
 > Built as a zero-build static site for GitHub Pages. No framework, no npm, no bundler, no backend.
 
+[![Live App](https://img.shields.io/badge/Live%20App-CoursePulse%20on%20GitHub%20Pages-2563eb?style=for-the-badge&logo=github)](https://athish2002.github.io/free-course-tracker/)
+[![Courses](https://img.shields.io/badge/Curated%20Courses-30%20Verified%20Free-10b981?style=for-the-badge)](https://athish2002.github.io/free-course-tracker/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+
 ---
 
 ## Features
@@ -13,10 +17,71 @@
 - **Client-Side Progress & Notes**: Module completions and personal notes persist in `localStorage` keyed by course ID.
 - **Export & Import JSON**: Back up or transfer your learning progress across devices with one click.
 - **Live Statistics**: Real-time course tracking with DaisyUI metrics (Total Courses, In Progress, Completed, Overall Completion Radial Progress).
-- **Deep Filtering & Search**: Instant debounced search, status filters (Not started / In progress / Completed), categories, difficulty levels, tags, and multi-field sorting.
+- **Deep Filtering & Search**: Instant debounced search, status filters (Not started / In progress / Completed), categories, difficulty levels, 88 topic tags, and multi-field sorting.
 - **URL Query Param Sync**: Filters, search terms, and sort orders sync dynamically with the URL (`?q=python&status=in-progress`).
 - **Course Detail Modal & Checklist**: Interactive module checklists with automated completion calculation, notes scratchpad, and celebratory confetti upon 100% completion.
-- **Theme Switcher**: 8+ themes (`light`, `dark`, `cupcake`, `emerald`, `synthwave`, `nord`, `dracula`, `forest`) with automatic `prefers-color-scheme` detection and pre-paint flash prevention.
+- **Dedicated Light Crisp & Dark Obsidian Modes**: Executive high-contrast design system (10.5:1 WCAG AAA text contrast) with tactile Sun/Moon toggle and **`[D]`** keyboard shortcut.
+
+---
+
+## Curated Course Directory (30 Free Courses)
+
+Below is the complete index of 30 verified, 100% paywall-free courses curated in CoursePulse. You can track your progress interactively on the [Live Web App](https://athish2002.github.io/free-course-tracker/) without signing in.
+
+### Computer Science (10 Courses)
+
+| Course Title | Provider | Level | Est. Duration | Official Syllabus |
+| :--- | :--- | :---: | :---: | :---: |
+| **CS50x: Introduction to Computer Science** | Harvard University | `Beginner` | 120h | [Open Syllabus](https://cs50.harvard.edu/x/) |
+| **CS50P: Introduction to Programming with Python** | Harvard University | `Beginner` | 80h | [Open Syllabus](https://cs50.harvard.edu/python/) |
+| **JavaScript Algorithms and Data Structures** | freeCodeCamp | `Beginner` | 300h | [Open Syllabus](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8) |
+| **Relational Databases Certification** | freeCodeCamp | `Intermediate` | 200h | [Open Syllabus](https://www.freecodecamp.org/learn/relational-database) |
+| **6.0001: Intro to CS & Programming in Python** | MIT OpenCourseWare | `Beginner` | 75h | [Open Syllabus](https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/) |
+| **6.006: Introduction to Algorithms** | MIT OpenCourseWare | `Advanced` | 110h | [Open Syllabus](https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/) |
+| **6.004: Computation Structures** | MIT OpenCourseWare | `Advanced` | 95h | [Open Syllabus](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/) |
+| **The Missing Semester of Your CS Education** | MIT CSAIL | `Beginner` | 30h | [Open Syllabus](https://missing.csail.mit.edu/) |
+| **CS106A: Programming Methodology** | Stanford Engineering Everywhere | `Beginner` | 65h | [Open Syllabus](https://see.stanford.edu/Course/CS106A) |
+| **15-213: Introduction to Computer Systems** | Carnegie Mellon University | `Advanced` | 130h | [Open Syllabus](https://www.cs.cmu.edu/~213/) |
+
+### Web Development (9 Courses)
+
+| Course Title | Provider | Level | Est. Duration | Official Syllabus |
+| :--- | :--- | :---: | :---: | :---: |
+| **CS50W: Web Programming with Python and JavaScript** | Harvard University | `Intermediate` | 90h | [Open Syllabus](https://cs50.harvard.edu/web/) |
+| **Responsive Web Design Certification** | freeCodeCamp | `Beginner` | 300h | [Open Syllabus](https://www.freecodecamp.org/learn/responsive-web-design) |
+| **Front End Development Libraries** | freeCodeCamp | `Intermediate` | 150h | [Open Syllabus](https://www.freecodecamp.org/learn/front-end-development-libraries) |
+| **Back End Development and APIs** | freeCodeCamp | `Intermediate` | 180h | [Open Syllabus](https://www.freecodecamp.org/learn/back-end-development-and-apis) |
+| **Computer Programming: Intro to JS & Animation** | Khan Academy | `Beginner` | 35h | [Open Syllabus](https://www.khanacademy.org/computing/computer-programming/programming) |
+| **Intro to HTML/CSS: Making Webpages** | Khan Academy | `Beginner` | 25h | [Open Syllabus](https://www.khanacademy.org/computing/computer-programming/html-css) |
+| **Foundations Course** | The Odin Project | `Beginner` | 100h | [Open Syllabus](https://www.theodinproject.com/paths/foundations/courses/foundations) |
+| **Full Stack JavaScript Path** | The Odin Project | `Intermediate` | 250h | [Open Syllabus](https://www.theodinproject.com/paths/full-stack-javascript) |
+| **Full Stack Open 2024** | University of Helsinki | `Advanced` | 150h | [Open Syllabus](https://fullstackopen.com/en/) |
+
+### Artificial Intelligence (8 Courses)
+
+| Course Title | Provider | Level | Est. Duration | Official Syllabus |
+| :--- | :--- | :---: | :---: | :---: |
+| **CS50AI: Introduction to Artificial Intelligence with Python** | Harvard University | `Intermediate` | 85h | [Open Syllabus](https://cs50.harvard.edu/ai/) |
+| **Machine Learning Specialization** | DeepLearning.AI / Stanford | `Intermediate` | 95h | [Open Syllabus](https://www.coursera.org/specializations/machine-learning-introduction) |
+| **Deep Learning Specialization** | DeepLearning.AI | `Advanced` | 120h | [Open Syllabus](https://www.coursera.org/specializations/deep-learning) |
+| **Machine Learning Crash Course** | Google Developers | `Intermediate` | 30h | [Open Syllabus](https://developers.google.com/machine-learning/crash-course) |
+| **Practical Deep Learning for Coders** | Fast.ai | `Intermediate` | 70h | [Open Syllabus](https://course.fast.ai/) |
+| **Intro to Machine Learning** | Kaggle | `Beginner` | 15h | [Open Syllabus](https://www.kaggle.com/learn/intro-to-machine-learning) |
+| **Elements of AI: Introduction to AI** | University of Helsinki & Reaktor | `Beginner` | 30h | [Open Syllabus](https://www.elementsofai.com/) |
+| **Building AI: Python Algorithms for AI** | University of Helsinki & Reaktor | `Intermediate` | 50h | [Open Syllabus](https://buildingai.elementsofai.com/) |
+
+### Systems & Security (2 Courses)
+
+| Course Title | Provider | Level | Est. Duration | Official Syllabus |
+| :--- | :--- | :---: | :---: | :---: |
+| **Introduction to Linux (LFS101x)** | The Linux Foundation | `Beginner` | 60h | [Open Syllabus](https://www.edx.org/learn/linux/the-linux-foundation-introduction-to-linux) |
+| **Introduction to Cybersecurity** | Cisco Networking Academy | `Beginner` | 20h | [Open Syllabus](https://www.netacad.com/courses/introduction-to-cybersecurity) |
+
+### Mathematics (1 Course)
+
+| Course Title | Provider | Level | Est. Duration | Official Syllabus |
+| :--- | :--- | :---: | :---: | :---: |
+| **18.06: Linear Algebra (Gilbert Strang)** | MIT OpenCourseWare | `Intermediate` | 60h | [Open Syllabus](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/) |
 
 ---
 
