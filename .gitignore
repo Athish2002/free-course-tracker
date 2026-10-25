@@ -28,6 +28,8 @@ htmlcov/
 .DS_Store
 Thumbs.db
 *.tmp
+health-report.md
 .build_fingerprint
 data/audit_log.jsonl
 *.tmp
+health-report.md
