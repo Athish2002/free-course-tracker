@@ -1,5 +1,5 @@
 /** CoursePulse — Free Course Tracker (<20 KB unminified) */
-const K_PROG = 'coursepulse_progress', K_THM = 'coursepulse_theme', DATA_URL = './data/courses.json';
+const K_PROG = 'coursepulse_progress', K_THM = 'coursepulse_theme', K_STREAK = 'coursepulse_streak', DATA_URL = './data/courses.json';
 const THEME_COLORS = { light: '#f8fafc', dark: '#0b0f19' };
 
 const state = {
@@ -9,11 +9,77 @@ const state = {
   isLoading: true, error: null, isTagsExpanded: false,
 };
 
+let confettiRafId = null;
+
 function loadProgress() {
-  try { state.progress = JSON.parse(localStorage.getItem(K_PROG)) || {}; } catch { state.progress = {}; }
+  try {
+    const raw = localStorage.getItem(K_PROG);
+    if (!raw) { state.progress = {}; return; }
+    const parsed = JSON.parse(raw);
+    if (parsed && typeof parsed === 'object') {
+      state.progress = (parsed.version && parsed.courses) ? parsed.courses : parsed;
+    }
+  } catch {
+    state.progress = {};
+  }
 }
+
 function saveProgress() {
-  try { localStorage.setItem(K_PROG, JSON.stringify(state.progress)); } catch {}
+  try {
+    const payload = {
+      version: 1,
+      last_updated: new Date().toISOString(),
+      courses: state.progress,
+    };
+    localStorage.setItem(K_PROG, JSON.stringify(payload));
+  } catch (err) {
+    if (err?.name === 'QuotaExceededError' || err?.code === 22) {
+      showToast('⚠️ Storage quota exceeded! Export progress JSON backup.');
+    }
+  }
+}
+
+function getStreakData() {
+  let s = { currentStreak: 0, lastActivityDate: null, longestStreak: 0 };
+  try { s = JSON.parse(localStorage.getItem(K_STREAK)) || s; } catch {}
+  return s;
+}
+
+function recordStudyActivity() {
+  const now = new Date();
+  const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+  const s = getStreakData();
+  if (s.lastActivityDate === today) return s;
+
+  if (s.lastActivityDate) {
+    const last = new Date(s.lastActivityDate);
+    const cur = new Date(today);
+    const diffDays = Math.round((cur - last) / (1000 * 60 * 60 * 24));
+    if (diffDays === 1) {
+      s.currentStreak += 1;
+    } else if (diffDays > 1) {
+      s.currentStreak = 1;
+    }
+  } else {
+    s.currentStreak = 1;
+  }
+  s.lastActivityDate = today;
+  if (s.currentStreak > (s.longestStreak || 0)) s.longestStreak = s.currentStreak;
+  try { localStorage.setItem(K_STREAK, JSON.stringify(s)); } catch {}
+  updateStreakUI(s);
+  return s;
+}
+
+function updateStreakUI(s) {
+  const data = s || getStreakData();
+  const countEl = document.getElementById('stat-streak-count');
+  const descEl = document.getElementById('stat-streak-desc');
+  if (countEl) countEl.textContent = data.currentStreak || 0;
+  if (descEl) {
+    if (!data.currentStreak) descEl.textContent = 'Start your streak today';
+    else if (data.currentStreak === 1) descEl.textContent = '1-day streak! Active today';
+    else descEl.textContent = `${data.currentStreak} days streak! Keep it up`;
+  }
 }
 function getCourseProgress(id) {
   if (!state.progress[id]) state.progress[id] = { completedModules: [], notes: '' };
@@ -136,6 +202,7 @@ function updateStats() {
     if ($('stat-radial-text')) $('stat-radial-text').textContent = `${pct}%`;
   }
   state.statsCache = { total: state.courses.length, inProgress, completed, overallPct: pct };
+  updateStreakUI();
 }
 
 function getFilteredCourses() {
@@ -451,7 +518,12 @@ export function toggleModule(cId, mId, chk) {
   const c = state.courses.find((x) => x.id === cId);
   if (!c) return;
   const p = getCourseProgress(cId), set = new Set(p.completedModules || []), was100 = set.size === (c.modules || []).length;
-  if (chk) set.add(mId); else set.delete(mId);
+  if (chk) {
+    set.add(mId);
+    recordStudyActivity();
+  } else {
+    set.delete(mId);
+  }
   p.completedModules = Array.from(set);
   saveProgress();
 
@@ -474,6 +546,7 @@ export function markAllModules(done) {
 
   const p = getCourseProgress(c.id), was100 = (p.completedModules || []).length === (c.modules || []).length;
   p.completedModules = done ? (c.modules || []).map((m) => m.id) : [];
+  if (done) recordStudyActivity();
   saveProgress();
   renderModalModules(c);
   updateModalProgress(c);
@@ -484,6 +557,7 @@ export function markAllModules(done) {
 export function saveCourseNotes(txt) {
   if (!state.activeCourseId) return;
   getCourseProgress(state.activeCourseId).notes = txt;
+  if (txt && txt.trim()) recordStudyActivity();
   saveProgress();
   const ind = document.getElementById('notes-saved-indicator');
   if (ind) {
@@ -514,6 +588,10 @@ function launchConfetti() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const cvs = document.getElementById('confetti-canvas');
   if (!cvs) return;
+  if (confettiRafId) {
+    cancelAnimationFrame(confettiRafId);
+    confettiRafId = null;
+  }
   const ctx = cvs.getContext('2d');
   cvs.width = window.innerWidth; cvs.height = window.innerHeight;
   const colors = ['#22c55e', '#3b82f6', '#f59e0b', '#ec4899', '#8b5cf6', '#06b6d4'];
@@ -531,9 +609,277 @@ function launchConfetti() {
         ctx.rotate((p.rot * Math.PI) / 180); ctx.fillStyle = p.color; ctx.fillRect(-p.sz / 2, -p.sz / 2, p.sz, p.sz); ctx.restore();
       }
     });
-    if (act > 0) requestAnimationFrame(loop); else ctx.clearRect(0, 0, cvs.width, cvs.height);
+    if (act > 0) {
+      confettiRafId = requestAnimationFrame(loop);
+    } else {
+      ctx.clearRect(0, 0, cvs.width, cvs.height);
+      confettiRafId = null;
+    }
   }
-  loop();
+  confettiRafId = requestAnimationFrame(loop);
+}
+
+export function exportNotesAsMarkdown() {
+  if (!state.activeCourseId) return;
+  const c = state.courses.find((x) => x.id === state.activeCourseId);
+  if (!c) return;
+  const p = getCourseProgress(c.id);
+  const completedSet = new Set(p.completedModules || []);
+  const pct = getCoursePercentage(c);
+  const now = new Date().toISOString();
+
+  let md = `---\ntitle: "${c.title.replace(/"/g, '\\"')}"\nprovider: "${c.provider.replace(/"/g, '\\"')}"\ncategory: "${c.category}"\nlevel: "${c.level}"\nduration_hours: ${c.duration_hours}\nurl: "${c.url}"\nprogress_percentage: ${pct}\nexported_at: "${now}"\n---\n\n`;
+  md += `# ${c.title}\n\n`;
+  md += `> **Provider**: ${c.provider}  \n`;
+  md += `> **Category**: ${c.category} | **Level**: ${c.level} | **Duration**: ${c.duration_hours} hours  \n`;
+  md += `> **Official Syllabus**: [${c.url}](${c.url})  \n`;
+  md += `> **Completion Status**: ${pct}% (${completedSet.size} of ${(c.modules || []).length} modules)\n\n`;
+  md += `---\n\n## Personal Study Notes\n\n`;
+  md += `${(p.notes || '').trim() || '_No personal notes written yet._'}\n\n`;
+  md += `---\n\n## Curriculum Modules Checklist\n\n`;
+
+  (c.modules || []).forEach((m, idx) => {
+    const isDone = completedSet.has(m.id);
+    md += `- [${isDone ? 'x' : ' '}] Module ${idx + 1}: ${m.title}\n`;
+  });
+
+  md += `\n---\n*Generated by CoursePulse (https://athish2002.github.io/free-course-tracker/) on ${new Date().toLocaleDateString()}.*\n`;
+
+  const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${c.id}-study-notes.md`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+  showToast('📝 Notes exported as Markdown!');
+}
+
+export function exportCourseCalendar() {
+  if (!state.activeCourseId) return;
+  const c = state.courses.find((x) => x.id === state.activeCourseId);
+  if (!c) return;
+  const modules = c.modules || [];
+  if (!modules.length) return;
+
+  const startDate = new Date();
+  startDate.setDate(startDate.getDate() + 1);
+
+  const pad = (n) => String(n).padStart(2, '0');
+  const formatIcalDate = (d) =>
+    `${d.getUTCFullYear()}${pad(d.getUTCMonth() + 1)}${pad(d.getUTCDate())}T${pad(d.getUTCHours())}${pad(d.getUTCMinutes())}${pad(d.getUTCSeconds())}Z`;
+
+  const nowStamp = formatIcalDate(new Date());
+
+  const ics = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//CoursePulse//Study Plan Generator//EN',
+    'CALSCALE:GREGORIAN',
+    'METHOD:PUBLISH',
+    `X-WR-CALNAME:Study Plan - ${c.title.replace(/[,;]/g, '')}`,
+  ];
+
+  modules.forEach((m, idx) => {
+    const evtStart = new Date(startDate);
+    evtStart.setDate(evtStart.getDate() + idx * 2);
+    evtStart.setHours(18, 0, 0, 0);
+
+    const evtEnd = new Date(evtStart);
+    evtEnd.setHours(19, 30, 0, 0);
+
+    const uid = `cp-${c.id}-${m.id}-${Date.now()}@coursepulse`;
+    const summary = `Study: ${c.title} (Module ${idx + 1})`;
+    const description = `Module: ${m.title}\\nCourse: ${c.title}\\nProvider: ${c.provider}\\nURL: ${c.url}`;
+
+    ics.push(
+      'BEGIN:VEVENT',
+      `UID:${uid}`,
+      `DTSTAMP:${nowStamp}`,
+      `DTSTART:${formatIcalDate(evtStart)}`,
+      `DTEND:${formatIcalDate(evtEnd)}`,
+      `SUMMARY:${summary}`,
+      `DESCRIPTION:${description}`,
+      `URL:${c.url}`,
+      'STATUS:CONFIRMED',
+      'END:VEVENT'
+    );
+  });
+
+  ics.push('END:VCALENDAR');
+
+  const blob = new Blob([ics.join('\r\n')], { type: 'text/calendar;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `coursepulse-${c.id}-study-schedule.ics`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+  showToast('📅 Study schedule (.ics) downloaded! Ready for Calendar.');
+}
+
+function generateHash(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = ((hash << 5) - hash) + str.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash).toString(16).toUpperCase().padStart(8, '0');
+}
+
+export function openCertificateModal() {
+  if (!state.activeCourseId) return;
+  const c = state.courses.find((x) => x.id === state.activeCourseId);
+  if (!c) return;
+  drawCertificateCanvas(c);
+  const modal = document.getElementById('certificate_modal');
+  if (modal) {
+    modal.showModal();
+    setupModalFocusTrap(modal);
+  }
+}
+
+export function closeCertificateModal() {
+  const modal = document.getElementById('certificate_modal');
+  if (modal?.open) modal.close();
+}
+
+function drawCertificateCanvas(c) {
+  const cvs = document.getElementById('certificate-canvas');
+  if (!cvs) return;
+  const ctx = cvs.getContext('2d');
+  const W = 1200, H = 750;
+  cvs.width = W; cvs.height = H;
+
+  const p = getCourseProgress(c.id);
+  const pct = getCoursePercentage(c);
+  const hash = `CP-VERIFY-${generateHash(c.id + '-' + c.title + '-' + (p.completedModules || []).length)}`;
+  const codeEl = document.getElementById('cert-verification-code');
+  if (codeEl) codeEl.textContent = `Hash: ${hash}`;
+
+  // Background
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc';
+  ctx.fillRect(24, 24, W - 48, H - 48);
+
+  // Outer Navy Border
+  ctx.lineWidth = 10;
+  ctx.strokeStyle = '#0f172a';
+  ctx.strokeRect(30, 30, W - 60, H - 60);
+
+  // Gold Inner Rim
+  ctx.lineWidth = 2.5;
+  ctx.strokeStyle = '#d97706';
+  ctx.strokeRect(44, 44, W - 88, H - 88);
+
+  // Brand Header
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#2563eb';
+  ctx.font = 'bold 20px "JetBrains Mono", monospace';
+  ctx.fillText('C O U R S E P U L S E', W / 2, 110);
+
+  // Certificate Title
+  ctx.fillStyle = '#0f172a';
+  ctx.font = 'bold 36px "Inter", serif, sans-serif';
+  ctx.fillText('CERTIFICATE OF CURRICULUM COMPLETION', W / 2, 175);
+
+  // Divider line
+  ctx.strokeStyle = '#cbd5e1';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(350, 205); ctx.lineTo(W - 350, 205);
+  ctx.stroke();
+
+  // Subtitle
+  ctx.fillStyle = '#475569';
+  ctx.font = '500 18px "Inter", sans-serif';
+  ctx.fillText('THIS RECOGNIZES THAT AN INDEPENDENT SCHOLAR HAS COMPLETED THE SYLLABUS FOR', W / 2, 255);
+
+  // Course Title
+  ctx.fillStyle = '#1e293b';
+  ctx.font = 'bold 34px "Inter", sans-serif';
+  let title = c.title;
+  if (ctx.measureText(title).width > 950) {
+    ctx.font = 'bold 28px "Inter", sans-serif';
+  }
+  ctx.fillText(title, W / 2, 320);
+
+  // Provider
+  ctx.fillStyle = '#2563eb';
+  ctx.font = '600 22px "Inter", sans-serif';
+  ctx.fillText(`Curriculum Provided by ${c.provider}`, W / 2, 375);
+
+  ctx.fillStyle = '#64748b';
+  ctx.font = '16px "Inter", sans-serif';
+  ctx.fillText(`Category: ${c.category}   •   Level: ${c.level}   •   Duration: ${c.duration_hours} Estimated Hours`, W / 2, 420);
+
+  // Progress status
+  ctx.fillStyle = pct === 100 ? '#15803d' : '#2563eb';
+  ctx.font = 'bold 16px "JetBrains Mono", monospace';
+  ctx.fillText(pct === 100 ? 'STATUS: 100% COMPLETED (ALL MODULES VERIFIED)' : `STATUS: ${pct}% MODULES MASTERED`, W / 2, 465);
+
+  const dateStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  // Date on Left
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#0f172a';
+  ctx.font = '600 16px "Inter", sans-serif';
+  ctx.fillText(dateStr, 120, 580);
+  ctx.fillStyle = '#94a3b8';
+  ctx.font = '12px "Inter", sans-serif';
+  ctx.fillText('DATE OF ISSUE', 120, 600);
+  ctx.font = '11px "JetBrains Mono", monospace';
+  ctx.fillText(hash, 120, 620);
+
+  // Gold Seal on Center-Left
+  ctx.save();
+  ctx.translate(520, 585);
+  ctx.fillStyle = '#d97706';
+  ctx.beginPath();
+  ctx.arc(0, 0, 36, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#f59e0b';
+  ctx.beginPath();
+  ctx.arc(0, 0, 30, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  ctx.textAlign = 'center';
+  ctx.font = 'bold 18px "Inter", sans-serif';
+  ctx.fillText('✓', 0, 7);
+  ctx.restore();
+
+  // Signature on Right
+  ctx.textAlign = 'right';
+  ctx.fillStyle = '#0f172a';
+  ctx.font = 'italic bold 22px "Inter", Georgia, serif';
+  ctx.fillText('CoursePulse Open Engine', W - 120, 575);
+  ctx.strokeStyle = '#0f172a';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(W - 360, 585); ctx.lineTo(W - 120, 585);
+  ctx.stroke();
+  ctx.fillStyle = '#94a3b8';
+  ctx.font = '12px "Inter", sans-serif';
+  ctx.fillText('OPEN-SOURCE EDUCATION REGISTRY', W - 120, 605);
+}
+
+export function downloadCertificate() {
+  const cvs = document.getElementById('certificate-canvas');
+  if (!cvs || !state.activeCourseId) return;
+  const c = state.courses.find((x) => x.id === state.activeCourseId);
+  const url = cvs.toDataURL('image/png');
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `coursepulse-${c ? c.id : 'course'}-diploma.png`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  showToast('🎓 Diploma downloaded successfully (PNG)!');
 }
 
 export function exportProgress() {
@@ -637,4 +983,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.coursePulseApp = {
   fetchCourses, openCourseModal, closeCourseModal, toggleModule, markAllModules, saveCourseNotes, exportProgress, importProgress, toggleFilterTag, removeActiveFilter, resetFilters, toggleTagsExpand, toggleTheme,
+  exportNotesAsMarkdown, exportCourseCalendar, openCertificateModal, closeCertificateModal, downloadCertificate,
 };

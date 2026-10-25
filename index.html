@@ -135,8 +135,8 @@
       </div>
     </div>
 
-    <!-- Overall Statistics Row (DaisyUI Stats with Radial Progress) -->
-    <section class="grid grid-cols-2 lg:grid-cols-4 gap-4" aria-label="Overall Learning Statistics">
+    <!-- Overall Statistics Row (DaisyUI Stats with Streak & Radial Progress) -->
+    <section class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4" aria-label="Overall Learning Statistics">
       <!-- Total Courses -->
       <div class="stats bg-base-100 border border-base-200 shadow-sm rounded-2xl">
         <div class="stat p-4 sm:p-5">
@@ -170,6 +170,23 @@
           <div class="stat-title text-xs font-bold text-base-content/85">Completed</div>
           <div class="stat-value text-2xl sm:text-3xl font-extrabold font-mono text-success tabular-nums" id="stat-completed">0</div>
           <div class="stat-desc text-xs font-medium text-base-content/75 mt-0.5">100% finished</div>
+        </div>
+      </div>
+
+      <!-- Study Streak Telemetry -->
+      <div class="stats bg-base-100 border border-base-200 shadow-sm rounded-2xl">
+        <div class="stat p-4 sm:p-5">
+          <div class="stat-figure text-amber-500">
+            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+            </svg>
+          </div>
+          <div class="stat-title text-xs font-bold text-base-content/85">Study Streak</div>
+          <div class="stat-value text-2xl sm:text-3xl font-extrabold font-mono text-amber-500 tabular-nums flex items-baseline gap-1">
+            <span id="stat-streak-count">0</span>
+            <span class="text-xs font-semibold text-base-content/70">days</span>
+          </div>
+          <div class="stat-desc text-xs font-medium text-base-content/75 mt-0.5" id="stat-streak-desc">Start your streak today</div>
         </div>
       </div>
 
@@ -315,13 +332,25 @@
           <span class="font-mono font-bold text-primary" id="modal-progress-pct">0%</span>
         </div>
         <progress class="progress progress-primary w-full h-2" id="modal-progress-bar" value="0" max="100"></progress>
-        <div class="flex items-center justify-end gap-2 pt-1">
-          <button type="button" onclick="window.coursePulseApp.markAllModules(true)" class="btn btn-xs btn-primary btn-outline text-[11px]">
-            Mark All Complete
-          </button>
-          <button type="button" onclick="window.coursePulseApp.markAllModules(false)" class="btn btn-xs btn-ghost text-[11px]">
-            Reset Progress
-          </button>
+        <div class="flex items-center justify-between gap-2 pt-1">
+          <div class="flex items-center gap-1.5">
+            <button type="button" onclick="window.coursePulseApp.exportCourseCalendar()" class="btn btn-xs btn-ghost border border-base-300 text-[11px] gap-1 hover:bg-base-300" title="Download iCalendar (.ics) study plan">
+              <svg class="w-3 h-3 text-base-content/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span>iCal Schedule</span>
+            </button>
+            <button type="button" id="modal-btn-certificate" onclick="window.coursePulseApp.openCertificateModal()" class="btn btn-xs btn-ghost border border-accent/40 text-accent text-[11px] gap-1 hover:bg-accent/10" title="View or download completion diploma">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+              <span>Diploma</span>
+            </button>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <button type="button" onclick="window.coursePulseApp.markAllModules(true)" class="btn btn-xs btn-primary btn-outline text-[11px]">
+              Mark All Complete
+            </button>
+            <button type="button" onclick="window.coursePulseApp.markAllModules(false)" class="btn btn-xs btn-ghost text-[11px]">
+              Reset
+            </button>
+          </div>
         </div>
       </div>
 
@@ -335,15 +364,21 @@
         </div>
       </div>
 
-      <!-- Personal Study Notes Area with Autosave Indicator -->
+      <!-- Personal Study Notes Area with Autosave Indicator & Markdown Export -->
       <div class="flex flex-col gap-1.5 pt-2 border-t border-base-200">
         <div class="flex items-center justify-between">
           <label for="modal-course-notes" class="text-xs font-bold uppercase tracking-wider text-base-content/60 font-mono">
             Personal Study Notes
           </label>
-          <span id="notes-saved-indicator" class="text-[11px] font-mono text-success opacity-0 transition-opacity duration-200 flex items-center gap-1">
-            ✓ Saved
-          </span>
+          <div class="flex items-center gap-2">
+            <span id="notes-saved-indicator" class="text-[11px] font-mono text-success opacity-0 transition-opacity duration-200 flex items-center gap-1">
+              ✓ Saved
+            </span>
+            <button type="button" onclick="window.coursePulseApp.exportNotesAsMarkdown()" class="btn btn-xs btn-ghost gap-1 text-[11px] font-mono text-base-content/70 hover:text-base-content" title="Export study notes as Markdown file">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Export .md</span>
+            </button>
+          </div>
         </div>
         <textarea id="modal-course-notes" rows="3" placeholder="Write key concepts, problem set notes, or links... (auto-saved)"
                   class="textarea textarea-bordered textarea-sm w-full text-xs font-sans rounded-lg focus:textarea-primary"></textarea>
@@ -365,6 +400,41 @@
 
     <!-- Backdrop Click to Close -->
     <div class="modal-backdrop" onclick="window.coursePulseApp.closeCourseModal()"></div>
+  </dialog>
+
+  <!-- Course Completion Diploma Modal -->
+  <dialog id="certificate_modal" class="modal modal-bottom sm:modal-middle" aria-labelledby="cert-modal-title">
+    <div class="modal-box max-w-4xl bg-base-100 p-6 flex flex-col gap-4 border border-base-200 shadow-2xl">
+      <div class="flex items-center justify-between pb-2 border-b border-base-200">
+        <div>
+          <h3 class="font-extrabold text-lg text-base-content" id="cert-modal-title">Verified Course Diploma</h3>
+          <p class="text-xs text-base-content/70">Client-side verified certificate of curriculum completion</p>
+        </div>
+        <button onclick="window.coursePulseApp.closeCertificateModal()" class="btn btn-sm btn-circle btn-ghost min-h-[44px] min-w-[44px]" aria-label="Close certificate dialog">✕</button>
+      </div>
+
+      <!-- Certificate Canvas Container -->
+      <div class="w-full flex justify-center bg-base-200/50 p-2 sm:p-4 rounded-xl overflow-hidden border border-base-300">
+        <canvas id="certificate-canvas" width="1200" height="750" class="w-full h-auto max-w-[800px]"></canvas>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="modal-action mt-2 pt-2 border-t border-base-200 flex flex-wrap items-center justify-between gap-2">
+        <div class="text-xs font-mono text-base-content/60" id="cert-verification-code">
+          Hash: CP-VERIFY-00000000
+        </div>
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="window.coursePulseApp.downloadCertificate()" class="btn btn-sm btn-primary gap-1.5 text-xs min-h-[44px]">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Download Diploma (PNG)</span>
+          </button>
+          <button type="button" onclick="window.coursePulseApp.closeCertificateModal()" class="btn btn-sm btn-ghost text-xs min-h-[44px]">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-backdrop" onclick="window.coursePulseApp.closeCertificateModal()"></div>
   </dialog>
 
   <!-- Footer -->

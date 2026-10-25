@@ -20,7 +20,12 @@
 - **Deep Filtering & Search**: Instant debounced search, status filters (Not started / In progress / Completed), categories, difficulty levels, 88 topic tags, and multi-field sorting.
 - **URL Query Param Sync**: Filters, search terms, and sort orders sync dynamically with the URL (`?q=python&status=in-progress`).
 - **Course Detail Modal & Checklist**: Interactive module checklists with automated completion calculation, notes scratchpad, and celebratory confetti upon 100% completion.
+- **Study Streak Telemetry**: Daily learning activity tracking (`coursepulse_streak`) encouraging continuous study habits with day counters and motivational indicators.
+- **iCalendar (.ics) Study Plan Generator**: Generates spaced-repetition schedules exportable directly into Google Calendar, Apple Calendar, or Outlook.
+- **Markdown Notes Exporter**: One-click download of personal study notes with structured YAML frontmatter and checklist status for Obsidian, Notion, or local knowledge bases.
+- **High-Resolution Completion Diploma**: Instant client-side generation of executive 1200×750 PNG certificates of achievement with cryptographic verification hashes and seals.
 - **Dedicated Light Crisp & Dark Obsidian Modes**: Executive high-contrast design system (10.5:1 WCAG AAA text contrast) with tactile Sun/Moon toggle and **`[D]`** keyboard shortcut.
+- **Automated Catalog CI/CD Guardrails**: PR schema validator (`validate-catalog.yml`) ensuring course URLs, modules, and invariant integrity.
 
 ---
 

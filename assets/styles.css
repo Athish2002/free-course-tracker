@@ -48,6 +48,8 @@ body {
               box-shadow var(--duration-normal) var(--ease-out-expo),
               border-color var(--duration-normal) ease;
   will-change: transform;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 420px;
 }
 .course-card:hover {
   transform: translateY(-3px);
@@ -418,3 +420,13 @@ dialog.modal.modal-closing .modal-box {
 #theme-toggle:active {
   transform: scale(0.96);
 }
+
+/* Certificate Canvas Preview Responsiveness */
+#certificate-canvas {
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+}
+

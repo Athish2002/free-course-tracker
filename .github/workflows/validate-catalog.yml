@@ -1,0 +1,90 @@
+name: Validate Course Catalog PR
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'data/courses.json'
+      - '.github/workflows/validate-catalog.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-schema:
+    name: Verify JSON Schema & Data Invariants
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate data/courses.json
+        run: |
+          python -c "
+          import json, sys
+
+          try:
+              with open('data/courses.json', 'r', encoding='utf-8') as f:
+                  data = json.load(f)
+          except Exception as e:
+              print(f'::error::Failed to parse JSON: {e}')
+              sys.exit(1)
+
+          if not isinstance(data, list) or len(data) == 0:
+              print('::error::data/courses.json must be a non-empty array of course objects.')
+              sys.exit(1)
+
+          valid_levels = {'Beginner', 'Intermediate', 'Advanced'}
+          seen_ids = set()
+
+          for idx, c in enumerate(data):
+              for req in ['id', 'title', 'provider', 'url', 'category', 'level', 'duration_hours', 'tags', 'description', 'modules']:
+                  if req not in c:
+                      print(f'::error::Course at index {idx} is missing required field: {req}')
+                      sys.exit(1)
+
+              cid = c['id']
+              if not isinstance(cid, str) or not cid.strip():
+                  print(f'::error::Course at index {idx} has invalid id.')
+                  sys.exit(1)
+
+              if cid in seen_ids:
+                  print(f'::error::Duplicate course ID found: {cid}')
+                  sys.exit(1)
+              seen_ids.add(cid)
+
+              if c['level'] not in valid_levels:
+                  print(f'::error::Course {cid} has invalid level: {c[\"level\"]}. Must be Beginner, Intermediate, or Advanced.')
+                  sys.exit(1)
+
+              if not isinstance(c['duration_hours'], (int, float)) or c['duration_hours'] <= 0:
+                  print(f'::error::Course {cid} duration_hours must be a positive number.')
+                  sys.exit(1)
+
+              if not c['url'].startswith('http://') and not c['url'].startswith('https://'):
+                  print(f'::error::Course {cid} url must be a valid HTTP/HTTPS link.')
+                  sys.exit(1)
+
+              mods = c.get('modules', [])
+              if not isinstance(mods, list) or len(mods) == 0:
+                  print(f'::error::Course {cid} must contain at least 1 module.')
+                  sys.exit(1)
+
+              mod_ids = set()
+              for m in mods:
+                  if not m.get('id') or not m.get('title'):
+                      print(f'::error::Course {cid} has module missing id or title: {m}')
+                      sys.exit(1)
+                  if m['id'] in mod_ids:
+                      print(f'::error::Course {cid} has duplicate module id: {m[\"id\"]}')
+                      sys.exit(1)
+                  mod_ids.add(m['id'])
+
+          print(f'Validation SUCCESS: All {len(data)} courses satisfy CoursePulse schema invariants!')
+          "
