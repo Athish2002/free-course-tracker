@@ -24,10 +24,10 @@
   <script>
     (function() {
       try {
-        const THEME_COLORS = { light: '#ffffff', dark: '#1d232a', cupcake: '#faf7f5', emerald: '#ffffff', synthwave: '#1a103c', nord: '#eceff4', dracula: '#282a36', forest: '#171212' };
+        const THEME_COLORS = { light: '#f8fafc', night: '#0b0f19', dark: '#0b0f19', cupcake: '#faf7f5', emerald: '#ffffff', synthwave: '#1a103c', nord: '#eceff4', dracula: '#282a36', forest: '#171212' };
         const saved = localStorage.getItem('coursepulse_theme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = saved || (prefersDark ? 'dark' : 'light');
+        const theme = saved || (prefersDark ? 'night' : 'light');
         document.documentElement.setAttribute('data-theme', theme);
         const meta = document.querySelector('meta[name="theme-color"]');
         if (meta && THEME_COLORS[theme]) meta.setAttribute('content', THEME_COLORS[theme]);
@@ -73,7 +73,7 @@
     </div>
 
     <!-- Center: Global Search Bar -->
-    <div class="navbar-center hidden md:flex flex-1 max-w-md mx-4">
+    <div class="navbar-center hidden lg:flex flex-1 max-w-md mx-4">
       <div class="relative w-full">
         <svg class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-base-content/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
         <input type="text" id="search-input" placeholder="Search courses, providers, topics... (Press / to focus)" 
@@ -88,15 +88,16 @@
       <!-- Theme Switcher Dropdown -->
       <div class="dropdown dropdown-end">
         <label for="theme-select" class="sr-only">Select Theme</label>
-        <select id="theme-select" class="select select-sm select-bordered text-xs rounded-lg cursor-pointer font-medium" title="Change Visual Theme">
-          <option value="light">☀️ Light</option>
-          <option value="dark">🌙 Dark</option>
-          <option value="cupcake">🧁 Cupcake</option>
-          <option value="emerald">🌲 Emerald</option>
-          <option value="synthwave">🌆 Synthwave</option>
+        <select id="theme-select" class="select select-sm select-bordered text-xs rounded-lg cursor-pointer font-bold bg-base-100 text-base-content" title="Change Visual Theme">
+          <option value="light">☀️ Light (Crisp)</option>
+          <option value="night">🌌 Night (Slate Navy)</option>
+          <option value="dark">🌙 Dark (Obsidian)</option>
           <option value="nord">❄️ Nord</option>
-          <option value="dracula">🧛 Dracula</option>
+          <option value="emerald">🌲 Emerald</option>
           <option value="forest">🌿 Forest</option>
+          <option value="cupcake">🧁 Cupcake</option>
+          <option value="synthwave">🌆 Synthwave</option>
+          <option value="dracula">🧛 Dracula</option>
         </select>
       </div>
 
@@ -125,8 +126,8 @@
   <!-- Main Content Landmark -->
   <main id="main-content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex-1 flex flex-col gap-6 w-full">
 
-    <!-- Mobile Search Bar -->
-    <div class="md:hidden w-full">
+    <!-- In-flow Search Bar for Mobile & Tablet -->
+    <div class="lg:hidden w-full">
       <div class="relative w-full">
         <svg class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-base-content/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
         <input type="text" oninput="document.getElementById('search-input').value = this.value; document.getElementById('search-input').dispatchEvent(new Event('input'))" 
@@ -137,40 +138,40 @@
     </div>
 
     <!-- Overall Statistics Row (DaisyUI Stats with Radial Progress) -->
-    <section class="grid grid-cols-2 md:grid-cols-4 gap-4" aria-label="Overall Learning Statistics">
+    <section class="grid grid-cols-2 lg:grid-cols-4 gap-4" aria-label="Overall Learning Statistics">
       <!-- Total Courses -->
       <div class="stats bg-base-100 border border-base-200 shadow-sm rounded-2xl">
         <div class="stat p-4 sm:p-5">
-          <div class="stat-figure text-primary/70">
+          <div class="stat-figure text-primary">
             <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
           </div>
-          <div class="stat-title text-xs font-medium">Total Courses</div>
-          <div class="stat-value text-2xl sm:text-3xl font-bold font-mono tabular-nums" id="stat-total-courses">0</div>
-          <div class="stat-desc text-[11px]">Free open syllabi</div>
+          <div class="stat-title text-xs font-bold text-base-content/85">Total Courses</div>
+          <div class="stat-value text-2xl sm:text-3xl font-extrabold font-mono tabular-nums text-base-content" id="stat-total-courses">0</div>
+          <div class="stat-desc text-xs font-medium text-base-content/75 mt-0.5">Free open syllabi</div>
         </div>
       </div>
 
       <!-- In Progress -->
       <div class="stats bg-base-100 border border-base-200 shadow-sm rounded-2xl">
         <div class="stat p-4 sm:p-5">
-          <div class="stat-figure text-warning/70">
+          <div class="stat-figure text-warning">
             <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
-          <div class="stat-title text-xs font-medium">In Progress</div>
-          <div class="stat-value text-2xl sm:text-3xl font-bold font-mono text-warning tabular-nums" id="stat-in-progress">0</div>
-          <div class="stat-desc text-[11px]">Active modules</div>
+          <div class="stat-title text-xs font-bold text-base-content/85">In Progress</div>
+          <div class="stat-value text-2xl sm:text-3xl font-extrabold font-mono text-warning tabular-nums" id="stat-in-progress">0</div>
+          <div class="stat-desc text-xs font-medium text-base-content/75 mt-0.5">Active modules</div>
         </div>
       </div>
 
       <!-- Completed -->
       <div class="stats bg-base-100 border border-base-200 shadow-sm rounded-2xl">
         <div class="stat p-4 sm:p-5">
-          <div class="stat-figure text-success/70">
+          <div class="stat-figure text-success">
             <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           </div>
-          <div class="stat-title text-xs font-medium">Completed</div>
-          <div class="stat-value text-2xl sm:text-3xl font-bold font-mono text-success tabular-nums" id="stat-completed">0</div>
-          <div class="stat-desc text-[11px]">100% finished</div>
+          <div class="stat-title text-xs font-bold text-base-content/85">Completed</div>
+          <div class="stat-value text-2xl sm:text-3xl font-extrabold font-mono text-success tabular-nums" id="stat-completed">0</div>
+          <div class="stat-desc text-xs font-medium text-base-content/75 mt-0.5">100% finished</div>
         </div>
       </div>
 
@@ -178,12 +179,12 @@
       <div class="stats bg-base-100 border border-base-200 shadow-sm rounded-2xl">
         <div class="stat p-4 sm:p-5 flex items-center justify-between">
           <div>
-            <div class="stat-title text-xs font-medium">Overall Progress</div>
-            <div class="stat-value text-xl sm:text-2xl font-bold font-mono text-primary tabular-nums" id="stat-radial-text">0%</div>
-            <div class="stat-desc text-[11px]">Across all modules</div>
+            <div class="stat-title text-xs font-bold text-base-content/85">Overall Progress</div>
+            <div class="stat-value text-xl sm:text-2xl font-extrabold font-mono text-primary tabular-nums" id="stat-radial-text">0%</div>
+            <div class="stat-desc text-xs font-medium text-base-content/75 mt-0.5">Across all modules</div>
           </div>
           <div class="stat-figure">
-            <div class="radial-progress text-primary text-xs font-bold font-mono" id="stat-radial-progress" style="--value:0; --size:3.75rem; --thickness: 4px;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <div class="radial-progress text-primary text-xs font-extrabold font-mono" id="stat-radial-progress" style="--value:0; --size:3.75rem; --thickness: 5px;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
               0%
             </div>
           </div>
@@ -199,8 +200,8 @@
         
         <!-- Status Filter -->
         <div class="form-control">
-          <label for="filter-status" class="label py-1 text-[11px] font-semibold text-base-content/70">Status</label>
-          <select id="filter-status" class="select select-sm select-bordered text-xs rounded-lg min-h-[44px]">
+          <label for="filter-status" class="label py-1 text-xs font-bold text-base-content">Status</label>
+          <select id="filter-status" class="select select-sm select-bordered text-xs rounded-lg min-h-[44px] font-semibold text-base-content bg-base-100">
             <option value="all">All Statuses</option>
             <option value="not-started">Not Started</option>
             <option value="in-progress">In Progress</option>
@@ -210,16 +211,16 @@
 
         <!-- Category Filter -->
         <div class="form-control">
-          <label for="filter-category" class="label py-1 text-[11px] font-semibold text-base-content/70">Category</label>
-          <select id="filter-category" class="select select-sm select-bordered text-xs rounded-lg min-h-[44px]">
+          <label for="filter-category" class="label py-1 text-xs font-bold text-base-content">Category</label>
+          <select id="filter-category" class="select select-sm select-bordered text-xs rounded-lg min-h-[44px] font-semibold text-base-content bg-base-100">
             <option value="all">All Categories</option>
           </select>
         </div>
 
         <!-- Level Filter -->
         <div class="form-control">
-          <label for="filter-level" class="label py-1 text-[11px] font-semibold text-base-content/70">Level</label>
-          <select id="filter-level" class="select select-sm select-bordered text-xs rounded-lg min-h-[44px]">
+          <label for="filter-level" class="label py-1 text-xs font-bold text-base-content">Level</label>
+          <select id="filter-level" class="select select-sm select-bordered text-xs rounded-lg min-h-[44px] font-semibold text-base-content bg-base-100">
             <option value="all">All Levels</option>
             <option value="Beginner">Beginner</option>
             <option value="Intermediate">Intermediate</option>
@@ -229,8 +230,8 @@
 
         <!-- Sorting -->
         <div class="form-control">
-          <label for="sort-select" class="label py-1 text-[11px] font-semibold text-base-content/70">Sort By</label>
-          <select id="sort-select" class="select select-sm select-bordered text-xs rounded-lg min-h-[44px]">
+          <label for="sort-select" class="label py-1 text-xs font-bold text-base-content">Sort By</label>
+          <select id="sort-select" class="select select-sm select-bordered text-xs rounded-lg min-h-[44px] font-semibold text-base-content bg-base-100">
             <option value="title-asc">Title (A &rarr; Z)</option>
             <option value="title-desc">Title (Z &rarr; A)</option>
             <option value="progress-desc">Progress (Highest)</option>
@@ -242,7 +243,7 @@
 
         <!-- Reset Button -->
         <div class="form-control col-span-2 sm:col-span-4 lg:col-span-1 flex flex-col justify-end">
-          <button id="btn-reset-filters" class="btn btn-sm btn-ghost border border-base-300 text-xs rounded-lg font-medium min-h-[44px]">
+          <button id="btn-reset-filters" class="btn btn-sm btn-ghost border border-base-300 text-xs rounded-lg font-bold text-base-content min-h-[44px] hover:bg-base-200">
             Reset Filters
           </button>
         </div>
@@ -252,8 +253,8 @@
       <!-- Multi-Select Tags Chip Row -->
       <div class="flex flex-col gap-2 pt-2 border-t border-base-200/70">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-medium text-base-content/70">Filter by Topic:</span>
-          <button type="button" id="btn-toggle-all-tags" class="text-xs text-primary hover:underline font-medium cursor-pointer" onclick="window.coursePulseApp.toggleTagsExpand()">
+          <span class="text-xs font-bold text-base-content">Filter by Topic:</span>
+          <button type="button" id="btn-toggle-all-tags" class="text-xs text-primary hover:underline font-bold cursor-pointer" onclick="window.coursePulseApp.toggleTagsExpand()">
             Show all topics
           </button>
         </div>

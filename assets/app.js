@@ -1,6 +1,6 @@
 /** CoursePulse — Free Course Tracker (<20 KB unminified) */
 const K_PROG = 'coursepulse_progress', K_THM = 'coursepulse_theme', DATA_URL = './data/courses.json';
-const THEME_COLORS = { light: '#ffffff', dark: '#1d232a', cupcake: '#faf7f5', emerald: '#ffffff', synthwave: '#1a103c', nord: '#eceff4', dracula: '#282a36', forest: '#171212' };
+const THEME_COLORS = { light: '#f8fafc', night: '#0b0f19', dark: '#0b0f19', cupcake: '#faf7f5', emerald: '#ffffff', synthwave: '#1a103c', nord: '#eceff4', dracula: '#282a36', forest: '#171212' };
 
 const state = {
   courses: [], progress: {}, activeCourseId: null, activeTrigger: null,
@@ -31,7 +31,7 @@ function getCoursePercentage(c) {
 
 export function initTheme() {
   const sel = document.getElementById('theme-select');
-  const theme = localStorage.getItem(K_THM) || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const theme = localStorage.getItem(K_THM) || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'light');
   applyTheme(theme, false);
   if (sel) {
     sel.value = theme;
@@ -185,7 +185,7 @@ function renderFilterOptions() {
   if (tagsContainer) {
     tagsContainer.innerHTML = visibleTags.map((tag) => {
       const act = state.filters.tags.has(tag);
-      return `<button type="button" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium transition cursor-pointer select-none ${act ? 'bg-primary text-primary-content shadow-xs' : 'bg-base-200/80 text-base-content/75 hover:bg-base-300 hover:text-base-content'}" onclick="window.coursePulseApp.toggleFilterTag('${esc(tag)}')">${esc(tag)}</button>`;
+      return `<button type="button" class="inline-flex items-center px-2.5 py-1 rounded-full text-xs transition cursor-pointer select-none ${act ? 'bg-primary text-primary-content font-bold shadow-xs' : 'bg-base-200 text-base-content font-semibold border border-base-300/60 hover:bg-base-300'}" onclick="window.coursePulseApp.toggleFilterTag('${esc(tag)}')">${esc(tag)}</button>`;
     }).join('');
   }
   renderActiveFilterChips();
@@ -254,67 +254,69 @@ function renderCoursesList() {
 
   grid.innerHTML = courses.map((c, idx) => {
     const p = getCourseProgress(c.id), tot = (c.modules || []).length, comp = (p.completedModules || []).length, pct = getCoursePercentage(c), st = getCourseStatus(c);
-    const lvlClass = c.level === 'Beginner' ? 'text-success bg-success/10 border-success/30' : (c.level === 'Intermediate' ? 'text-warning bg-warning/10 border-warning/30' : 'text-error bg-error/10 border-error/30');
+    const lvlClass = c.level === 'Beginner' ?
+      'text-emerald-800 bg-emerald-100 border-emerald-300 dark:text-emerald-300 dark:bg-emerald-950/70 dark:border-emerald-700' :
+      (c.level === 'Intermediate' ?
+        'text-amber-900 bg-amber-100 border-amber-300 dark:text-amber-300 dark:bg-amber-950/70 dark:border-amber-700' :
+        'text-rose-900 bg-rose-100 border-rose-300 dark:text-rose-300 dark:bg-rose-950/70 dark:border-rose-700');
     const stBadge = st === 'completed' ?
-      '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-success/15 text-success"><svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2 6 4.5 8.5 10 3"/></svg> Done</span>' :
-      (st === 'in-progress' ? '<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-primary/15 text-primary">In Progress</span>' : '');
-    const tags = (c.tags || []).slice(0, 2).map((t) => `<button type="button" class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-base-200/60 hover:bg-primary/10 hover:text-primary transition cursor-pointer" onclick="window.coursePulseApp.toggleFilterTag('${esc(t)}')">${esc(t)}</button>`).join('');
+      '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300 dark:bg-emerald-950/80 dark:text-emerald-300 dark:border-emerald-700"><svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2 6 4.5 8.5 10 3"/></svg> Done</span>' :
+      (st === 'in-progress' ? '<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-blue-100 text-blue-800 border border-blue-300 dark:bg-blue-950/80 dark:text-blue-300 dark:border-blue-700">In Progress</span>' : '');
+    const tags = (c.tags || []).slice(0, 2).map((t) => `<button type="button" class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-base-200/90 text-base-content hover:bg-primary hover:text-primary-content transition cursor-pointer border border-base-300/60" onclick="window.coursePulseApp.toggleFilterTag('${esc(t)}')">${esc(t)}</button>`).join('');
     const delay = Math.min(idx * 25, 180);
 
     return `
       <article class="course-card card-animate-in card bg-base-100 border border-base-200 shadow-sm hover:shadow-md hover:border-base-300 transition flex flex-col justify-between" style="animation-delay:${delay}ms;" data-course-id="${esc(c.id)}">
         <div class="card-body p-4 sm:p-5 flex flex-col gap-3">
           
-          <!-- Top Row: Provider & Level/Status (Zero Overlap Guaranteed) -->
+          <!-- Top Row: Provider & Level (Clean Optical Hierarchy, No Overlap) -->
           <div class="flex items-center justify-between gap-2">
-            <div class="flex items-center min-w-0 flex-1">
-              <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-medium bg-base-200/90 text-base-content/80 truncate max-w-full" title="${esc(c.provider)}">
-                ${esc(c.provider)}
-              </span>
-            </div>
-            <div class="flex items-center gap-1.5 shrink-0">
-              ${stBadge}
-              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium border ${lvlClass}">
-                ${esc(c.level)}
-              </span>
-            </div>
+            <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-semibold bg-base-200 text-base-content border border-base-300/80 leading-tight" title="${esc(c.provider)}">
+              ${esc(c.provider)}
+            </span>
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold border shrink-0 ${lvlClass}">
+              ${esc(c.level)}
+            </span>
           </div>
 
           <!-- Title -->
-          <h2 class="card-title text-sm sm:text-base font-semibold leading-snug cursor-pointer hover:text-primary transition line-clamp-2 text-balance" onclick="window.coursePulseApp.openCourseModal('${esc(c.id)}', this)">
+          <h2 class="card-title text-base sm:text-lg font-bold text-base-content leading-snug cursor-pointer hover:text-primary transition line-clamp-2 text-balance" onclick="window.coursePulseApp.openCourseModal('${esc(c.id)}', this)">
             ${esc(c.title)}
           </h2>
 
           <!-- Description -->
-          <p class="text-xs text-base-content/70 line-clamp-2 leading-relaxed text-pretty">
+          <p class="text-xs sm:text-[13px] text-base-content/85 line-clamp-2 leading-relaxed text-pretty font-normal">
             ${esc(c.description)}
           </p>
 
           <!-- Duration & Category Tags -->
           <div class="flex flex-wrap items-center gap-1.5 pt-0.5">
-            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium bg-base-200 text-base-content/70">
-              <svg class="w-3 h-3 text-base-content/50 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-semibold bg-base-200 text-base-content border border-base-300/80">
+              <svg class="w-3.5 h-3.5 text-base-content/60 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               ${c.duration_hours}h
             </span>
-            <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-base-200 text-base-content/70">
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-base-200 text-base-content border border-base-300/80">
               ${esc(c.category)}
             </span>
             ${tags}
           </div>
 
-          <!-- Progress Telemetry -->
+          <!-- Progress Telemetry & Status -->
           <div class="flex flex-col gap-1.5 pt-1.5">
-            <div class="flex items-center justify-between text-xs text-base-content/70">
-              <span class="card-modules-label font-medium">${comp} of ${tot} modules</span>
-              <span class="card-pct-label font-mono font-semibold ${pct === 100 ? 'text-success' : 'text-primary'} tabular-nums">${pct}%</span>
+            <div class="flex items-center justify-between text-xs">
+              <div class="card-modules-label font-bold text-base-content flex items-center gap-1.5">
+                <span>${comp} of ${tot} modules</span>
+                ${stBadge}
+              </div>
+              <span class="card-pct-label font-mono font-extrabold text-xs ${pct === 100 ? 'text-success' : 'text-primary'} tabular-nums">${pct}%</span>
             </div>
-            <progress class="card-progress-bar progress ${pct === 100 ? 'progress-success' : 'progress-primary'} w-full h-1.5 rounded-full" value="${pct}" max="100"></progress>
+            <progress class="card-progress-bar progress ${pct === 100 ? 'progress-success' : 'progress-primary'} w-full h-2 rounded-full" value="${pct}" max="100"></progress>
           </div>
         </div>
 
         <!-- Action Row -->
         <div class="card-actions px-4 sm:px-5 pb-4 pt-2.5 border-t border-base-200/70 mt-auto flex items-center justify-between gap-2">
-          <button onclick="window.coursePulseApp.openCourseModal('${esc(c.id)}', this)" class="btn btn-sm btn-primary flex-1 text-xs font-semibold h-9 min-h-[36px] shadow-xs active:scale-[0.98] transition">
+          <button onclick="window.coursePulseApp.openCourseModal('${esc(c.id)}', this)" class="btn btn-sm btn-primary flex-1 text-xs font-bold h-9 min-h-[36px] shadow-sm active:scale-[0.98] transition">
             Track Modules
           </button>
           <a href="${esc(c.url)}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost border border-base-300 h-9 min-h-[36px] px-2.5 hover:bg-base-200 transition" title="Open course website" aria-label="Open course in new tab">
@@ -419,9 +421,19 @@ function updateModalProgress(c) {
   const card = document.querySelector(`.course-card[data-course-id="${c.id}"]`);
   if (card) {
     const cL = card.querySelector('.card-modules-label'), cP = card.querySelector('.card-pct-label'), cB = card.querySelector('.card-progress-bar');
-    if (cL) cL.textContent = `${comp} of ${tot} modules`;
-    if (cP) cP.textContent = `${pct}%`;
-    if (cB) cB.value = pct;
+    const st = getCourseStatus(c);
+    const stBadge = st === 'completed' ?
+      '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300 dark:bg-emerald-950/80 dark:text-emerald-300 dark:border-emerald-700"><svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2 6 4.5 8.5 10 3"/></svg> Done</span>' :
+      (st === 'in-progress' ? '<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-blue-100 text-blue-800 border border-blue-300 dark:bg-blue-950/80 dark:text-blue-300 dark:border-blue-700">In Progress</span>' : '');
+    if (cL) cL.innerHTML = `<span>${comp} of ${tot} modules</span> ${stBadge}`;
+    if (cP) {
+      cP.textContent = `${pct}%`;
+      cP.className = `card-pct-label font-mono font-extrabold text-xs ${pct === 100 ? 'text-success' : 'text-primary'} tabular-nums`;
+    }
+    if (cB) {
+      cB.value = pct;
+      cB.className = `card-progress-bar progress ${pct === 100 ? 'progress-success' : 'progress-primary'} w-full h-2 rounded-full`;
+    }
   }
 }
 
