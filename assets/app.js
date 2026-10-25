@@ -1,6 +1,6 @@
 /** CoursePulse — Free Course Tracker (<20 KB unminified) */
 const K_PROG = 'coursepulse_progress', K_THM = 'coursepulse_theme', DATA_URL = './data/courses.json';
-const THEME_COLORS = { light: '#f8fafc', night: '#0b0f19', dark: '#0b0f19', cupcake: '#faf7f5', emerald: '#ffffff', synthwave: '#1a103c', nord: '#eceff4', dracula: '#282a36', forest: '#171212' };
+const THEME_COLORS = { light: '#f8fafc', dark: '#0b0f19' };
 
 const state = {
   courses: [], progress: {}, activeCourseId: null, activeTrigger: null,
@@ -30,13 +30,21 @@ function getCoursePercentage(c) {
 }
 
 export function initTheme() {
-  const sel = document.getElementById('theme-select');
-  const theme = localStorage.getItem(K_THM) || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'light');
+  const btn = document.getElementById('theme-toggle');
+  const saved = localStorage.getItem(K_THM);
+  const theme = (saved === 'dark' || saved === 'light') ? saved : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   applyTheme(theme, false);
-  if (sel) {
-    sel.value = theme;
-    sel.onchange = (e) => applyTheme(e.target.value, true);
+  if (btn) {
+    btn.onclick = () => {
+      const cur = document.documentElement.getAttribute('data-theme') || 'light';
+      applyTheme(cur === 'dark' ? 'light' : 'dark', true);
+    };
   }
+}
+
+export function toggleTheme() {
+  const cur = document.documentElement.getAttribute('data-theme') || 'light';
+  applyTheme(cur === 'dark' ? 'light' : 'dark', true);
 }
 
 function applyTheme(t, anim = true) {
@@ -48,6 +56,8 @@ function applyTheme(t, anim = true) {
   localStorage.setItem(K_THM, t);
   const m = document.querySelector('meta[name="theme-color"]');
   if (m && THEME_COLORS[t]) m.setAttribute('content', THEME_COLORS[t]);
+  const txt = document.getElementById('theme-toggle-text');
+  if (txt) txt.textContent = t === 'dark' ? 'Light' : 'Dark';
 }
 
 function parseUrlParams() {
@@ -578,10 +588,14 @@ function setupListeners() {
 
   document.addEventListener('keydown', (e) => {
     const sIn = document.getElementById('search-input');
-    if (e.key === '/' && document.activeElement !== sIn && !document.getElementById('course_modal')?.open) {
+    const modal = document.getElementById('course_modal');
+    if (e.key === '/' && document.activeElement !== sIn && !modal?.open) {
       e.preventDefault(); sIn?.focus();
     } else if (e.key === 'Escape' && document.activeElement === sIn) {
       sIn.value = ''; state.filters.search = ''; sIn.blur(); syncUrlParams(); renderAllWithTransition();
+    } else if ((e.key === 'd' || e.key === 'D') && !['input', 'textarea'].includes(document.activeElement?.tagName?.toLowerCase()) && !modal?.open) {
+      e.preventDefault();
+      toggleTheme();
     }
   });
 
@@ -622,5 +636,5 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.coursePulseApp = {
-  fetchCourses, openCourseModal, closeCourseModal, toggleModule, markAllModules, saveCourseNotes, exportProgress, importProgress, toggleFilterTag, removeActiveFilter, resetFilters, toggleTagsExpand,
+  fetchCourses, openCourseModal, closeCourseModal, toggleModule, markAllModules, saveCourseNotes, exportProgress, importProgress, toggleFilterTag, removeActiveFilter, resetFilters, toggleTagsExpand, toggleTheme,
 };

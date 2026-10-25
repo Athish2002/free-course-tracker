@@ -7,19 +7,55 @@
     "category": "Computer Science",
     "level": "Beginner",
     "duration_hours": 120,
-    "tags": ["C", "Python", "SQL", "Algorithms", "Data Structures", "Free Certificate"],
-    "description": "An intellectual introduction to computer science and programming. Learn how to think algorithmically and solve problems efficiently using C, Python, SQL, HTML, CSS, and JavaScript with interactive Cloud IDE problem sets.",
+    "tags": [
+      "Computer Science",
+      "C",
+      "Python",
+      "SQL",
+      "Algorithms"
+    ],
+    "description": "An intellectual introduction to computer science and programming. Learn how to think algorithmically and solve problems efficiently using C, Python, SQL, and web technologies.",
     "modules": [
-      { "id": "cs50-w0", "title": "Week 0: Computational Thinking & Scratch" },
-      { "id": "cs50-w1", "title": "Week 1: C Syntax, Data Types & Conditionals" },
-      { "id": "cs50-w2", "title": "Week 2: Arrays, Strings, Cryptography & Compiling" },
-      { "id": "cs50-w3", "title": "Week 3: Algorithmic Efficiency, Big O & Sorting" },
-      { "id": "cs50-w4", "title": "Week 4: Memory Pointers & Dynamic Allocation" },
-      { "id": "cs50-w5", "title": "Week 5: Data Structures, Linked Lists & Tries" },
-      { "id": "cs50-w6", "title": "Week 6: Python Syntax, OOP & File I/O" },
-      { "id": "cs50-w7", "title": "Week 7: SQL Relational Databases & Queries" },
-      { "id": "cs50-w8", "title": "Week 8: HTML, CSS & JavaScript Web Development" },
-      { "id": "cs50-w9", "title": "Week 9: Flask Web Applications & MVC Architecture" }
+      {
+        "id": "cs50-w0",
+        "title": "Week 0: Scratch & Computational Thinking"
+      },
+      {
+        "id": "cs50-w1",
+        "title": "Week 1: C Syntax, Data Types & Operators"
+      },
+      {
+        "id": "cs50-w2",
+        "title": "Week 2: Arrays, Compiling & Cryptography"
+      },
+      {
+        "id": "cs50-w3",
+        "title": "Week 3: Algorithms (Linear, Binary Search, Bubble, Merge Sort)"
+      },
+      {
+        "id": "cs50-w4",
+        "title": "Week 4: Memory, Pointers & Dynamic Allocation"
+      },
+      {
+        "id": "cs50-w5",
+        "title": "Week 5: Data Structures (Linked Lists, Trees, Hash Tables)"
+      },
+      {
+        "id": "cs50-w6",
+        "title": "Week 6: Python Syntax & High-Level Scripting"
+      },
+      {
+        "id": "cs50-w7",
+        "title": "Week 7: SQL, Relational Databases & Normalization"
+      },
+      {
+        "id": "cs50-w8",
+        "title": "Week 8: HTML, CSS & JavaScript Fundamentals"
+      },
+      {
+        "id": "cs50-w9",
+        "title": "Week 9: Flask Web Applications & Capstone Project"
+      }
     ]
   },
   {
@@ -30,18 +66,145 @@
     "category": "Computer Science",
     "level": "Beginner",
     "duration_hours": 80,
-    "tags": ["Python", "Unit Testing", "Regex", "Object-Oriented", "Free Certificate"],
-    "description": "An introduction to programming using Python for students with or without prior programming experience. Covers functions, variables, conditionals, loops, exceptions, libraries, unit tests with pytest, file I/O, regex, and OOP.",
+    "tags": [
+      "Python",
+      "Unit Testing",
+      "File I/O",
+      "OOP",
+      "RegEx"
+    ],
+    "description": "An introduction to programming using Python for students with or without prior programming experience. Learn functions, arguments, variables, exceptions, unit testing, and OOP.",
     "modules": [
-      { "id": "cs50p-w0", "title": "Week 0: Functions & Variables" },
-      { "id": "cs50p-w1", "title": "Week 1: Conditionals & Boolean Logic" },
-      { "id": "cs50p-w2", "title": "Week 2: Loops & Iteration Patterns" },
-      { "id": "cs50p-w3", "title": "Week 3: Exceptions & Defensive Programming" },
-      { "id": "cs50p-w4", "title": "Week 4: Python Libraries & PyPI Packages" },
-      { "id": "cs50p-w5", "title": "Week 5: Unit Tests with pytest" },
-      { "id": "cs50p-w6", "title": "Week 6: File I/O, CSV & Image Processing" },
-      { "id": "cs50p-w7", "title": "Week 7: Regular Expressions (Regex)" },
-      { "id": "cs50p-w8", "title": "Week 8: Object-Oriented Programming & Classes" }
+      {
+        "id": "cs50p-w0",
+        "title": "Week 0: Functions & Variables"
+      },
+      {
+        "id": "cs50p-w1",
+        "title": "Week 1: Conditionals & Boolean Logic"
+      },
+      {
+        "id": "cs50p-w2",
+        "title": "Week 2: Loops & Iterators"
+      },
+      {
+        "id": "cs50p-w3",
+        "title": "Week 3: Exceptions, Try/Except & Assertions"
+      },
+      {
+        "id": "cs50p-w4",
+        "title": "Week 4: Libraries, Modules & Command-Line Arguments"
+      },
+      {
+        "id": "cs50p-w5",
+        "title": "Week 5: Unit Tests with Pytest"
+      },
+      {
+        "id": "cs50p-w6",
+        "title": "Week 6: File I/O (CSV, Images, Binary Data)"
+      },
+      {
+        "id": "cs50p-w7",
+        "title": "Week 7: Regular Expressions & Pattern Matching"
+      },
+      {
+        "id": "cs50p-w8",
+        "title": "Week 8: Object-Oriented Programming (Classes & Methods)"
+      }
+    ]
+  },
+  {
+    "id": "harvard-cs50w",
+    "title": "CS50W: Web Programming with Python and JavaScript",
+    "provider": "Harvard University",
+    "url": "https://cs50.harvard.edu/web/",
+    "category": "Web Development",
+    "level": "Intermediate",
+    "duration_hours": 90,
+    "tags": [
+      "Django",
+      "JavaScript",
+      "SQL",
+      "APIs",
+      "Git"
+    ],
+    "description": "Dives into the design and implementation of web apps with Python, JavaScript, and SQL using frameworks like Django, React, and Bootstrap. Covers database migrations and CI/CD.",
+    "modules": [
+      {
+        "id": "cs50w-w0",
+        "title": "Week 0: HTML, CSS & Git Version Control"
+      },
+      {
+        "id": "cs50w-w1",
+        "title": "Week 1: Django Architecture, Models & Views"
+      },
+      {
+        "id": "cs50w-w2",
+        "title": "Week 2: SQL, PostgreSQL & Database Migrations"
+      },
+      {
+        "id": "cs50w-w3",
+        "title": "Week 3: User Authentication & Session Security"
+      },
+      {
+        "id": "cs50w-w4",
+        "title": "Week 4: Asynchronous JavaScript & RESTful APIs"
+      },
+      {
+        "id": "cs50w-w5",
+        "title": "Week 5: Single Page Applications (SPA) with React"
+      },
+      {
+        "id": "cs50w-w6",
+        "title": "Week 6: Testing, CI/CD Pipelines & Docker Deployment"
+      }
+    ]
+  },
+  {
+    "id": "harvard-cs50ai",
+    "title": "CS50AI: Introduction to Artificial Intelligence with Python",
+    "provider": "Harvard University",
+    "url": "https://cs50.harvard.edu/ai/",
+    "category": "Artificial Intelligence",
+    "level": "Intermediate",
+    "duration_hours": 85,
+    "tags": [
+      "Artificial Intelligence",
+      "Python",
+      "Neural Networks",
+      "NLP",
+      "Machine Learning"
+    ],
+    "description": "Explores the concepts and algorithms at the foundation of modern artificial intelligence. Covers graph search algorithms, classification, optimization, reinforcement learning, and LLMs.",
+    "modules": [
+      {
+        "id": "cs50ai-w0",
+        "title": "Lecture 0: Search (Minimax, A* Search, Alpha-Beta Pruning)"
+      },
+      {
+        "id": "cs50ai-w1",
+        "title": "Lecture 1: Knowledge & Propositional Logic"
+      },
+      {
+        "id": "cs50ai-w2",
+        "title": "Lecture 2: Uncertainty, Probability & Bayesian Networks"
+      },
+      {
+        "id": "cs50ai-w3",
+        "title": "Lecture 3: Optimization & Constraint Satisfaction"
+      },
+      {
+        "id": "cs50ai-w4",
+        "title": "Lecture 4: Machine Learning (k-NN, Perceptrons, SVM)"
+      },
+      {
+        "id": "cs50ai-w5",
+        "title": "Lecture 5: Neural Networks & Deep Learning with PyTorch"
+      },
+      {
+        "id": "cs50ai-w6",
+        "title": "Lecture 6: Natural Language Processing & Transformers"
+      }
     ]
   },
   {
@@ -52,17 +215,43 @@
     "category": "Web Development",
     "level": "Beginner",
     "duration_hours": 300,
-    "tags": ["HTML5", "CSS3", "Flexbox", "CSS Grid", "Accessibility", "Free Certificate"],
-    "description": "Learn HTML for structure and CSS for styling. Build responsive websites that look beautiful on mobile, tablet, and desktop screens with modern Flexbox, CSS Grid, and accessibility practices, ending with 5 certification projects.",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "Flexbox",
+      "CSS Grid",
+      "Accessibility"
+    ],
+    "description": "Master modern responsive design from scratch using modern semantic HTML5 and CSS3. Build 5 required certification projects tested against automated WCAG benchmarks.",
     "modules": [
-      { "id": "fcc-rwd-1", "title": "Module 1: HTML Basics (Cat Photo App)" },
-      { "id": "fcc-rwd-2", "title": "Module 2: Basic CSS Styling (Cafe Menu)" },
-      { "id": "fcc-rwd-3", "title": "Module 3: CSS Color Systems (Colored Markers)" },
-      { "id": "fcc-rwd-4", "title": "Module 4: Accessible HTML Forms (Registration Form)" },
-      { "id": "fcc-rwd-5", "title": "Module 5: CSS Box Model & Margins (Rothko Painting)" },
-      { "id": "fcc-rwd-6", "title": "Module 6: CSS Flexbox Layouts (Photo Gallery)" },
-      { "id": "fcc-rwd-7", "title": "Module 7: Typography & Responsive Layouts (Nutrition Label)" },
-      { "id": "fcc-rwd-8", "title": "Module 8: CSS Grid System (Magazine Layout)" }
+      {
+        "id": "fcc-rwd-m1",
+        "title": "Semantic HTML5 Elements & Typography Hierarchy"
+      },
+      {
+        "id": "fcc-rwd-m2",
+        "title": "CSS Visual Design, Colors & Box Model Architecture"
+      },
+      {
+        "id": "fcc-rwd-m3",
+        "title": "Modern Flexbox Layouts & Responsive Direction"
+      },
+      {
+        "id": "fcc-rwd-m4",
+        "title": "CSS Grid Systems, Two-Dimensional Areas & Auto-Fit"
+      },
+      {
+        "id": "fcc-rwd-m5",
+        "title": "Applied Visual Design, Micro-Animations & Keyframes"
+      },
+      {
+        "id": "fcc-rwd-m6",
+        "title": "WCAG Accessibility, ARIA Roles & Contrast Ratios"
+      },
+      {
+        "id": "fcc-rwd-m7",
+        "title": "Capstone Certification Project: Personal Portfolio Website"
+      }
     ]
   },
   {
@@ -70,188 +259,1143 @@
     "title": "JavaScript Algorithms and Data Structures",
     "provider": "freeCodeCamp",
     "url": "https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8",
-    "category": "Web Development",
-    "level": "Intermediate",
+    "category": "Computer Science",
+    "level": "Beginner",
     "duration_hours": 300,
-    "tags": ["JavaScript", "ES6", "Algorithms", "DOM", "Functional Programming", "Free Certificate"],
-    "description": "Learn modern JavaScript (ES6+), object-oriented programming, and functional programming. Build interactive browser games, algorithms, and 5 certification projects including a Cash Register and Pokémon Search App.",
+    "tags": [
+      "JavaScript",
+      "ES6+",
+      "Data Structures",
+      "Algorithms",
+      "OOP"
+    ],
+    "description": "Learn the fundamentals of JavaScript (ES6+), object-oriented programming, and functional programming. Build practical data structures and solve algorithmic problems.",
     "modules": [
-      { "id": "fcc-js-1", "title": "Module 1: JavaScript Fundamentals & Pyramid Generator" },
-      { "id": "fcc-js-2", "title": "Module 2: Arrays, Functions & Gradebook App" },
-      { "id": "fcc-js-3", "title": "Module 3: DOM Manipulation & Role Playing Game" },
-      { "id": "fcc-js-4", "title": "Module 4: Algorithm Scripting & Palindrome Checker" },
-      { "id": "fcc-js-5", "title": "Module 5: ES6 Classes, Scope & Calorie Counter" },
-      { "id": "fcc-js-6", "title": "Module 6: Recursion & Roman Numeral Converter" },
-      { "id": "fcc-js-7", "title": "Module 7: Functional Programming & Music Player" },
-      { "id": "fcc-js-8", "title": "Module 8: Asynchronous JS & Fetch API" }
+      {
+        "id": "fcc-js-m1",
+        "title": "ES6+ Fundamentals, Destructuring & Rest/Spread"
+      },
+      {
+        "id": "fcc-js-m2",
+        "title": "Regular Expressions & Pattern Assertions"
+      },
+      {
+        "id": "fcc-js-m3",
+        "title": "Data Structures: Arrays, Sets, Maps & Hash Tables"
+      },
+      {
+        "id": "fcc-js-m4",
+        "title": "Object-Oriented Programming (Prototypes & Classes)"
+      },
+      {
+        "id": "fcc-js-m5",
+        "title": "Functional Programming (Map, Filter, Reduce & Currying)"
+      },
+      {
+        "id": "fcc-js-m6",
+        "title": "Intermediate Algorithm Scripting Challenges"
+      },
+      {
+        "id": "fcc-js-m7",
+        "title": "Capstone: Cash Register & Caesar Cipher Algorithms"
+      }
     ]
   },
   {
-    "id": "khan-academy-intro-js",
-    "title": "Intro to JS: Drawing & Animation",
+    "id": "fcc-frontend-libraries",
+    "title": "Front End Development Libraries",
+    "provider": "freeCodeCamp",
+    "url": "https://www.freecodecamp.org/learn/front-end-development-libraries",
+    "category": "Web Development",
+    "level": "Intermediate",
+    "duration_hours": 150,
+    "tags": [
+      "React",
+      "Redux",
+      "Bootstrap",
+      "Sass",
+      "Web Development"
+    ],
+    "description": "Learn how to build modern client-side user interfaces with React, state management with Redux, and styling with Sass and Bootstrap.",
+    "modules": [
+      {
+        "id": "fcc-fe-m1",
+        "title": "Bootstrap 5 Responsive Grid & Components"
+      },
+      {
+        "id": "fcc-fe-m2",
+        "title": "Sass: Variables, Mixins, Nesting & Partials"
+      },
+      {
+        "id": "fcc-fe-m3",
+        "title": "React: Components, Props, Hooks & State Management"
+      },
+      {
+        "id": "fcc-fe-m4",
+        "title": "Redux: Actions, Reducers & Global Store Architecture"
+      },
+      {
+        "id": "fcc-fe-m5",
+        "title": "React-Redux Integration & Async Thunks"
+      },
+      {
+        "id": "fcc-fe-m6",
+        "title": "Certification Projects: Markdown Previewer & Drum Machine"
+      }
+    ]
+  },
+  {
+    "id": "fcc-backend-apis",
+    "title": "Back End Development and APIs",
+    "provider": "freeCodeCamp",
+    "url": "https://www.freecodecamp.org/learn/back-end-development-and-apis",
+    "category": "Web Development",
+    "level": "Intermediate",
+    "duration_hours": 180,
+    "tags": [
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Mongoose",
+      "APIs"
+    ],
+    "description": "Learn how to write backend applications with Node.js and npm. Build RESTful APIs and microservices with Express, and persist data using MongoDB and Mongoose.",
+    "modules": [
+      {
+        "id": "fcc-be-m1",
+        "title": "Managing Packages with npm & Semantic Versioning"
+      },
+      {
+        "id": "fcc-be-m2",
+        "title": "Basic Node and Express: Routing, Middleware & Serving Assets"
+      },
+      {
+        "id": "fcc-be-m3",
+        "title": "MongoDB and Mongoose: Schemas, Models & CRUD Operations"
+      },
+      {
+        "id": "fcc-be-m4",
+        "title": "RESTful API Microservice: Timestamp Microservice"
+      },
+      {
+        "id": "fcc-be-m5",
+        "title": "RESTful API Microservice: Request Header Parser"
+      },
+      {
+        "id": "fcc-be-m6",
+        "title": "RESTful API Microservice: URL Shortener with Database Persistence"
+      },
+      {
+        "id": "fcc-be-m7",
+        "title": "RESTful API Microservice: Exercise Tracker with Query Filtering"
+      }
+    ]
+  },
+  {
+    "id": "fcc-relational-database",
+    "title": "Relational Databases Certification",
+    "provider": "freeCodeCamp",
+    "url": "https://www.freecodecamp.org/learn/relational-database",
+    "category": "Computer Science",
+    "level": "Intermediate",
+    "duration_hours": 200,
+    "tags": [
+      "SQL",
+      "PostgreSQL",
+      "Bash",
+      "Linux",
+      "Git"
+    ],
+    "description": "Learn SQL and relational database engineering in an interactive Linux container environment using PostgreSQL and Bash scripting.",
+    "modules": [
+      {
+        "id": "fcc-rdb-m1",
+        "title": "Linux Terminal Basics, Navigation & File Permissions"
+      },
+      {
+        "id": "fcc-rdb-m2",
+        "title": "PostgreSQL Fundamentals: Tables, Constraints & Types"
+      },
+      {
+        "id": "fcc-rdb-m3",
+        "title": "Bash Scripting: Loops, Conditionals & User Input"
+      },
+      {
+        "id": "fcc-rdb-m4",
+        "title": "Advanced SQL: Joins, Foreign Keys & Aggregations"
+      },
+      {
+        "id": "fcc-rdb-m5",
+        "title": "Git & GitHub Version Control in Linux"
+      },
+      {
+        "id": "fcc-rdb-m6",
+        "title": "Capstone Project: World Cup Database & Query Scripts"
+      }
+    ]
+  },
+  {
+    "id": "khan-intro-js",
+    "title": "Computer Programming: Intro to JS & Animation",
     "provider": "Khan Academy",
     "url": "https://www.khanacademy.org/computing/computer-programming/programming",
-    "category": "Computer Science",
+    "category": "Web Development",
     "level": "Beginner",
-    "duration_hours": 30,
-    "tags": ["JavaScript", "ProcessingJS", "Creative Coding", "Canvas", "Math"],
-    "description": "Learn how to program drawings, animations, and games in JavaScript using the ProcessingJS library. Highly interactive with live code editors, visual output, and guided creative challenges.",
+    "duration_hours": 35,
+    "tags": [
+      "JavaScript",
+      "Animation",
+      "Canvas",
+      "Beginner Friendly"
+    ],
+    "description": "Learn how to program drawings, interactive graphics, and animations using JavaScript and the ProcessingJS canvas library. Ideal first coding experience.",
     "modules": [
-      { "id": "khan-js-1", "title": "Unit 1: Drawing Basics & Coordinate Systems" },
-      { "id": "khan-js-2", "title": "Unit 2: Variables & Interactive Shapes" },
-      { "id": "khan-js-3", "title": "Unit 3: Animation Basics & Draw Loop" },
-      { "id": "khan-js-4", "title": "Unit 4: Logic, If Statements & Bouncing Ball" },
-      { "id": "khan-js-5", "title": "Unit 5: Text, Strings & Canvas Typography" },
-      { "id": "khan-js-6", "title": "Unit 6: Functions & Modular Code Architecture" },
-      { "id": "khan-js-7", "title": "Unit 7: Objects & Object-Oriented Design" }
+      {
+        "id": "khan-m1",
+        "title": "Drawing Basics (Shapes, Coordinates & Color Palette)"
+      },
+      {
+        "id": "khan-m2",
+        "title": "Variables, Dynamic Sizing & Animation Loops"
+      },
+      {
+        "id": "khan-m3",
+        "title": "Mathematical Expressions & Randomness"
+      },
+      {
+        "id": "khan-m4",
+        "title": "Logic, Conditionals & Interactive Mouse Events"
+      },
+      {
+        "id": "khan-m5",
+        "title": "Functions, Reusable Code & Parameter Passing"
+      },
+      {
+        "id": "khan-m6",
+        "title": "Objects, Arrays & Game Prototype Development"
+      }
+    ]
+  },
+  {
+    "id": "khan-html-css",
+    "title": "Intro to HTML/CSS: Making Webpages",
+    "provider": "Khan Academy",
+    "url": "https://www.khanacademy.org/computing/computer-programming/html-css",
+    "category": "Web Development",
+    "level": "Beginner",
+    "duration_hours": 25,
+    "tags": [
+      "HTML",
+      "CSS",
+      "Web Development",
+      "Beginner Friendly"
+    ],
+    "description": "Learn how to use HTML and CSS to create your own web pages. Covers text formatting, lists, links, images, tables, CSS selectors, and page layouts.",
+    "modules": [
+      {
+        "id": "khan-hc-m1",
+        "title": "HTML Basics: Headings, Paragraphs & Lists"
+      },
+      {
+        "id": "khan-hc-m2",
+        "title": "Linking Pages & Embedding Multimedia Images"
+      },
+      {
+        "id": "khan-hc-m3",
+        "title": "CSS Text Styling, Font Families & Hex Colors"
+      },
+      {
+        "id": "khan-hc-m4",
+        "title": "CSS Layouts: Box Model, Margins, Borders & Padding"
+      },
+      {
+        "id": "khan-hc-m5",
+        "title": "CSS Classes, IDs & Multi-Element Selectors"
+      },
+      {
+        "id": "khan-hc-m6",
+        "title": "Building a Complete Themed Webpage Project"
+      }
     ]
   },
   {
     "id": "mit-ocw-6-0001",
-    "title": "Introduction to Computer Science and Programming in Python",
+    "title": "6.0001: Intro to CS & Programming in Python",
     "provider": "MIT OpenCourseWare",
     "url": "https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/",
     "category": "Computer Science",
     "level": "Beginner",
-    "duration_hours": 60,
-    "tags": ["Python", "MIT", "Algorithms", "Object-Oriented", "Complexity"],
-    "description": "MIT's flagship introduction to computational problem solving. Focuses on Python, branching, iteration, functions, tuples, lists, object-oriented programming, algorithmic complexity, and numerical computation with complete lecture streams and problem sets.",
+    "duration_hours": 75,
+    "tags": [
+      "Python",
+      "Algorithms",
+      "Computational Thinking",
+      "MIT"
+    ],
+    "description": "MIT's flagship introduction to computer science and programming. Emphasizes problem formulation, computational thinking, algorithmic complexity, and debugging.",
     "modules": [
-      { "id": "mit-60001-1", "title": "Lecture 1: Computational Thinking & Python Basics" },
-      { "id": "mit-60001-2", "title": "Lecture 2: Branching, Iteration & String Manipulation" },
-      { "id": "mit-60001-3", "title": "Lecture 3: Approximations, Bisection Search & Floats" },
-      { "id": "mit-60001-4", "title": "Lecture 4: Decomposition, Abstractions & Functions" },
-      { "id": "mit-60001-5", "title": "Lecture 5: Tuples, Lists, Aliasing & Mutability" },
-      { "id": "mit-60001-6", "title": "Lecture 6: Recursion and Dictionaries" },
-      { "id": "mit-60001-7", "title": "Lecture 7: Testing, Debugging & Exceptions" },
-      { "id": "mit-60001-8", "title": "Lecture 8: Object Oriented Programming & Classes" },
-      { "id": "mit-60001-9", "title": "Lecture 9: Algorithmic Complexity & Big O Notation" }
+      {
+        "id": "mit-60001-m1",
+        "title": "Computation, Branching & String Manipulation"
+      },
+      {
+        "id": "mit-60001-m2",
+        "title": "Approximate Solutions, Bisection Search & Floats"
+      },
+      {
+        "id": "mit-60001-m3",
+        "title": "Decomposition, Abstraction, Functions & Scope"
+      },
+      {
+        "id": "mit-60001-m4",
+        "title": "Tuples, Lists, Aliasing, Mutability & Cloning"
+      },
+      {
+        "id": "mit-60001-m5",
+        "title": "Recursion, Dictionaries & Memoization"
+      },
+      {
+        "id": "mit-60001-m6",
+        "title": "Testing, Debugging, Exceptions & Assertions"
+      },
+      {
+        "id": "mit-60001-m7",
+        "title": "Object-Oriented Programming & Inheritance"
+      },
+      {
+        "id": "mit-60001-m8",
+        "title": "Algorithmic Complexity & Big-O Notation"
+      }
+    ]
+  },
+  {
+    "id": "mit-ocw-6-006",
+    "title": "6.006: Introduction to Algorithms",
+    "provider": "MIT OpenCourseWare",
+    "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+    "category": "Computer Science",
+    "level": "Advanced",
+    "duration_hours": 110,
+    "tags": [
+      "Algorithms",
+      "Data Structures",
+      "Dynamic Programming",
+      "MIT"
+    ],
+    "description": "An introduction to mathematical modeling of computational problems. Covers common algorithms, algorithmic paradigms, data structures, and graph algorithms.",
+    "modules": [
+      {
+        "id": "mit-6006-m1",
+        "title": "Introduction to Algorithms, Models of Computation & Asymptotics"
+      },
+      {
+        "id": "mit-6006-m2",
+        "title": "Data Structures: Sequences, Sets, Arrays & Linked Lists"
+      },
+      {
+        "id": "mit-6006-m3",
+        "title": "Sorting Algorithms: Heap Sort, Merge Sort & Radix Sort"
+      },
+      {
+        "id": "mit-6006-m4",
+        "title": "Hash Tables, Chaining, Open Addressing & Universal Hashing"
+      },
+      {
+        "id": "mit-6006-m5",
+        "title": "Binary Search Trees, AVL Trees & Balanced BSTs"
+      },
+      {
+        "id": "mit-6006-m6",
+        "title": "Graph Traversal: Breadth-First Search (BFS) & Depth-First Search (DFS)"
+      },
+      {
+        "id": "mit-6006-m7",
+        "title": "Shortest Paths: Dijkstra, Bellman-Ford & DAG Relaxation"
+      },
+      {
+        "id": "mit-6006-m8",
+        "title": "Dynamic Programming: Memoization, Subproblems & DAGs"
+      }
+    ]
+  },
+  {
+    "id": "mit-ocw-6-004",
+    "title": "6.004: Computation Structures",
+    "provider": "MIT OpenCourseWare",
+    "url": "https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/",
+    "category": "Computer Science",
+    "level": "Advanced",
+    "duration_hours": 95,
+    "tags": [
+      "Computer Architecture",
+      "Hardware",
+      "Assembly",
+      "Operating Systems",
+      "MIT"
+    ],
+    "description": "Architecture of digital systems: Boolean algebra, combinational and sequential logic, computer instruction set architectures, processor pipelining, and virtual memory.",
+    "modules": [
+      {
+        "id": "mit-6004-m1",
+        "title": "Digital Abstraction, CMOS Gates & Boolean Logic"
+      },
+      {
+        "id": "mit-6004-m2",
+        "title": "Combinational Logic & Arithmetic Logic Units (ALU)"
+      },
+      {
+        "id": "mit-6004-m3",
+        "title": "Sequential Logic, Latches, Registers & Finite State Machines"
+      },
+      {
+        "id": "mit-6004-m4",
+        "title": "Instruction Set Architecture (ISA) & RISC-V Assembly"
+      },
+      {
+        "id": "mit-6004-m5",
+        "title": "Single-Cycle & Pipelined CPU Microarchitecture"
+      },
+      {
+        "id": "mit-6004-m6",
+        "title": "Memory Hierarchies, Caching Strategies & Virtual Memory"
+      },
+      {
+        "id": "mit-6004-m7",
+        "title": "Operating Systems Primitives, Context Switching & Interrupts"
+      }
     ]
   },
   {
     "id": "mit-ocw-18-06",
-    "title": "Linear Algebra (Gilbert Strang)",
+    "title": "18.06: Linear Algebra (Gilbert Strang)",
     "provider": "MIT OpenCourseWare",
     "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/",
     "category": "Mathematics",
     "level": "Intermediate",
-    "duration_hours": 75,
-    "tags": ["Linear Algebra", "Math", "Gilbert Strang", "Matrices", "Machine Learning Math"],
-    "description": "Professor Gilbert Strang's renowned MIT course on linear algebra. Covers matrix factorizations, vector spaces, orthogonality, determinants, eigenvalues, eigenvectors, and singular value decomposition (SVD). Essential math for machine learning.",
+    "duration_hours": 60,
+    "tags": [
+      "Mathematics",
+      "Linear Algebra",
+      "Machine Learning",
+      "MIT"
+    ],
+    "description": "Gilbert Strang's legendary course covering fundamental concepts of linear algebra: matrix operations, vector spaces, eigenvalues, eigenvectors, and singular value decomposition.",
     "modules": [
-      { "id": "mit-1806-1", "title": "Lecture 1: Geometry of Linear Equations & Matrices" },
-      { "id": "mit-1806-2", "title": "Lecture 2: Elimination with Matrices & Matrix Operations" },
-      { "id": "mit-1806-3", "title": "Lecture 3: Vector Spaces, Subspaces & Nullspace" },
-      { "id": "mit-1806-4", "title": "Lecture 4: Independence, Basis & Dimension" },
-      { "id": "mit-1806-5", "title": "Lecture 5: The Four Fundamental Subspaces" },
-      { "id": "mit-1806-6", "title": "Lecture 6: Orthogonal Vectors and Subspaces" },
-      { "id": "mit-1806-7", "title": "Lecture 7: Determinants and Eigenvalues" },
-      { "id": "mit-1806-8", "title": "Lecture 8: Singular Value Decomposition (SVD)" }
+      {
+        "id": "mit-1806-m1",
+        "title": "The Geometry of Linear Equations & Matrix Multiplication"
+      },
+      {
+        "id": "mit-1806-m2",
+        "title": "Vector Spaces, Column Spaces & Nullspaces"
+      },
+      {
+        "id": "mit-1806-m3",
+        "title": "Solving Ax = 0, Pivot Variables & Free Variables"
+      },
+      {
+        "id": "mit-1806-m4",
+        "title": "Independence, Basis & Dimension"
+      },
+      {
+        "id": "mit-1806-m5",
+        "title": "The Four Fundamental Subspaces & Orthogonality"
+      },
+      {
+        "id": "mit-1806-m6",
+        "title": "Eigenvalues, Eigenvectors & Diagonalization"
+      },
+      {
+        "id": "mit-1806-m7",
+        "title": "Singular Value Decomposition (SVD) & Principal Components"
+      }
     ]
   },
   {
-    "id": "coursera-machine-learning-specialization",
+    "id": "mit-missing-semester",
+    "title": "The Missing Semester of Your CS Education",
+    "provider": "MIT CSAIL",
+    "url": "https://missing.csail.mit.edu/",
+    "category": "Computer Science",
+    "level": "Beginner",
+    "duration_hours": 30,
+    "tags": [
+      "Shell",
+      "Git",
+      "Vim",
+      "SSH",
+      "Docker",
+      "Linux"
+    ],
+    "description": "Master the developer tools professors assume you know: command-line environment, terminal multiplexers, Vim, Git, SSH keys, build systems, and debugging profilers.",
+    "modules": [
+      {
+        "id": "mit-ms-m1",
+        "title": "Course Overview + The Shell (Bash & Zsh)"
+      },
+      {
+        "id": "mit-ms-m2",
+        "title": "Shell Tools & Scripting (Find, Grep, Sed, Awk)"
+      },
+      {
+        "id": "mit-ms-m3",
+        "title": "Editors (Vim & Neovim Keyboard Mastery)"
+      },
+      {
+        "id": "mit-ms-m4",
+        "title": "Data Wrangling & Command Pipelines"
+      },
+      {
+        "id": "mit-ms-m5",
+        "title": "Command-line Environment (Tmux, Aliases, SSH)"
+      },
+      {
+        "id": "mit-ms-m6",
+        "title": "Version Control (Git Plumbing & Porcelains)"
+      },
+      {
+        "id": "mit-ms-m7",
+        "title": "Debugging, Profiling & Metaprogramming"
+      }
+    ]
+  },
+  {
+    "id": "coursera-ml-andrew-ng",
     "title": "Machine Learning Specialization",
     "provider": "DeepLearning.AI / Stanford",
     "url": "https://www.coursera.org/specializations/machine-learning-introduction",
     "category": "Artificial Intelligence",
     "level": "Intermediate",
-    "duration_hours": 90,
-    "tags": ["Machine Learning", "Andrew Ng", "Python", "Supervised Learning", "Deep Learning"],
-    "description": "Created by AI pioneer Andrew Ng. Master foundational machine learning concepts and how to apply these techniques to build real-world AI applications using Python and NumPy (100% free access via Coursera's audit mode).",
+    "duration_hours": 95,
+    "tags": [
+      "Machine Learning",
+      "Python",
+      "Neural Networks",
+      "NumPy",
+      "Andrew Ng"
+    ],
+    "description": "Andrew Ng's world-renowned introduction to modern machine learning. Free audit track covers supervised learning, advanced neural networks, decision trees, and un-supervised learning.",
     "modules": [
-      { "id": "ml-spec-1", "title": "Course 1: Supervised Machine Learning: Regression and Classification" },
-      { "id": "ml-spec-2", "title": "Course 1: Gradient Descent & Cost Functions" },
-      { "id": "ml-spec-3", "title": "Course 1: Logistic Regression & Regularization" },
-      { "id": "ml-spec-4", "title": "Course 2: Advanced Learning Algorithms & Neural Networks" },
-      { "id": "ml-spec-5", "title": "Course 2: Decision Trees and Tree Ensembles" },
-      { "id": "ml-spec-6", "title": "Course 3: Unsupervised Learning, Recommenders, Reinforcement Learning" }
+      {
+        "id": "ml-spec-m1",
+        "title": "Linear Regression with Single & Multiple Variables"
+      },
+      {
+        "id": "ml-spec-m2",
+        "title": "Logistic Regression, Binary Classification & Regularization"
+      },
+      {
+        "id": "ml-spec-m3",
+        "title": "Neural Networks: Forward Propagation & Cost Functions"
+      },
+      {
+        "id": "ml-spec-m4",
+        "title": "Backpropagation & Neural Network Optimization"
+      },
+      {
+        "id": "ml-spec-m5",
+        "title": "Decision Trees, Random Forests & Boosted Trees (XGBoost)"
+      },
+      {
+        "id": "ml-spec-m6",
+        "title": "Unsupervised Learning: K-Means Clustering & PCA"
+      },
+      {
+        "id": "ml-spec-m7",
+        "title": "Recommender Systems & Reinforcement Learning"
+      }
     ]
   },
   {
-    "id": "google-mlcc",
+    "id": "coursera-dl-andrew-ng",
+    "title": "Deep Learning Specialization",
+    "provider": "DeepLearning.AI",
+    "url": "https://www.coursera.org/specializations/deep-learning",
+    "category": "Artificial Intelligence",
+    "level": "Advanced",
+    "duration_hours": 120,
+    "tags": [
+      "Deep Learning",
+      "CNN",
+      "RNN",
+      "Transformers",
+      "TensorFlow"
+    ],
+    "description": "Master Deep Learning from foundations to cutting edge architectures. Free audit track covers Convolutional Networks, Sequence Models, and Attention Mechanisms.",
+    "modules": [
+      {
+        "id": "dl-spec-m1",
+        "title": "Neural Networks and Deep Learning (Vectorization & Gradients)"
+      },
+      {
+        "id": "dl-spec-m2",
+        "title": "Improving Deep Neural Networks: Hyperparameter Tuning & Batch Norm"
+      },
+      {
+        "id": "dl-spec-m3",
+        "title": "Structuring Machine Learning Projects (Train/Dev/Test Diagnostics)"
+      },
+      {
+        "id": "dl-spec-m4",
+        "title": "Convolutional Neural Networks (CNNs, ResNets, Object Detection)"
+      },
+      {
+        "id": "dl-spec-m5",
+        "title": "Sequence Models: RNNs, GRUs, LSTMs & Transformer Attention"
+      }
+    ]
+  },
+  {
+    "id": "google-ml-crash-course",
     "title": "Machine Learning Crash Course",
-    "provider": "Google",
+    "provider": "Google Developers",
     "url": "https://developers.google.com/machine-learning/crash-course",
     "category": "Artificial Intelligence",
     "level": "Intermediate",
-    "duration_hours": 15,
-    "tags": ["Google", "Machine Learning", "TensorFlow", "Neural Networks", "Embeddings"],
-    "description": "Google's fast-paced, practical introduction to machine learning featuring a series of video lectures, interactive visualizations, and hands-on coding exercises using Python and TensorFlow in Google Colab.",
+    "duration_hours": 30,
+    "tags": [
+      "Machine Learning",
+      "TensorFlow",
+      "Python",
+      "Google",
+      "Neural Networks"
+    ],
+    "description": "Google's fast-paced, practical introduction to machine learning featuring video lectures by Google researchers, interactive visualizations, and TensorFlow Colabs.",
     "modules": [
-      { "id": "g-mlcc-1", "title": "Module 1: Introduction to ML, Framing & Datasets" },
-      { "id": "g-mlcc-2", "title": "Module 2: Linear Regression & Loss Minimization" },
-      { "id": "g-mlcc-3", "title": "Module 3: Training & Test Sets, Overfitting" },
-      { "id": "g-mlcc-4", "title": "Module 4: Feature Crosses & Non-linear Mapping" },
-      { "id": "g-mlcc-5", "title": "Module 5: Regularization for Simplicity & Sparsity" },
-      { "id": "g-mlcc-6", "title": "Module 6: Neural Networks Architecture & Activation Functions" },
-      { "id": "g-mlcc-7", "title": "Module 7: Classification, Accuracy, Precision & Recall" },
-      { "id": "g-mlcc-8", "title": "Module 8: Embeddings & Recommendation Systems" }
+      {
+        "id": "g-ml-m1",
+        "title": "Framing & Core ML Concepts (Supervised vs Unsupervised)"
+      },
+      {
+        "id": "g-ml-m2",
+        "title": "Descending into Gradient Descent & Loss Minimization"
+      },
+      {
+        "id": "g-ml-m3",
+        "title": "Representation, Feature Engineering & Normalization"
+      },
+      {
+        "id": "g-ml-m4",
+        "title": "Classification: ROC Curves, AUC & Precision/Recall"
+      },
+      {
+        "id": "g-ml-m5",
+        "title": "Neural Networks: Hidden Layers, Non-Linearity & Multi-Class"
+      },
+      {
+        "id": "g-ml-m6",
+        "title": "Embeddings, Production ML Systems & Fairness Guidelines"
+      }
     ]
   },
   {
-    "id": "the-odin-project-foundations",
+    "id": "fastai-practical-deep-learning",
+    "title": "Practical Deep Learning for Coders",
+    "provider": "Fast.ai",
+    "url": "https://course.fast.ai/",
+    "category": "Artificial Intelligence",
+    "level": "Intermediate",
+    "duration_hours": 70,
+    "tags": [
+      "PyTorch",
+      "Deep Learning",
+      "Computer Vision",
+      "NLP",
+      "Fast.ai"
+    ],
+    "description": "Jeremy Howard's top-down, code-first deep learning curriculum. Train state-of-the-art computer vision and NLP models on real-world datasets with PyTorch.",
+    "modules": [
+      {
+        "id": "fastai-m1",
+        "title": "Getting Started with PyTorch & Transfer Learning"
+      },
+      {
+        "id": "fastai-m2",
+        "title": "Deployment: Turning Your Model into a Web Application"
+      },
+      {
+        "id": "fastai-m3",
+        "title": "Neural Net Foundations: From Linear Classifier to Multi-Layer Perceptron"
+      },
+      {
+        "id": "fastai-m4",
+        "title": "Natural Language Processing (NLP) with HuggingFace Transformers"
+      },
+      {
+        "id": "fastai-m5",
+        "title": "Tabular Data & Collaborative Filtering Recommenders"
+      },
+      {
+        "id": "fastai-m6",
+        "title": "Computer Vision Architectures: Convolutions, ResNets & U-Nets"
+      },
+      {
+        "id": "fastai-m7",
+        "title": "The Training Loop: Learning Rate Finder, AdamW & Mixed Precision"
+      }
+    ]
+  },
+  {
+    "id": "kaggle-intro-ml",
+    "title": "Intro to Machine Learning",
+    "provider": "Kaggle",
+    "url": "https://www.kaggle.com/learn/intro-to-machine-learning",
+    "category": "Artificial Intelligence",
+    "level": "Beginner",
+    "duration_hours": 15,
+    "tags": [
+      "Machine Learning",
+      "Python",
+      "Pandas",
+      "Scikit-Learn",
+      "Kaggle"
+    ],
+    "description": "Learn the core ideas in machine learning and build your first predictive models using Python, Pandas, and Scikit-Learn in interactive cloud notebooks.",
+    "modules": [
+      {
+        "id": "kaggle-ml-m1",
+        "title": "How Models Work: Features, Targets & Decision Trees"
+      },
+      {
+        "id": "kaggle-ml-m2",
+        "title": "Basic Data Exploration with Pandas"
+      },
+      {
+        "id": "kaggle-ml-m3",
+        "title": "Your First Scikit-Learn Model (Fit & Predict)"
+      },
+      {
+        "id": "kaggle-ml-m4",
+        "title": "Model Validation: Mean Absolute Error & Train/Test Splits"
+      },
+      {
+        "id": "kaggle-ml-m5",
+        "title": "Underfitting and Overfitting: Tree Depth Tuning"
+      },
+      {
+        "id": "kaggle-ml-m6",
+        "title": "Random Forests & Kaggle Competition Submission"
+      }
+    ]
+  },
+  {
+    "id": "odin-foundations",
     "title": "Foundations Course",
     "provider": "The Odin Project",
     "url": "https://www.theodinproject.com/paths/foundations/courses/foundations",
     "category": "Web Development",
     "level": "Beginner",
     "duration_hours": 100,
-    "tags": ["Web Development", "Git", "HTML", "CSS", "JavaScript", "Open Source"],
-    "description": "The open-source community curriculum that takes you from complete beginner to capable developer. Learn command line ergonomics, Git/GitHub version control, HTML structure, modern CSS Flexbox, and JavaScript basics through hands-on project creation.",
+    "tags": [
+      "Web Development",
+      "Git",
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "description": "The open-source community curriculum that takes you from complete beginner to capable developer. Learn command line ergonomics, Git/GitHub, HTML/CSS, and JavaScript.",
     "modules": [
-      { "id": "top-f-1", "title": "Module 1: How this Course Works & Installation Setup" },
-      { "id": "top-f-2", "title": "Module 2: Command Line Basics & Terminal Navigation" },
-      { "id": "top-f-3", "title": "Module 3: Git and GitHub Foundations" },
-      { "id": "top-f-4", "title": "Module 4: HTML Foundations & Project: Recipes" },
-      { "id": "top-f-5", "title": "Module 5: CSS Foundations & The Box Model" },
-      { "id": "top-f-6", "title": "Module 6: Modern Flexbox & Project: Landing Page" },
-      { "id": "top-f-7", "title": "Module 7: JavaScript Basics, Variables & Conditionals" },
-      { "id": "top-f-8", "title": "Module 8: JavaScript Functions, Arrays & Loops" },
-      { "id": "top-f-9", "title": "Module 9: DOM Manipulation and Events" },
-      { "id": "top-f-10", "title": "Module 10: Capstone Project: Etch-a-Sketch & Calculator" }
+      {
+        "id": "odin-f-m1",
+        "title": "How the Web Works & Command Line Basics"
+      },
+      {
+        "id": "odin-f-m2",
+        "title": "Setting Up Git, GitHub SSH & Version Control Workflow"
+      },
+      {
+        "id": "odin-f-m3",
+        "title": "HTML Foundations: Boilerplates, Elements & Links"
+      },
+      {
+        "id": "odin-f-m4",
+        "title": "CSS Foundations: Selectors, Box Model & Flexbox"
+      },
+      {
+        "id": "odin-f-m5",
+        "title": "JavaScript Basics: Variables, Conditionals & Loops"
+      },
+      {
+        "id": "odin-f-m6",
+        "title": "DOM Manipulation & Event Listeners"
+      },
+      {
+        "id": "odin-f-m7",
+        "title": "Capstone Project: Interactive Browser Calculator"
+      }
     ]
   },
   {
-    "id": "helsinki-fullstackopen",
+    "id": "odin-fullstack-javascript",
+    "title": "Full Stack JavaScript Path",
+    "provider": "The Odin Project",
+    "url": "https://www.theodinproject.com/paths/full-stack-javascript",
+    "category": "Web Development",
+    "level": "Intermediate",
+    "duration_hours": 250,
+    "tags": [
+      "JavaScript",
+      "React",
+      "Node.js",
+      "Express",
+      "PostgreSQL"
+    ],
+    "description": "Comprehensive fullstack path covering modern JavaScript, React component design, Node.js/Express server architecture, and PostgreSQL relational database persistence.",
+    "modules": [
+      {
+        "id": "odin-fs-m1",
+        "title": "Intermediate JavaScript: Objects, Prototypes & Factory Functions"
+      },
+      {
+        "id": "odin-fs-m2",
+        "title": "Module Bundlers (Vite & Webpack) & Async/Await API Calls"
+      },
+      {
+        "id": "odin-fs-m3",
+        "title": "React Foundations: JSX, Props, State & Component Lifecycles"
+      },
+      {
+        "id": "odin-fs-m4",
+        "title": "Advanced React: React Router, Context API & Performance Optimization"
+      },
+      {
+        "id": "odin-fs-m5",
+        "title": "Node.js & Express: MVC Architecture, Routing & Middleware"
+      },
+      {
+        "id": "odin-fs-m6",
+        "title": "PostgreSQL & Prisma ORM: Database Queries & Relations"
+      },
+      {
+        "id": "odin-fs-m7",
+        "title": "User Authentication (Passport.js & JWT) & Cloud Deployment"
+      }
+    ]
+  },
+  {
+    "id": "helsinki-full-stack-open",
     "title": "Full Stack Open 2024",
     "provider": "University of Helsinki",
     "url": "https://fullstackopen.com/en/",
     "category": "Web Development",
     "level": "Advanced",
-    "duration_hours": 160,
-    "tags": ["React", "Node.js", "TypeScript", "GraphQL", "Docker", "CI/CD", "Free Certificate"],
-    "description": "University of Helsinki's premier full-stack course. Deep dive into React, Redux, Node.js, Express, MongoDB, TypeScript, GraphQL, Docker containerization, and automated CI/CD deployment pipelines with free ECTS university credits.",
+    "duration_hours": 150,
+    "tags": [
+      "React",
+      "Node.js",
+      "GraphQL",
+      "TypeScript",
+      "CI/CD"
+    ],
+    "description": "University of Helsinki's rigorous fullstack course. Master modern web development with React, Redux, Node.js, Express, MongoDB, GraphQL, TypeScript, and Docker.",
     "modules": [
-      { "id": "fso-part0", "title": "Part 0: Fundamentals of Web Applications" },
-      { "id": "fso-part1", "title": "Part 1: Introduction to React" },
-      { "id": "fso-part2", "title": "Part 2: Communicating with Server & REST APIs" },
-      { "id": "fso-part3", "title": "Part 3: Programming a Server with NodeJS and Express" },
-      { "id": "fso-part4", "title": "Part 4: Testing Express Servers & User Administration" },
-      { "id": "fso-part5", "title": "Part 5: Testing React Apps & Token Authentication" },
-      { "id": "fso-part6", "title": "Part 6: Advanced State Management (Redux & Query)" },
-      { "id": "fso-part7", "title": "Part 7: React Router, Custom Hooks & Styling" },
-      { "id": "fso-part8", "title": "Part 8: GraphQL Client and Apollo Server" },
-      { "id": "fso-part9", "title": "Part 9: TypeScript Fundamentals & Express Integration" }
+      {
+        "id": "fso-part0",
+        "title": "Part 0: Fundamentals of Web Apps & HTTP Architecture"
+      },
+      {
+        "id": "fso-part1",
+        "title": "Part 1: Introduction to React & Component State"
+      },
+      {
+        "id": "fso-part2",
+        "title": "Part 2: Communicating with Server (Axios, REST)"
+      },
+      {
+        "id": "fso-part3",
+        "title": "Part 3: Programming a Server with NodeJS & Express"
+      },
+      {
+        "id": "fso-part4",
+        "title": "Part 4: Testing Express Servers & User Administration"
+      },
+      {
+        "id": "fso-part5",
+        "title": "Part 5: Testing React Apps with Vitest & Playwright"
+      },
+      {
+        "id": "fso-part6",
+        "title": "Part 6: Advanced State Management (Redux, React Query)"
+      },
+      {
+        "id": "fso-part7",
+        "title": "Part 7: React Router, Custom Hooks & Component UI Libraries"
+      },
+      {
+        "id": "fso-part8",
+        "title": "Part 8: GraphQL Schemas, Resolvers & Apollo Client"
+      },
+      {
+        "id": "fso-part9",
+        "title": "Part 9: TypeScript Typing for React & Express"
+      }
     ]
   },
   {
     "id": "helsinki-elements-of-ai",
-    "title": "Elements of AI: Introduction to Artificial Intelligence",
+    "title": "Elements of AI: Introduction to AI",
     "provider": "University of Helsinki & Reaktor",
     "url": "https://www.elementsofai.com/",
     "category": "Artificial Intelligence",
     "level": "Beginner",
     "duration_hours": 30,
-    "tags": ["Artificial Intelligence", "Machine Learning", "Neural Networks", "Ethics", "Free Certificate"],
-    "description": "A series of free online courses created by MinnaLearn and the University of Helsinki. Learn what AI is, what can (and can't) be done with AI, and how AI methods are developed. Combines theory with practical visual exercises.",
+    "tags": [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Neural Networks",
+      "Ethics"
+    ],
+    "description": "A series of free online courses created by MinnaLearn and the University of Helsinki. Learn the basics of AI, neural networks, probability, and machine learning philosophy.",
     "modules": [
-      { "id": "eai-ch1", "title": "Chapter 1: What is AI? (Definitions & Philosophy)" },
-      { "id": "eai-ch2", "title": "Chapter 2: AI Problem Solving (Search & Games)" },
-      { "id": "eai-ch3", "title": "Chapter 3: Real World AI (Odds & Probability)" },
-      { "id": "eai-ch4", "title": "Chapter 4: Machine Learning (Linear Regression & Nearest Neighbor)" },
-      { "id": "eai-ch5", "title": "Chapter 5: Neural Networks (Perceptrons & Deep Learning)" },
-      { "id": "eai-ch6", "title": "Chapter 6: Implications of AI (Societal Impact & Ethics)" }
+      {
+        "id": "eai-ch1",
+        "title": "Chapter 1: What is AI? Definitions, Autonomy & Ethics"
+      },
+      {
+        "id": "eai-ch2",
+        "title": "Chapter 2: AI Problem Solving (Search & Game Trees)"
+      },
+      {
+        "id": "eai-ch3",
+        "title": "Chapter 3: Real World AI (Odds, Probability & Bayes Rule)"
+      },
+      {
+        "id": "eai-ch4",
+        "title": "Chapter 4: Machine Learning (Linear Regression, Nearest Neighbor)"
+      },
+      {
+        "id": "eai-ch5",
+        "title": "Chapter 5: Neural Networks (Perceptrons & Activation Functions)"
+      },
+      {
+        "id": "eai-ch6",
+        "title": "Chapter 6: Implications (Algorithmic Bias & The Future of AI)"
+      }
+    ]
+  },
+  {
+    "id": "helsinki-building-ai",
+    "title": "Building AI: Python Algorithms for AI",
+    "provider": "University of Helsinki & Reaktor",
+    "url": "https://buildingai.elementsofai.com/",
+    "category": "Artificial Intelligence",
+    "level": "Intermediate",
+    "duration_hours": 50,
+    "tags": [
+      "Python",
+      "Algorithms",
+      "Optimization",
+      "Machine Learning"
+    ],
+    "description": "The coding-focused sequel to Elements of AI. Learn to program algorithms in Python that make AI methods possible: search, simulated annealing, regression, and deep learning.",
+    "modules": [
+      {
+        "id": "bai-ch1",
+        "title": "Chapter 1: Getting Started with AI (Optimization & Search)"
+      },
+      {
+        "id": "bai-ch2",
+        "title": "Chapter 2: Dealing with Uncertainty (Probability & Naive Bayes)"
+      },
+      {
+        "id": "bai-ch3",
+        "title": "Chapter 3: Machine Learning (Linear Regression & Vector Math)"
+      },
+      {
+        "id": "bai-ch4",
+        "title": "Chapter 4: Neural Networks (Forward Pass & Loss Functions)"
+      },
+      {
+        "id": "bai-ch5",
+        "title": "Chapter 5: Conclusion & Capstone AI Project Formulation"
+      }
+    ]
+  },
+  {
+    "id": "stanford-see-cs106a",
+    "title": "CS106A: Programming Methodology",
+    "provider": "Stanford Engineering Everywhere",
+    "url": "https://see.stanford.edu/Course/CS106A",
+    "category": "Computer Science",
+    "level": "Beginner",
+    "duration_hours": 65,
+    "tags": [
+      "Computer Science",
+      "Object-Oriented",
+      "Software Engineering",
+      "Stanford"
+    ],
+    "description": "Stanford's classic introductory programming course. Teaches good software engineering methodology, algorithmic problem solving, decomposition, and object-oriented design.",
+    "modules": [
+      {
+        "id": "cs106a-m1",
+        "title": "Introduction to Programming & Karel the Robot"
+      },
+      {
+        "id": "cs106a-m2",
+        "title": "Methods, Control Statements & Stepwise Refinement"
+      },
+      {
+        "id": "cs106a-m3",
+        "title": "Variables, Expressions & Function Signatures"
+      },
+      {
+        "id": "cs106a-m4",
+        "title": "Events, Listeners & Graphical User Interfaces"
+      },
+      {
+        "id": "cs106a-m5",
+        "title": "Memory Architecture, Primitive vs Reference Types"
+      },
+      {
+        "id": "cs106a-m6",
+        "title": "Collections, Arrays, Maps & String Tokenization"
+      },
+      {
+        "id": "cs106a-m7",
+        "title": "Object-Oriented Design & Capstone Breakout Game"
+      }
+    ]
+  },
+  {
+    "id": "cmu-15-213",
+    "title": "15-213: Introduction to Computer Systems",
+    "provider": "Carnegie Mellon University",
+    "url": "https://www.cs.cmu.edu/~213/",
+    "category": "Computer Science",
+    "level": "Advanced",
+    "duration_hours": 130,
+    "tags": [
+      "Systems Programming",
+      "C",
+      "x86-64",
+      "Memory Management",
+      "CMU"
+    ],
+    "description": "The seminal 'CS:APP' course from Carnegie Mellon. Learn how programs execute from the hardware gate level up to the operating system: x86-64 assembly, caching, and concurrency.",
+    "modules": [
+      {
+        "id": "cmu-213-m1",
+        "title": "Bits, Bytes, Integers & Floating Point Representations"
+      },
+      {
+        "id": "cmu-213-m2",
+        "title": "Machine-Level Representation of Programs (x86-64 Assembly)"
+      },
+      {
+        "id": "cmu-213-m3",
+        "title": "Processor Architecture, Pipelining & Hazard Resolution"
+      },
+      {
+        "id": "cmu-213-m4",
+        "title": "Optimizing Program Performance & Profiling"
+      },
+      {
+        "id": "cmu-213-m5",
+        "title": "The Memory Hierarchy, Locality & Cache Simulation"
+      },
+      {
+        "id": "cmu-213-m6",
+        "title": "Exceptional Control Flow (Signals & Context Switches)"
+      },
+      {
+        "id": "cmu-213-m7",
+        "title": "Virtual Memory, Dynamic Memory Allocation (Malloc Lab)"
+      },
+      {
+        "id": "cmu-213-m8",
+        "title": "Concurrent Programming, POSIX Threads & Race Conditions"
+      }
+    ]
+  },
+  {
+    "id": "linux-foundation-lfs101x",
+    "title": "Introduction to Linux (LFS101x)",
+    "provider": "The Linux Foundation",
+    "url": "https://www.edx.org/learn/linux/the-linux-foundation-introduction-to-linux",
+    "category": "Systems & Security",
+    "level": "Beginner",
+    "duration_hours": 60,
+    "tags": [
+      "Linux",
+      "SysAdmin",
+      "Bash",
+      "DevOps",
+      "Open Source"
+    ],
+    "description": "Official course by Linus Torvalds' Linux Foundation. Master the Linux command line, filesystem hierarchy, process management, user accounts, and shell scripting.",
+    "modules": [
+      {
+        "id": "lfs-m1",
+        "title": "The Linux Foundation & Open Source Philosophy"
+      },
+      {
+        "id": "lfs-m2",
+        "title": "Linux Distributions & Desktop Graphical Environments"
+      },
+      {
+        "id": "lfs-m3",
+        "title": "System Configuration from the Graphical Interface"
+      },
+      {
+        "id": "lfs-m4",
+        "title": "Command-Line Operations, Pipes & Redirection"
+      },
+      {
+        "id": "lfs-m5",
+        "title": "Linux Documentation (Man Pages, Info & Help)"
+      },
+      {
+        "id": "lfs-m6",
+        "title": "File Operations, Inodes & Filesystem Hierarchy Standard"
+      },
+      {
+        "id": "lfs-m7",
+        "title": "User Environment, Environment Variables & Shell Config"
+      },
+      {
+        "id": "lfs-m8",
+        "title": "Process Management, Daemons & Systemd Services"
+      }
+    ]
+  },
+  {
+    "id": "cisco-intro-cybersecurity",
+    "title": "Introduction to Cybersecurity",
+    "provider": "Cisco Networking Academy",
+    "url": "https://www.netacad.com/courses/introduction-to-cybersecurity",
+    "category": "Systems & Security",
+    "level": "Beginner",
+    "duration_hours": 20,
+    "tags": [
+      "Cybersecurity",
+      "Networking",
+      "Cryptography",
+      "Defense",
+      "Cisco"
+    ],
+    "description": "Explore the fundamentals of cybersecurity, modern threat vectors (malware, phishing, ransomware), defense-in-depth strategies, network security protocols, and ethical policies.",
+    "modules": [
+      {
+        "id": "cisco-cs-m1",
+        "title": "The Need for Cybersecurity & Personal Data Defense"
+      },
+      {
+        "id": "cisco-cs-m2",
+        "title": "Attacks, Concepts and Threat Actors (Malware & Social Engineering)"
+      },
+      {
+        "id": "cisco-cs-m3",
+        "title": "Protecting Your Data and Privacy (Encryption & Password Policies)"
+      },
+      {
+        "id": "cisco-cs-m4",
+        "title": "Protecting the Organization (Firewalls, IDS/IPS & Threat Intelligence)"
+      },
+      {
+        "id": "cisco-cs-m5",
+        "title": "Cybersecurity Ethics, Legal Frameworks & Career Paths"
+      }
     ]
   }
 ]

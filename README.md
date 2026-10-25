@@ -94,27 +94,16 @@ To add a new free course to CoursePulse, simply append an entry to `data/courses
 
 ---
 
-## How to Customize or Change Themes
+## Visual Theming (Light Crisp & Dark Companion)
 
-CoursePulse uses DaisyUI's `data-theme` attribute on the root `<html>` tag.
+CoursePulse features an executive, high-contrast visual design system with dedicated **Light Crisp** and **Dark Obsidian** modes:
+- **Light Crisp (`light`)**: Clean `#f8fafc` canvas, pure `#ffffff` cards, deep Slate 900 `#0f172a` ink with **10.5:1 WCAG AAA contrast**, and royal blue `#2563eb` action buttons.
+- **Dark Obsidian (`dark`)**: Deep Slate 950 `#0b0f19` canvas, elevated Slate 900 `#111827` cards, quiet Slate 800 `#1e293b` borders, and pure `#f8fafc` typography.
 
-### Changing Available Themes
-Open `index.html` and look for the `<select id="theme-select">`:
-
-```html
-<select id="theme-select" class="select select-sm select-bordered">
-  <option value="light">☀️ Light</option>
-  <option value="dark">🌙 Dark</option>
-  <option value="cupcake">🧁 Cupcake</option>
-  <option value="emerald">🌲 Emerald</option>
-  <option value="synthwave">🌆 Synthwave</option>
-  <option value="nord">❄️ Nord</option>
-  <option value="dracula">🧛 Dracula</option>
-  <option value="forest">🌿 Forest</option>
-</select>
-```
-
-DaisyUI includes over 30 built-in themes (e.g. `corporate`, `luxury`, `coffee`, `retro`, `cyberpunk`). To add a theme, simply add an `<option value="theme-name">` to the select menu.
+### Toggling Themes
+- Click the **Theme Toggle Button** in the header.
+- Or press **`D`** on your keyboard from anywhere on the page (when not typing in search or notes).
+- Your preference is instantly saved in `localStorage` and restored on future visits without layout flash. Default theme respects your operating system's `prefers-color-scheme`.
 
 ---
 

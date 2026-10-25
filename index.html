@@ -20,14 +20,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 
-  <!-- Instant Pre-paint Theme Hydration (No Flash) -->
+  <!-- Instant Pre-paint Theme Hydration (Light Crisp vs Dark Companion) -->
   <script>
     (function() {
       try {
-        const THEME_COLORS = { light: '#f8fafc', night: '#0b0f19', dark: '#0b0f19', cupcake: '#faf7f5', emerald: '#ffffff', synthwave: '#1a103c', nord: '#eceff4', dracula: '#282a36', forest: '#171212' };
+        const THEME_COLORS = { light: '#f8fafc', dark: '#0b0f19' };
         const saved = localStorage.getItem('coursepulse_theme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = saved || (prefersDark ? 'night' : 'light');
+        const theme = (saved === 'dark' || saved === 'light') ? saved : (prefersDark ? 'dark' : 'light');
         document.documentElement.setAttribute('data-theme', theme);
         const meta = document.querySelector('meta[name="theme-color"]');
         if (meta && THEME_COLORS[theme]) meta.setAttribute('content', THEME_COLORS[theme]);
@@ -83,23 +83,21 @@
       </div>
     </div>
 
-    <!-- Right Controls: Theme Selector, Export, Import -->
+    <!-- Right Controls: Light/Dark Mode Switcher, Export, Import -->
     <div class="navbar-end flex items-center gap-1.5 sm:gap-2">
-      <!-- Theme Switcher Dropdown -->
-      <div class="dropdown dropdown-end">
-        <label for="theme-select" class="sr-only">Select Theme</label>
-        <select id="theme-select" class="select select-sm select-bordered text-xs rounded-lg cursor-pointer font-bold bg-base-100 text-base-content" title="Change Visual Theme">
-          <option value="light">☀️ Light (Crisp)</option>
-          <option value="night">🌌 Night (Slate Navy)</option>
-          <option value="dark">🌙 Dark (Obsidian)</option>
-          <option value="nord">❄️ Nord</option>
-          <option value="emerald">🌲 Emerald</option>
-          <option value="forest">🌿 Forest</option>
-          <option value="cupcake">🧁 Cupcake</option>
-          <option value="synthwave">🌆 Synthwave</option>
-          <option value="dracula">🧛 Dracula</option>
-        </select>
-      </div>
+      <!-- Light / Dark Mode Toggle Button -->
+      <button id="theme-toggle" class="btn btn-sm btn-ghost border border-base-300 h-8 min-h-[32px] px-2.5 rounded-lg text-base-content hover:bg-base-200 transition flex items-center gap-1.5 cursor-pointer shadow-xs active:scale-95" title="Toggle theme (Light / Dark) [Press D]" aria-label="Toggle visual theme between Light and Dark">
+        <!-- Sun Icon (visible in dark mode to switch to light) -->
+        <svg class="icon-sun w-3.5 h-3.5 text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+        </svg>
+        <!-- Moon Icon (visible in light mode to switch to dark) -->
+        <svg class="icon-moon w-3.5 h-3.5 text-slate-700 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+        </svg>
+        <span id="theme-toggle-text" class="text-xs font-semibold hidden sm:inline">Dark</span>
+        <kbd class="kbd kbd-xs text-[10px] hidden md:inline-block font-mono opacity-50 px-1 py-0">D</kbd>
+      </button>
 
       <!-- Export & Import Action Buttons -->
       <div class="join border border-base-300 rounded-lg bg-base-100 shadow-xs">

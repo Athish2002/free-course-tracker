@@ -388,7 +388,33 @@ dialog.modal.modal-closing .modal-box {
   color: #ffffff !important;
   border-color: #1d4ed8 !important;
 }
-[data-theme="night"] .btn-primary:hover,
 [data-theme="dark"] .btn-primary:hover {
   background-color: #1d4ed8 !important;
+}
+
+/* Light / Dark Mode Icon Switching */
+[data-theme="light"] .icon-sun {
+  display: none !important;
+}
+[data-theme="light"] .icon-moon {
+  display: inline-block !important;
+}
+[data-theme="dark"] .icon-sun {
+  display: inline-block !important;
+}
+[data-theme="dark"] .icon-moon {
+  display: none !important;
+}
+
+/* Theme Toggle Button Hover & Micro-interactions */
+#theme-toggle {
+  transition: transform var(--duration-fast) var(--ease-spring),
+              background-color var(--duration-fast) ease,
+              border-color var(--duration-fast) ease;
+}
+#theme-toggle:hover {
+  transform: translateY(-1px);
+}
+#theme-toggle:active {
+  transform: scale(0.96);
 }
