@@ -804,6 +804,51 @@ export function exportNotesAsMarkdown() {
   showToast('📝 Notes exported as Markdown!');
 }
 
+
+export function copyActiveRecallPrompt() {
+  if (!state.activeCourseId) return;
+  const c = state.courses.find((x) => x.id === state.activeCourseId);
+  if (!c) return;
+  const p = getCourseProgress(c.id);
+  const completedSet = new Set(p.completedModules || []);
+  const modulesList = (c.modules || []).map((m, idx) => {
+    const status = completedSet.has(m.id) ? '[COMPLETED]' : '[UPCOMING]';
+    return `${idx + 1}. ${m.title} ${status}`;
+  }).join('\n');
+
+  const promptText = `# Active Recall & Conceptual Diagnostic Request: ${c.title}
+## Provider: ${c.provider} | Category: ${c.category} | Estimated Duration: ${c.duration_hours}h
+Official Course URL: ${c.url}
+
+I am working through the official curriculum for **${c.title}** by **${c.provider}**.
+Here is the official module breakdown:
+${modulesList}
+
+Act as an expert computer science and engineering professor. Using first-principles pedagogy and Bloom's taxonomy, generate a high-yield study package:
+
+1. **Governing Invariants (Core Axioms)**:
+   - Identify the 3 fundamental computational, mathematical, or engineering invariants governing this curriculum.
+
+2. **Active Recall Diagnostic Quiz (Tiered Bloom's Taxonomy)**:
+   - Generate 5 rigorous diagnostic questions:
+     * Question 1-2: Core conceptual recall & mechanism explanation.
+     * Question 3-4: Applied scenario debugging or problem decomposition.
+     * Question 5: High-level architectural trade-off or failure mode analysis.
+
+3. **Common Student Misconceptions**:
+   - Highlight 3 subtle conceptual traps or mental-model bugs students frequently fall into during this course.
+
+4. **Spaced Repetition Flashcard Prompts (Q&A)**:
+   - Provide 5 high-retention Q&A pairs formatted for spaced repetition review.
+`;
+
+  navigator.clipboard.writeText(promptText).then(() => {
+    showToast('✓ Copied AI Active Recall study prompt to clipboard!', 'success');
+  }).catch(() => {
+    showToast('Failed to copy to clipboard', 'error');
+  });
+}
+
 export function exportCourseCalendar() {
   if (!state.activeCourseId) return;
   const c = state.courses.find((x) => x.id === state.activeCourseId);
@@ -1210,5 +1255,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.coursePulseApp = {
   getProviderLogoSvg, fetchCourses, openCourseModal, closeCourseModal, toggleModule, markAllModules, saveCourseNotes, exportProgress, importProgress, toggleFilterTag, removeActiveFilter, resetFilters, toggleTagsExpand, toggleTheme,
-  exportNotesAsMarkdown, exportCourseCalendar, openCertificateModal, closeCertificateModal, downloadCertificate, toggleTimer, resetTimer,
+  exportNotesAsMarkdown, copyActiveRecallPrompt, exportCourseCalendar, openCertificateModal, closeCertificateModal, downloadCertificate, toggleTimer, resetTimer,
 };

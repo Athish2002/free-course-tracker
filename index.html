@@ -70,6 +70,19 @@
         <span>CoursePulse</span>
       </a>
       <span class="badge badge-sm badge-outline hidden sm:inline-flex text-[11px] font-mono">Free &amp; Open</span>
+
+      <!-- Pulse Suite Ecosystem Switcher -->
+      <nav class="hidden md:inline-flex items-center rounded-full bg-base-200/90 border border-base-300/80 p-0.5 text-xs font-semibold ml-1.5" aria-label="Pulse Suite Navigation">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary text-primary-content shadow-2xs font-bold text-[11px]">
+          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+          Courses
+        </span>
+        <a href="https://athish2002.github.io/free-certification-tracker/" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-base-content/70 hover:text-base-content transition text-[11px]" title="Switch to CertPulse: Free Certifications & Exam Vouchers">
+          <svg class="w-3 h-3 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+          Certifications
+        </a>
+      </nav>
     </div>
 
     <!-- Center: Global Search Bar -->
@@ -247,8 +260,8 @@
         <div class="form-control">
           <label for="sort-select" class="label py-1 text-xs font-bold text-base-content">Sort By</label>
           <select id="sort-select" class="select select-sm select-bordered text-xs rounded-lg min-h-[44px] font-semibold text-base-content bg-base-100">
-            <option value="title-asc">Title (A &rarr; Z)</option>
-            <option value="title-desc">Title (Z &rarr; A)</option>
+            <option value="title-asc">Title (A to Z)</option>
+            <option value="title-desc">Title (Z to A)</option>
             <option value="progress-desc">Progress (Highest)</option>
             <option value="progress-asc">Progress (Lowest)</option>
             <option value="duration-desc">Duration (Longest)</option>
@@ -342,6 +355,10 @@
               <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
               <span>Diploma</span>
             </button>
+            <button type="button" onclick="window.coursePulseApp.copyActiveRecallPrompt()" class="btn btn-xs btn-ghost border border-primary/40 text-primary text-[11px] gap-1 hover:bg-primary/10" title="Copy AI Spaced-Repetition Study Prompt to Clipboard">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="M2 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="M12 22v-4"/><path d="m19.07 19.07-2.83-2.83"/><path d="M22 12h-4"/><path d="m19.07 4.93-2.83 2.83"/><circle cx="12" cy="12" r="3"/></svg>
+              <span>Study Assist</span>
+            </button>
           </div>
           <div class="flex items-center gap-1.5">
             <button type="button" onclick="window.coursePulseApp.markAllModules(true)" class="btn btn-xs btn-primary btn-outline text-[11px]">
@@ -380,8 +397,9 @@
 
       <!-- Module Checklist with Custom Scrollbar -->
       <div class="flex flex-col gap-2">
-        <h4 class="text-xs font-bold uppercase tracking-wider text-base-content/60 font-mono">
-          Module Checklist
+        <h4 class="text-xs font-bold text-base-content/75 flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          <span>Module Checklist</span>
         </h4>
         <div class="custom-scrollbar flex flex-col gap-1.5 max-h-56 overflow-y-auto pr-1" id="modal-modules-list">
           <!-- Rendered dynamically -->
@@ -391,8 +409,9 @@
       <!-- Personal Study Notes Area with Autosave Indicator & Markdown Export -->
       <div class="flex flex-col gap-1.5 pt-2 border-t border-base-200">
         <div class="flex items-center justify-between">
-          <label for="modal-course-notes" class="text-xs font-bold uppercase tracking-wider text-base-content/60 font-mono">
-            Personal Study Notes
+          <label for="modal-course-notes" class="text-xs font-bold text-base-content/75 flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+            <span>Personal Study Notes</span>
           </label>
           <div class="flex items-center gap-2">
             <span id="notes-saved-indicator" class="text-[11px] font-mono text-success opacity-0 transition-opacity duration-200 flex items-center gap-1">
@@ -464,7 +483,7 @@
   <!-- Footer -->
   <footer class="footer footer-center p-6 bg-base-100 text-base-content/70 border-t border-base-200 text-xs">
     <div class="flex flex-col sm:flex-row items-center justify-between gap-3 max-w-7xl w-full px-4">
-      <p>CoursePulse &bull; Open-source, paywall-free educational progress tracker.</p>
+      <p>CoursePulse &mdash; Open-source, paywall-free educational progress tracker.</p>
       <p class="font-mono text-[11px]">All course materials belong to their respective universities &amp; foundations.</p>
     </div>
   </footer>
