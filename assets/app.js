@@ -237,19 +237,31 @@ function getCoursePercentage(c) {
 
 export function initTheme() {
   const btn = document.getElementById('theme-toggle');
-  const saved = localStorage.getItem(K_THM);
-  const theme = (saved === 'dark' || saved === 'light') ? saved : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const saved = localStorage.getItem('coursepulse_theme') || localStorage.getItem('certpulse_theme_v2') || localStorage.getItem('certpulse_theme') || localStorage.getItem('theme');
+  // Default to dark mode (OLED / Obsidian companion)
+  const theme = (saved === 'light' || saved === 'github-light' || saved === 'catppuccin-latte' || saved === 'solarized-light') ? 'light' : 'dark';
   applyTheme(theme, false);
   if (btn) {
     btn.onclick = () => {
-      const cur = document.documentElement.getAttribute('data-theme') || 'light';
+      const cur = document.documentElement.getAttribute('data-theme') || 'dark';
       applyTheme(cur === 'dark' ? 'light' : 'dark', true);
     };
   }
+
+  // Cross-app / Cross-tab synchronization with CertPulse
+  window.addEventListener('storage', (e) => {
+    if (['coursepulse_theme', 'certpulse_theme_v2', 'certpulse_theme', 'theme'].includes(e.key)) {
+      const syncSaved = localStorage.getItem('coursepulse_theme') || localStorage.getItem('certpulse_theme_v2') || localStorage.getItem('certpulse_theme') || localStorage.getItem('theme');
+      const syncTheme = (syncSaved === 'light' || syncSaved === 'github-light' || syncSaved === 'catppuccin-latte' || syncSaved === 'solarized-light') ? 'light' : 'dark';
+      if (document.documentElement.getAttribute('data-theme') !== syncTheme) {
+        applyTheme(syncTheme, true);
+      }
+    }
+  });
 }
 
 export function toggleTheme() {
-  const cur = document.documentElement.getAttribute('data-theme') || 'light';
+  const cur = document.documentElement.getAttribute('data-theme') || 'dark';
   applyTheme(cur === 'dark' ? 'light' : 'dark', true);
 }
 
@@ -259,11 +271,26 @@ function applyTheme(t, anim = true) {
     setTimeout(() => document.documentElement.classList.remove('theme-transitioning'), 300);
   }
   document.documentElement.setAttribute('data-theme', t);
-  localStorage.setItem(K_THM, t);
+  if (t === 'dark') {
+    localStorage.setItem('coursepulse_theme', 'dark');
+    localStorage.setItem('certpulse_theme_v2', 'github-dark');
+    localStorage.setItem('certpulse_theme', 'github-dark');
+    localStorage.setItem('theme', 'dark');
+  } else {
+    localStorage.setItem('coursepulse_theme', 'light');
+    localStorage.setItem('certpulse_theme_v2', 'github-light');
+    localStorage.setItem('certpulse_theme', 'github-light');
+    localStorage.setItem('theme', 'light');
+  }
   const m = document.querySelector('meta[name="theme-color"]');
   if (m && THEME_COLORS[t]) m.setAttribute('content', THEME_COLORS[t]);
   const txt = document.getElementById('theme-toggle-text');
   if (txt) txt.textContent = t === 'dark' ? 'Light' : 'Dark';
+  const btn = document.getElementById('theme-toggle');
+  if (btn) {
+    btn.setAttribute('title', t === 'dark' ? 'Toggle theme (switch to Light) [Press D]' : 'Toggle theme (switch to Dark) [Press D]');
+    btn.setAttribute('aria-label', t === 'dark' ? 'Switch to Light Theme' : 'Switch to Dark Theme');
+  }
 }
 
 function parseUrlParams() {

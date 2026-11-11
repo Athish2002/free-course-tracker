@@ -406,15 +406,61 @@ dialog.modal.modal-closing .modal-box {
   color: #ffffff !important;
   font-weight: 800 !important;
 }
+[data-theme="night"] .bg-base-100,
+[data-theme="dark"] .bg-base-100 {
+  background-color: #0a0a0a !important;
+}
 [data-theme="night"] .bg-base-200,
 [data-theme="dark"] .bg-base-200 {
   background-color: #121214 !important; /* Charcoal surface */
+}
+[data-theme="night"] .bg-base-300,
+[data-theme="dark"] .bg-base-300 {
+  background-color: #18181b !important;
 }
 [data-theme="night"] .border-base-200,
 [data-theme="dark"] .border-base-200,
 [data-theme="night"] .border-base-300,
 [data-theme="dark"] .border-base-300 {
   border-color: #1c1c1f !important;
+}
+[data-theme="night"] .footer,
+[data-theme="dark"] .footer {
+  background-color: #050505 !important;
+  border-top-color: #171717 !important;
+}
+[data-theme="night"] select,
+[data-theme="dark"] select,
+[data-theme="night"] select option,
+[data-theme="dark"] select option {
+  background-color: #121214 !important;
+  color: #ededed !important;
+  border-color: #1c1c1f !important;
+}
+[data-theme="night"] input[type="text"],
+[data-theme="dark"] input[type="text"],
+[data-theme="night"] textarea,
+[data-theme="dark"] textarea {
+  background-color: #0a0a0a !important;
+  color: #ededed !important;
+  border-color: #1c1c1f !important;
+}
+[data-theme="night"] input::placeholder,
+[data-theme="dark"] input::placeholder,
+[data-theme="night"] textarea::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: #71717a !important;
+}
+[data-theme="night"] .kbd,
+[data-theme="dark"] .kbd {
+  background-color: #18181b !important;
+  color: #a1a1aa !important;
+  border-color: #27272a !important;
+}
+[data-theme="night"] .skeleton-shimmer,
+[data-theme="dark"] .skeleton-shimmer {
+  background: linear-gradient(90deg, #121214 0%, #1e1e24 50%, #121214 100%) !important;
+  background-size: 200% 100% !important;
 }
 [data-theme="night"] .text-primary,
 [data-theme="dark"] .text-primary {
@@ -436,10 +482,14 @@ dialog.modal.modal-closing .modal-box {
 }
 [data-theme="light"] .icon-moon {
   display: inline-block !important;
+  color: #334155 !important;
 }
+[data-theme="night"] .icon-sun,
 [data-theme="dark"] .icon-sun {
   display: inline-block !important;
+  color: #fbbf24 !important;
 }
+[data-theme="night"] .icon-moon,
 [data-theme="dark"] .icon-moon {
   display: none !important;
 }

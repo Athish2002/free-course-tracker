@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CoursePulse — Free Course &amp; Learning Progress Tracker</title>
   <meta name="description" content="A curated, paywall-free open course directory &amp; learning tracker. Track syllabi from Harvard, MIT, freeCodeCamp and Helsinki with zero login.">
-  <meta name="theme-color" content="#1d232a">
+  <meta name="theme-color" content="#0b0f19">
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="CoursePulse — Free Course Tracker">
@@ -25,9 +25,9 @@
     (function() {
       try {
         const THEME_COLORS = { light: '#f8fafc', dark: '#0b0f19' };
-        const saved = localStorage.getItem('coursepulse_theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = (saved === 'dark' || saved === 'light') ? saved : (prefersDark ? 'dark' : 'light');
+        const saved = localStorage.getItem('coursepulse_theme') || localStorage.getItem('certpulse_theme_v2') || localStorage.getItem('certpulse_theme') || localStorage.getItem('theme');
+        // Default to dark mode (OLED / Obsidian companion)
+        const theme = (saved === 'light' || saved === 'github-light' || saved === 'catppuccin-latte' || saved === 'solarized-light') ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', theme);
         const meta = document.querySelector('meta[name="theme-color"]');
         if (meta && THEME_COLORS[theme]) meta.setAttribute('content', THEME_COLORS[theme]);
@@ -99,7 +99,7 @@
     <!-- Right Controls: Light/Dark Mode Switcher, Export, Import -->
     <div class="navbar-end flex items-center gap-1.5 sm:gap-2">
       <!-- Light / Dark Mode Toggle Button -->
-      <button id="theme-toggle" class="btn btn-sm btn-ghost border border-base-300 h-8 min-h-[32px] px-2.5 rounded-lg text-base-content hover:bg-base-200 transition flex items-center gap-1.5 cursor-pointer shadow-xs active:scale-95" title="Toggle theme (Light / Dark) [Press D]" aria-label="Toggle visual theme between Light and Dark">
+      <button id="theme-toggle" class="btn btn-sm btn-ghost border border-base-300 h-8 min-h-[32px] px-2.5 rounded-lg text-base-content hover:bg-base-200 transition flex items-center gap-1.5 cursor-pointer shadow-xs active:scale-95" title="Toggle theme (switch to Light) [Press D]" aria-label="Switch to Light Theme">
         <!-- Sun Icon (visible in dark mode to switch to light) -->
         <svg class="icon-sun w-3.5 h-3.5 text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
@@ -108,7 +108,7 @@
         <svg class="icon-moon w-3.5 h-3.5 text-slate-700 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
         </svg>
-        <span id="theme-toggle-text" class="text-xs font-semibold hidden sm:inline">Dark</span>
+        <span id="theme-toggle-text" class="text-xs font-semibold hidden sm:inline">Light</span>
         <kbd class="kbd kbd-xs text-[10px] hidden md:inline-block font-mono opacity-50 px-1 py-0">D</kbd>
       </button>
 
