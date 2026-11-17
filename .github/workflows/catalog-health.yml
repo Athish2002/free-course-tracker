@@ -2,13 +2,13 @@ name: Course Link Check
 
 on:
   schedule:
-    # Run every Sunday at midnight (00:00 UTC)
-    - cron: '0 0 * * 0'
+    # Every Sunday, 00:23 UTC (off the hour: GitHub delays scheduled runs most at the top of the hour)
+    - cron: '23 0 * * 0'
   workflow_dispatch: # Allows manual one-click trigger from GitHub Actions UI
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
+  issues: write
 
 jobs:
   audit:
@@ -24,23 +24,44 @@ jobs:
           python-version: "3.12"
 
       - name: Check course links
+        id: check
+        continue-on-error: true
         run: python scripts/check-catalog-health.py
 
-      - name: Upload Health Report Artifact
+      - name: Upload report
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: catalog-health-report
+          name: course-link-check
           path: health-report.md
 
-      - name: Create Pull Request If Updates Needed
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "chore: weekly course link check report"
-          branch: "auto-update/catalog-health"
-          title: "Weekly course link check"
-          body: |
-            Weekly link check. Each course URL was requested once with a plain HTTP client.
-            The report lists links that did not answer, returned an error, or redirected to another site.
-            It does not check what the pages say about cost or content.
-          labels: "catalog, automated-pr"
+      # The report is not committed (it is git-ignored), so the result has to be raised somewhere a
+      # person will see it: one open issue, updated with a comment on each run that finds a problem.
+      - name: Open or update an issue for links that need a look
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ ! -f health-report.md ] || ! grep -q '^## Needs a look' health-report.md; then
+            echo "Every course link answered and stayed on its own site."
+            exit 0
+          fi
+          title="Course links need a look"
+          {
+            echo "Weekly link check: $RUN_URL"
+            echo
+            sed -n '/^## Needs a look/,$p' health-report.md
+            echo
+            echo "The check only says whether a page answered and stayed on the same site. Open each link before changing the course list; a timeout or certificate error can be on the runner's side."
+          } > issue-body.md
+          num=$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$num" ]; then
+            gh issue comment "$num" --body-file issue-body.md
+          else
+            gh issue create --title "$title" --body-file issue-body.md
+          fi
+
+      - name: Fail when more than 5 links are not reachable
+        if: steps.check.outcome == 'failure'
+        run: exit 1

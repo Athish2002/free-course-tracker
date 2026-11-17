@@ -458,10 +458,21 @@ function renderCoursesList() {
 }
 
 export function renderAllWithTransition() {
-  if (document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.startViewTransition(() => { updateStats(); renderActiveFilterChips(); renderCoursesList(); });
+  const render = () => { updateStats(); renderActiveFilterChips(); renderCoursesList(); };
+  // Chrome refuses a view transition while the tab is hidden (for example a page opened in a background
+  // tab), and the update inside it never ran: the list stayed on its loading placeholders. Render directly
+  // then, and fall back to a direct render if the transition is refused for any other reason.
+  if (document.startViewTransition && document.visibilityState === 'visible'
+      && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    try {
+      const t = document.startViewTransition(render);
+      t.updateCallbackDone?.catch(() => render());
+      // A skipped or interrupted animation is not an error worth reporting; the content is already rendered.
+      t.ready?.catch(() => {});
+      t.finished?.catch(() => {});
+    } catch { render(); }
   } else {
-    updateStats(); renderActiveFilterChips(); renderCoursesList();
+    render();
   }
 }
 
@@ -762,6 +773,15 @@ Act as an expert computer science and engineering professor. Using first-princip
   });
 }
 
+// RFC 5545 text escaping: a comma or semicolon in a course title would otherwise split the value.
+function icsText(s) {
+  return String(s)
+    .replace(/\\/g, '\\\\')
+    .replace(/;/g, '\\;')
+    .replace(/,/g, '\\,')
+    .replace(/\r?\n/g, '\\n');
+}
+
 export function exportCourseCalendar() {
   if (!state.activeCourseId) return;
   const c = state.courses.find((x) => x.id === state.activeCourseId);
@@ -784,7 +804,7 @@ export function exportCourseCalendar() {
     'PRODID:-//CoursePulse//Study Plan Generator//EN',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
-    `X-WR-CALNAME:Study Plan - ${c.title.replace(/[,;]/g, '')}`,
+    `X-WR-CALNAME:${icsText('Study Plan - ' + c.title)}`,
   ];
 
   modules.forEach((m, idx) => {
@@ -796,8 +816,8 @@ export function exportCourseCalendar() {
     evtEnd.setHours(19, 30, 0, 0);
 
     const uid = `cp-${c.id}-${m.id}-${Date.now()}@coursepulse`;
-    const summary = `Study: ${c.title} (Module ${idx + 1})`;
-    const description = `Module: ${m.title}\\nCourse: ${c.title}\\nProvider: ${c.provider}\\nURL: ${c.url}`;
+    const summary = icsText(`Study: ${c.title} (Module ${idx + 1})`);
+    const description = [`Module: ${m.title}`, `Course: ${c.title}`, `Provider: ${c.provider}`, `URL: ${c.url}`].map(icsText).join('\\n');
 
     ics.push(
       'BEGIN:VEVENT',
