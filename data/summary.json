@@ -1,20 +1,51 @@
 {
-  "active": 20,
-  "review_needed": 0,
-  "paywalled": 0,
-  "broken_link": 0,
-  "archived": 0,
-  "total": 20,
-  "certificate_included_count": 16,
-  "audit_only_count": 4,
-  "last_updated": "2026-10-24T12:00:00.000000+00:00",
-  "last_successful_run": "2026-10-24T12:00:00.000000+00:00",
-  "signals_breakdown": {
-    "paywall_free_inspected": 20,
-    "certificates_verified": 16,
-    "audit_only_flagged": 4,
-    "academic_institutions": 10,
-    "vendor_academies": 5,
-    "community_open_platforms": 5
-  }
+  "total_courses": 45,
+  "total_modules": 317,
+  "total_duration_hours_estimated": 4373,
+  "access": {
+    "free": 20,
+    "free_paid_certificate": 2,
+    "no_cost_stated": 11,
+    "class_site": 9,
+    "terms_unclear": 2,
+    "not_checked": 1
+  },
+  "categories": {
+    "Computer Science": 15,
+    "Web Development": 9,
+    "Artificial Intelligence": 14,
+    "Mathematics": 1,
+    "Systems & Security": 6
+  },
+  "providers": {
+    "Harvard University": 4,
+    "freeCodeCamp": 5,
+    "Khan Academy": 2,
+    "MIT OpenCourseWare": 6,
+    "MIT CSAIL": 1,
+    "DeepLearning.AI / Stanford": 1,
+    "DeepLearning.AI": 1,
+    "Google Developers": 1,
+    "Fast.ai": 1,
+    "Kaggle": 1,
+    "The Odin Project": 2,
+    "University of Helsinki": 1,
+    "University of Helsinki & Reaktor": 2,
+    "Stanford Engineering Everywhere": 1,
+    "Carnegie Mellon University": 2,
+    "The Linux Foundation": 1,
+    "Cisco Networking Academy": 1,
+    "UC Berkeley": 2,
+    "Stanford University": 4,
+    "Princeton University": 2,
+    "Hebrew University / Coursera": 2,
+    "University of Washington": 1,
+    "University of Oxford": 1
+  },
+  "levels": {
+    "Beginner": 17,
+    "Intermediate": 15,
+    "Advanced": 13
+  },
+  "last_updated": "2026-11-17T15:09:04Z"
 }

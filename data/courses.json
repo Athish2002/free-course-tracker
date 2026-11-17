@@ -56,7 +56,19 @@
         "id": "cs50-w9",
         "title": "Week 9: Flask Web Applications & Capstone Project"
       }
-    ]
+    ],
+    "access": {
+      "kind": "free",
+      "note": "Free through Harvard's OpenCourseWare. A verified or professional certificate is offered separately through edX; this page does not state its price.",
+      "quotes": [
+        {
+          "text": "Even if you are not a student at Harvard, you are welcome to “take” this course for free via this OpenCourseWare by working your way through the course’s eleven weeks of material.",
+          "url": "https://cs50.harvard.edu/x/"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "harvard-cs50p",
@@ -111,7 +123,19 @@
         "id": "cs50p-w8",
         "title": "Week 8: Object-Oriented Programming (Classes & Methods)"
       }
-    ]
+    ],
+    "access": {
+      "kind": "free",
+      "note": "Free through Harvard's OpenCourseWare. Certificates are offered separately through edX; this page does not state their price.",
+      "quotes": [
+        {
+          "text": "Even if you are not a student at Harvard, you are welcome to “take” this course for free via this OpenCourseWare by working your way through the course’s ten weeks of material.",
+          "url": "https://cs50.harvard.edu/python/"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "harvard-cs50w",
@@ -158,7 +182,19 @@
         "id": "cs50w-w6",
         "title": "Week 6: Testing, CI/CD Pipelines & Docker Deployment"
       }
-    ]
+    ],
+    "access": {
+      "kind": "free",
+      "note": "Free through Harvard's OpenCourseWare. Certificates are offered separately through edX; this page does not state their price.",
+      "quotes": [
+        {
+          "text": "Even if you are not a student at Harvard, you are welcome to “take” this course for free via this OpenCourseWare by working your way through the course’s nine weeks of material.",
+          "url": "https://cs50.harvard.edu/web/"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "harvard-cs50ai",
@@ -205,7 +241,19 @@
         "id": "cs50ai-w6",
         "title": "Lecture 6: Natural Language Processing & Transformers"
       }
-    ]
+    ],
+    "access": {
+      "kind": "free",
+      "note": "Free through Harvard's OpenCourseWare. Certificates are offered separately through edX; this page does not state their price.",
+      "quotes": [
+        {
+          "text": "Even if you are not a student at Harvard, you are welcome to “take” this course for free via this OpenCourseWare by working your way through the course’s seven weeks of material.",
+          "url": "https://cs50.harvard.edu/ai/"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "fcc-responsive-web-design",
@@ -252,7 +300,23 @@
         "id": "fcc-rwd-m7",
         "title": "Capstone Certification Project: Personal Portfolio Website"
       }
-    ]
+    ],
+    "access": {
+      "kind": "free",
+      "note": "Free. freeCodeCamp marks this section as no longer updated and recommends its current curriculum instead.",
+      "quotes": [
+        {
+          "text": "Sign in to save your progress (it's free)",
+          "url": "https://www.freecodecamp.org/learn/responsive-web-design"
+        },
+        {
+          "text": "The content in this section is not being updated, but is still available for you to further your learning.",
+          "url": "https://www.freecodecamp.org/learn/responsive-web-design"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "fcc-javascript-algorithms",
@@ -299,7 +363,23 @@
         "id": "fcc-js-m7",
         "title": "Capstone: Cash Register & Caesar Cipher Algorithms"
       }
-    ]
+    ],
+    "access": {
+      "kind": "free",
+      "note": "Free. freeCodeCamp marks this section as no longer updated and recommends its current curriculum instead.",
+      "quotes": [
+        {
+          "text": "Sign in to save your progress (it's free)",
+          "url": "https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8"
+        },
+        {
+          "text": "The content in this section is not being updated, but is still available for you to further your learning.",
+          "url": "https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "fcc-frontend-libraries",
@@ -342,7 +422,23 @@
         "id": "fcc-fe-m6",
         "title": "Certification Projects: Markdown Previewer & Drum Machine"
       }
-    ]
+    ],
+    "access": {
+      "kind": "free",
+      "note": "Free. freeCodeCamp marks this section as no longer updated and recommends its current curriculum instead.",
+      "quotes": [
+        {
+          "text": "Sign in to save your progress (it's free)",
+          "url": "https://www.freecodecamp.org/learn/front-end-development-libraries"
+        },
+        {
+          "text": "The content in this section is not being updated, but is still available for you to further your learning.",
+          "url": "https://www.freecodecamp.org/learn/front-end-development-libraries"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "fcc-backend-apis",
@@ -389,7 +485,23 @@
         "id": "fcc-be-m7",
         "title": "RESTful API Microservice: Exercise Tracker with Query Filtering"
       }
-    ]
+    ],
+    "access": {
+      "kind": "free",
+      "note": "Free. freeCodeCamp marks this section as no longer updated and recommends its current curriculum instead.",
+      "quotes": [
+        {
+          "text": "Sign in to save your progress (it's free)",
+          "url": "https://www.freecodecamp.org/learn/back-end-development-and-apis"
+        },
+        {
+          "text": "The content in this section is not being updated, but is still available for you to further your learning.",
+          "url": "https://www.freecodecamp.org/learn/back-end-development-and-apis"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "fcc-relational-database",
@@ -432,7 +544,23 @@
         "id": "fcc-rdb-m6",
         "title": "Capstone Project: World Cup Database & Query Scripts"
       }
-    ]
+    ],
+    "access": {
+      "kind": "free",
+      "note": "Free. freeCodeCamp marks this section as no longer updated and recommends its current curriculum instead.",
+      "quotes": [
+        {
+          "text": "Sign in to save your progress (it's free)",
+          "url": "https://www.freecodecamp.org/learn/relational-database"
+        },
+        {
+          "text": "The content in this section is not being updated, but is still available for you to further your learning.",
+          "url": "https://www.freecodecamp.org/learn/relational-database"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "khan-intro-js",
@@ -474,7 +602,19 @@
         "id": "khan-m6",
         "title": "Objects, Arrays & Game Prototype Development"
       }
-    ]
+    ],
+    "access": {
+      "kind": "free",
+      "note": "Free. An account is optional and also free.",
+      "quotes": [
+        {
+          "text": "Our mission is to provide a free, world-class education to anyone, anywhere.",
+          "url": "https://www.khanacademy.org/computing/computer-programming/programming"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "khan-html-css",
@@ -516,7 +656,19 @@
         "id": "khan-hc-m6",
         "title": "Building a Complete Themed Webpage Project"
       }
-    ]
+    ],
+    "access": {
+      "kind": "free",
+      "note": "Free. An account is optional and also free.",
+      "quotes": [
+        {
+          "text": "Our mission is to provide a free, world-class education to anyone, anywhere.",
+          "url": "https://www.khanacademy.org/computing/computer-programming/html-css"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "mit-ocw-6-0001",
@@ -566,7 +718,19 @@
         "id": "mit-60001-m8",
         "title": "Algorithmic Complexity & Big-O Notation"
       }
-    ]
+    ],
+    "access": {
+      "kind": "no_cost_stated",
+      "note": "MIT OpenCourseWare materials from a past MIT term, published under a Creative Commons licence. The page does not mention a cost.",
+      "quotes": [
+        {
+          "text": "Creative Commons License",
+          "url": "https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "mit-ocw-6-006",
@@ -616,7 +780,19 @@
         "id": "mit-6006-m8",
         "title": "Dynamic Programming: Memoization, Subproblems & DAGs"
       }
-    ]
+    ],
+    "access": {
+      "kind": "no_cost_stated",
+      "note": "MIT OpenCourseWare materials from a past MIT term, published under a Creative Commons licence. The page does not mention a cost.",
+      "quotes": [
+        {
+          "text": "Creative Commons License",
+          "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "mit-ocw-6-004",
@@ -663,7 +839,19 @@
         "id": "mit-6004-m7",
         "title": "Operating Systems Primitives, Context Switching & Interrupts"
       }
-    ]
+    ],
+    "access": {
+      "kind": "no_cost_stated",
+      "note": "MIT OpenCourseWare materials from a past MIT term, published under a Creative Commons licence. The page does not mention a cost.",
+      "quotes": [
+        {
+          "text": "Creative Commons License",
+          "url": "https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "mit-ocw-18-06",
@@ -709,7 +897,19 @@
         "id": "mit-1806-m7",
         "title": "Singular Value Decomposition (SVD) & Principal Components"
       }
-    ]
+    ],
+    "access": {
+      "kind": "no_cost_stated",
+      "note": "MIT OpenCourseWare materials from a past MIT term, published under a Creative Commons licence. The page does not mention a cost.",
+      "quotes": [
+        {
+          "text": "Creative Commons License",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "mit-missing-semester",
@@ -757,7 +957,19 @@
         "id": "mit-ms-m7",
         "title": "Debugging, Profiling & Metaprogramming"
       }
-    ]
+    ],
+    "access": {
+      "kind": "no_cost_stated",
+      "note": "Public course site with lecture notes and videos on YouTube. The page does not mention a cost.",
+      "quotes": [
+        {
+          "text": "YouTube (2026, 2020, 2019)",
+          "url": "https://missing.csail.mit.edu/"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "coursera-ml-andrew-ng",
@@ -804,7 +1016,23 @@
         "id": "ml-spec-m7",
         "title": "Recommender Systems & Reinforcement Learning"
       }
-    ]
+    ],
+    "access": {
+      "kind": "terms_unclear",
+      "note": "Coursera shows \"Enroll for free\" and \"Financial aid available\" but the page does not say which parts are free and which are paid. Check before enrolling.",
+      "quotes": [
+        {
+          "text": "Enroll for free",
+          "url": "https://www.coursera.org/specializations/machine-learning-introduction"
+        },
+        {
+          "text": "Financial aid available, learn more",
+          "url": "https://www.coursera.org/specializations/machine-learning-introduction"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "coursera-dl-andrew-ng",
@@ -843,7 +1071,23 @@
         "id": "dl-spec-m5",
         "title": "Sequence Models: RNNs, GRUs, LSTMs & Transformer Attention"
       }
-    ]
+    ],
+    "access": {
+      "kind": "terms_unclear",
+      "note": "Coursera shows \"Enroll for free\" and \"Financial aid available\" but the page does not say which parts are free and which are paid. Check before enrolling.",
+      "quotes": [
+        {
+          "text": "Enroll for free",
+          "url": "https://www.coursera.org/specializations/deep-learning"
+        },
+        {
+          "text": "Financial aid available, learn more",
+          "url": "https://www.coursera.org/specializations/deep-learning"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "google-ml-crash-course",
@@ -886,7 +1130,14 @@
         "id": "g-ml-m6",
         "title": "Embeddings, Production ML Systems & Fairness Guidelines"
       }
-    ]
+    ],
+    "access": {
+      "kind": "no_cost_stated",
+      "note": "Public course on Google for Developers. The page does not mention a cost.",
+      "quotes": [],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "fastai-practical-deep-learning",
@@ -933,7 +1184,19 @@
         "id": "fastai-m7",
         "title": "The Training Loop: Learning Rate Finder, AdamW & Mixed Precision"
       }
-    ]
+    ],
+    "access": {
+      "kind": "free",
+      "note": "Free.",
+      "quotes": [
+        {
+          "text": "A free course designed for people with some coding experience, who want to learn how to apply deep learning and machine learning to practical problems.",
+          "url": "https://course.fast.ai/"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "kaggle-intro-ml",
@@ -942,7 +1205,7 @@
     "url": "https://www.kaggle.com/learn/intro-to-machine-learning",
     "category": "Artificial Intelligence",
     "level": "Beginner",
-    "duration_hours": 15,
+    "duration_hours": 3,
     "tags": [
       "Machine Learning",
       "Python",
@@ -976,7 +1239,23 @@
         "id": "kaggle-ml-m6",
         "title": "Random Forests & Kaggle Competition Submission"
       }
-    ]
+    ],
+    "access": {
+      "kind": "free",
+      "note": "Free. Kaggle lists it as about 3 hours.",
+      "quotes": [
+        {
+          "text": "No cost, like all Kaggle Learn Courses",
+          "url": "https://www.kaggle.com/learn/intro-to-machine-learning"
+        },
+        {
+          "text": "3 hours to go",
+          "url": "https://www.kaggle.com/learn/intro-to-machine-learning"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "odin-foundations",
@@ -1023,7 +1302,19 @@
         "id": "odin-f-m7",
         "title": "Capstone Project: Interactive Browser Calculator"
       }
-    ]
+    ],
+    "access": {
+      "kind": "free",
+      "note": "Free (stated on The Odin Project's Full Stack JavaScript page; this page does not mention cost).",
+      "quotes": [
+        {
+          "text": "Start learning for free now!",
+          "url": "https://www.theodinproject.com/paths/full-stack-javascript"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "odin-fullstack-javascript",
@@ -1070,7 +1361,19 @@
         "id": "odin-fs-m7",
         "title": "User Authentication (Passport.js & JWT) & Cloud Deployment"
       }
-    ]
+    ],
+    "access": {
+      "kind": "free",
+      "note": "Free.",
+      "quotes": [
+        {
+          "text": "Start learning for free now!",
+          "url": "https://www.theodinproject.com/paths/full-stack-javascript"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "helsinki-full-stack-open",
@@ -1129,7 +1432,19 @@
         "id": "fso-part9",
         "title": "Part 9: TypeScript Typing for React & Express"
       }
-    ]
+    ],
+    "access": {
+      "kind": "free",
+      "note": "Course material is openly licensed and public. The page does not mention a fee.",
+      "quotes": [
+        {
+          "text": "The course material is licensed under Creative Commons BY-NC-SA 3.0 license, which means that you are free to use and distribute the material, as long as the names of the original authors are not removed.",
+          "url": "https://fullstackopen.com/en/"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "helsinki-elements-of-ai",
@@ -1171,7 +1486,19 @@
         "id": "eai-ch6",
         "title": "Chapter 6: Implications (Algorithmic Bias & The Future of AI)"
       }
-    ]
+    ],
+    "access": {
+      "kind": "free",
+      "note": "Free.",
+      "quotes": [
+        {
+          "text": "An Introduction to AI is a free online course for everyone interested in learning what AI is",
+          "url": "https://www.elementsofai.com/"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "helsinki-building-ai",
@@ -1209,7 +1536,19 @@
         "id": "bai-ch5",
         "title": "Chapter 5: Conclusion & Capstone AI Project Formulation"
       }
-    ]
+    ],
+    "access": {
+      "kind": "free",
+      "note": "Free (stated on the Elements of AI home page).",
+      "quotes": [
+        {
+          "text": "Building AI is a free online course where you",
+          "url": "https://www.elementsofai.com/"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "stanford-see-cs106a",
@@ -1255,7 +1594,14 @@
         "id": "cs106a-m7",
         "title": "Object-Oriented Design & Capstone Breakout Game"
       }
-    ]
+    ],
+    "access": {
+      "kind": "no_cost_stated",
+      "note": "Stanford Engineering Everywhere publishes recorded materials from a past Stanford class. The page does not mention a cost.",
+      "quotes": [],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "cmu-15-213",
@@ -1306,7 +1652,19 @@
         "id": "cmu-213-m8",
         "title": "Concurrent Programming, POSIX Threads & Race Conditions"
       }
-    ]
+    ],
+    "access": {
+      "kind": "class_site",
+      "note": "Website of CMU's current on-campus class (Fall 2026), not a public online course. The page does not say what people outside CMU can use.",
+      "quotes": [
+        {
+          "text": "Fall 2026",
+          "url": "https://www.cs.cmu.edu/~213/"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "linux-foundation-lfs101x",
@@ -1357,7 +1715,23 @@
         "id": "lfs-m8",
         "title": "Process Management, Daemons & Systemd Services"
       }
-    ]
+    ],
+    "access": {
+      "kind": "free",
+      "note": "edX offers free registration and an audit option. A certificate is offered separately; the page does not state its price.",
+      "quotes": [
+        {
+          "text": "Register for free",
+          "url": "https://www.edx.org/learn/linux/the-linux-foundation-introduction-to-linux"
+        },
+        {
+          "text": "Audit course",
+          "url": "https://www.edx.org/learn/linux/the-linux-foundation-introduction-to-linux"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   },
   {
     "id": "cisco-intro-cybersecurity",
@@ -1396,6 +1770,909 @@
         "id": "cisco-cs-m5",
         "title": "Cybersecurity Ethics, Legal Frameworks & Career Paths"
       }
-    ]
+    ],
+    "access": {
+      "kind": "free",
+      "note": "Free (the page title says \"Free Online Course\").",
+      "quotes": [
+        {
+          "text": "Introduction to Cybersecurity by Cisco: Free Online Course",
+          "url": "https://www.netacad.com/courses/introduction-to-cybersecurity"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
+  },
+  {
+    "id": "berkeley-cs61a",
+    "title": "CS 61A: Structure and Interpretation of Computer Programs",
+    "provider": "UC Berkeley",
+    "url": "https://cs61a.org/",
+    "category": "Computer Science",
+    "level": "Beginner",
+    "duration_hours": 120,
+    "tags": [
+      "Computer Science",
+      "Python",
+      "Functional Programming",
+      "Scheme",
+      "SQL"
+    ],
+    "description": "UC Berkeley's flagship computer science course introducing abstraction, higher-order functions, recursion, object-oriented programming, interpreters, and declarative languages.",
+    "modules": [
+      {
+        "id": "cs61a-m1",
+        "title": "Functions, Control Flow & Higher-Order Functions"
+      },
+      {
+        "id": "cs61a-m2",
+        "title": "Recursion, Tree Recursion & Mutual Recursion"
+      },
+      {
+        "id": "cs61a-m3",
+        "title": "Data Abstraction, Sequences & Mutability"
+      },
+      {
+        "id": "cs61a-m4",
+        "title": "Object-Oriented Programming & Inheritance"
+      },
+      {
+        "id": "cs61a-m5",
+        "title": "Iterators, Generators & Stream Processing"
+      },
+      {
+        "id": "cs61a-m6",
+        "title": "Scheme Syntax, Lists & Symbolic Programming"
+      },
+      {
+        "id": "cs61a-m7",
+        "title": "Interpreters: Evaluator & Apply in Scheme"
+      },
+      {
+        "id": "cs61a-m8",
+        "title": "Declarative Programming & SQL"
+      }
+    ],
+    "access": {
+      "kind": "class_site",
+      "note": "Website of UC Berkeley's current on-campus class (Fall 2026), not a public online course. The page does not say what people outside Berkeley can use.",
+      "quotes": [],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
+  },
+  {
+    "id": "berkeley-cs61c",
+    "title": "CS 61C: Great Ideas in Computer Architecture (Machine Structures)",
+    "provider": "UC Berkeley",
+    "url": "https://cs61c.org/",
+    "category": "Systems & Security",
+    "level": "Advanced",
+    "duration_hours": 130,
+    "tags": [
+      "Systems & Security",
+      "C",
+      "RISC-V",
+      "Assembly",
+      "Pipelining",
+      "Parallelism"
+    ],
+    "description": "Covers how software maps onto physical hardware, including C memory management, RISC-V assembly, CPU pipelining, caching hierarchies, virtual memory, and SIMD/multithreading.",
+    "modules": [
+      {
+        "id": "cs61c-m1",
+        "title": "C Language, Pointers, Structs & Memory Allocation"
+      },
+      {
+        "id": "cs61c-m2",
+        "title": "RISC-V Instruction Set Architecture & Calling Conventions"
+      },
+      {
+        "id": "cs61c-m3",
+        "title": "Digital Logic, Combinational Circuits & ALU Design"
+      },
+      {
+        "id": "cs61c-m4",
+        "title": "Single-Cycle & Pipelined Datapath Engineering"
+      },
+      {
+        "id": "cs61c-m5",
+        "title": "Pipelining Hazards: Structural, Data & Control"
+      },
+      {
+        "id": "cs61c-m6",
+        "title": "Memory Hierarchies, Caching Strategies & Performance"
+      },
+      {
+        "id": "cs61c-m7",
+        "title": "Virtual Memory, Page Tables & TLB Translation"
+      },
+      {
+        "id": "cs61c-m8",
+        "title": "Data-Level Parallelism (SIMD) & Thread-Level Parallelism (OpenMP)"
+      }
+    ],
+    "access": {
+      "kind": "class_site",
+      "note": "Website of UC Berkeley's current on-campus class (Fall 2026). Lecture recordings go to Berkeley's own system; the page links older videos from Spring 2024.",
+      "quotes": [
+        {
+          "text": "Recordings will be published to bCourses Media Gallery",
+          "url": "https://cs61c.org/"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
+  },
+  {
+    "id": "stanford-cs229",
+    "title": "CS 229: Machine Learning",
+    "provider": "Stanford University",
+    "url": "https://cs229.stanford.edu/",
+    "category": "Artificial Intelligence",
+    "level": "Advanced",
+    "duration_hours": 100,
+    "tags": [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Mathematics",
+      "Optimization",
+      "Probability"
+    ],
+    "description": "Stanford's rigorous foundational graduate machine learning syllabus covering supervised learning (GLMs, SVMs), unsupervised learning (EM, PCA, k-means), deep learning, and reinforcement learning.",
+    "modules": [
+      {
+        "id": "cs229-m1",
+        "title": "Linear Regression, Normal Equations & Batch/Stochastic Gradient Descent"
+      },
+      {
+        "id": "cs229-m2",
+        "title": "Generalized Linear Models (GLMs) & Logistic Regression"
+      },
+      {
+        "id": "cs229-m3",
+        "title": "Support Vector Machines, Functional Margins & Kernel Tricks"
+      },
+      {
+        "id": "cs229-m4",
+        "title": "Statistical Learning Theory: VC Dimension, Bias/Variance Tradeoff"
+      },
+      {
+        "id": "cs229-m5",
+        "title": "Gaussian Mixture Models & Expectation-Maximization (EM) Algorithm"
+      },
+      {
+        "id": "cs229-m6",
+        "title": "Principal Component Analysis (PCA) & Independent Component Analysis"
+      },
+      {
+        "id": "cs229-m7",
+        "title": "Reinforcement Learning: MDPs, Value Iteration & Policy Iteration"
+      }
+    ],
+    "access": {
+      "kind": "class_site",
+      "note": "Website of Stanford's on-campus class, not a public online course. The page does not say what people outside Stanford can use.",
+      "quotes": [],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
+  },
+  {
+    "id": "stanford-cs224n",
+    "title": "CS 224N: Natural Language Processing with Deep Learning",
+    "provider": "Stanford University",
+    "url": "https://web.stanford.edu/class/cs224n/",
+    "category": "Artificial Intelligence",
+    "level": "Advanced",
+    "duration_hours": 95,
+    "tags": [
+      "Artificial Intelligence",
+      "NLP",
+      "Transformers",
+      "LLMs",
+      "PyTorch"
+    ],
+    "description": "Comprehensive course on state-of-the-art NLP with neural networks, word vectors, attention mechanisms, Transformer architectures, pretraining, fine-tuning, and Large Language Models.",
+    "modules": [
+      {
+        "id": "cs224n-m1",
+        "title": "Word Embeddings: word2vec, GloVe & Distributional Semantics"
+      },
+      {
+        "id": "cs224n-m2",
+        "title": "Recurrent Neural Networks (RNNs) & GRUs/LSTMs"
+      },
+      {
+        "id": "cs224n-m3",
+        "title": "Sequence-to-Sequence Models & Attention Mechanism"
+      },
+      {
+        "id": "cs224n-m4",
+        "title": "The Transformer Architecture: Self-Attention & Positional Encoding"
+      },
+      {
+        "id": "cs224n-m5",
+        "title": "Pretrained Language Models: BERT, RoBERTa & Masked LM"
+      },
+      {
+        "id": "cs224n-m6",
+        "title": "Autoregressive LLMs: GPT-style Models, Prompting & In-Context Learning"
+      },
+      {
+        "id": "cs224n-m7",
+        "title": "Parameter-Efficient Fine-Tuning (LoRA, QLoRA) & Alignment (RLHF)"
+      }
+    ],
+    "access": {
+      "kind": "class_site",
+      "note": "Website of Stanford's on-campus class. Current lecture videos are for enrolled students only; the page points to a free 2024 YouTube playlist instead.",
+      "quotes": [
+        {
+          "text": "Unfortunately, it is not possible to make these videos viewable by non-enrolled students.",
+          "url": "https://web.stanford.edu/class/cs224n/"
+        },
+        {
+          "text": "Complete videos for the CS224N course are available (free!) on the CS224N 2024 YouTube playlist.",
+          "url": "https://web.stanford.edu/class/cs224n/"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
+  },
+  {
+    "id": "stanford-cs231n",
+    "title": "CS 231N: Deep Learning for Computer Vision",
+    "provider": "Stanford University",
+    "url": "http://cs231n.stanford.edu/",
+    "category": "Artificial Intelligence",
+    "level": "Advanced",
+    "duration_hours": 90,
+    "tags": [
+      "Artificial Intelligence",
+      "Computer Vision",
+      "Convolutional Networks",
+      "Vision Transformers"
+    ],
+    "description": "Deep dive into visual recognition with deep neural networks, from image classification with CNNs to object detection, semantic segmentation, Vision Transformers, and generative models.",
+    "modules": [
+      {
+        "id": "cs231n-m1",
+        "title": "Image Classification, k-NN & Linear Classifiers (SVM / Softmax)"
+      },
+      {
+        "id": "cs231n-m2",
+        "title": "Backpropagation, Computational Graphs & Neural Networks"
+      },
+      {
+        "id": "cs231n-m3",
+        "title": "Convolutional Neural Networks: Convolution, Pooling, Strides"
+      },
+      {
+        "id": "cs231n-m4",
+        "title": "CNN Architectures: AlexNet, VGG, ResNet & DenseNet"
+      },
+      {
+        "id": "cs231n-m5",
+        "title": "Optimization, Regularization, Batch Normalization & Dropout"
+      },
+      {
+        "id": "cs231n-m6",
+        "title": "Object Detection (R-CNN, YOLO) & Semantic Segmentation (FCN, U-Net)"
+      },
+      {
+        "id": "cs231n-m7",
+        "title": "Vision Transformers (ViT) & Diffusion Models for Image Generation"
+      }
+    ],
+    "access": {
+      "kind": "class_site",
+      "note": "Website of Stanford's on-campus class. Lecture videos are for enrolled Stanford students.",
+      "quotes": [
+        {
+          "text": "Lecture Videos: Will be posted on Canvas 'Panopto Course Videos' tab shortly after each lecture, accessible to enrolled Stanford students.",
+          "url": "http://cs231n.stanford.edu/"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
+  },
+  {
+    "id": "stanford-cs110",
+    "title": "CS 110: Principles of Computer Systems",
+    "provider": "Stanford University",
+    "url": "https://web.stanford.edu/class/cs110/",
+    "category": "Systems & Security",
+    "level": "Advanced",
+    "duration_hours": 105,
+    "tags": [
+      "Systems & Security",
+      "C++",
+      "Concurrency",
+      "Multithreading",
+      "Networking",
+      "Distributed Systems"
+    ],
+    "description": "Rigorous systems engineering covering multiprocess programming, interprocess communication (pipes, signals), POSIX threads, synchronization primitives (mutexes, semaphores), and networked servers.",
+    "modules": [
+      {
+        "id": "cs110-m1",
+        "title": "File Systems, UNIX I/O, File Descriptors & System Calls"
+      },
+      {
+        "id": "cs110-m2",
+        "title": "Multiprocessing: fork, waitpid, execvp & Process Tree Lifecycle"
+      },
+      {
+        "id": "cs110-m3",
+        "title": "Interprocess Communication (IPC): Anonymous & Named Pipes"
+      },
+      {
+        "id": "cs110-m4",
+        "title": "UNIX Signals, Signal Handlers & Race Condition Mitigation"
+      },
+      {
+        "id": "cs110-m5",
+        "title": "Multithreading with POSIX Threads: Worker Pools & Thread Lifecycle"
+      },
+      {
+        "id": "cs110-m6",
+        "title": "Concurrency Control: Mutexes, Condition Variables & Deadlock Avoidance"
+      },
+      {
+        "id": "cs110-m7",
+        "title": "Network Programming: Sockets, Client/Server Architecture & HTTP"
+      }
+    ],
+    "access": {
+      "kind": "class_site",
+      "note": "Website of Stanford's Winter 2022 class, not a public online course and no longer current.",
+      "quotes": [
+        {
+          "text": "CS110: Principles of Computer Systems, Winter 2022",
+          "url": "https://web.stanford.edu/class/cs110/"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
+  },
+  {
+    "id": "princeton-algs4-part1",
+    "title": "Algorithms, Part I: Data Structures & Sorting",
+    "provider": "Princeton University",
+    "url": "https://algs4.cs.princeton.edu/home/",
+    "category": "Computer Science",
+    "level": "Intermediate",
+    "duration_hours": 65,
+    "tags": [
+      "Computer Science",
+      "Algorithms",
+      "Data Structures",
+      "Java",
+      "Sorting"
+    ],
+    "description": "Essential algorithmic foundations taught by Kevin Wayne and Robert Sedgewick covering union-find, stacks, queues, mergesort, quicksort, priority queues, and balanced search trees.",
+    "modules": [
+      {
+        "id": "algs1-m1",
+        "title": "Course Introduction, Dynamic Connectivity & Union-Find"
+      },
+      {
+        "id": "algs1-m2",
+        "title": "Analysis of Algorithms: Mathematical Models & Order-of-Growth"
+      },
+      {
+        "id": "algs1-m3",
+        "title": "Stacks, Queues, Resizing Arrays & Generics"
+      },
+      {
+        "id": "algs1-m4",
+        "title": "Elementary Sorts & Mergesort (Bottom-Up & Stability)"
+      },
+      {
+        "id": "algs1-m5",
+        "title": "Quicksort, 3-Way Partitioning & Selection"
+      },
+      {
+        "id": "algs1-m6",
+        "title": "Priority Queues & Binary Heaps (Heapsort)"
+      },
+      {
+        "id": "algs1-m7",
+        "title": "Binary Search Trees & 2-3 Search Trees (Red-Black BSTs)"
+      },
+      {
+        "id": "algs1-m8",
+        "title": "Geometric Applications of BSTs & Hash Tables"
+      }
+    ],
+    "access": {
+      "kind": "no_cost_stated",
+      "note": "Links to the textbook's website, which links to lecture videos and the Coursera course. The page does not mention a cost.",
+      "quotes": [
+        {
+          "text": "Lectures. Curated studio-produced online videos, suitable for remote instruction via CUbits.",
+          "url": "https://algs4.cs.princeton.edu/home/"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
+  },
+  {
+    "id": "princeton-algs4-part2",
+    "title": "Algorithms, Part II: Graph Algorithms & String Processing",
+    "provider": "Princeton University",
+    "url": "https://algs4.cs.princeton.edu/home/",
+    "category": "Computer Science",
+    "level": "Advanced",
+    "duration_hours": 70,
+    "tags": [
+      "Computer Science",
+      "Algorithms",
+      "Graphs",
+      "String Processing",
+      "Data Compression"
+    ],
+    "description": "Advanced algorithms course covering undirected and directed graphs, minimum spanning trees, shortest paths, max-flow/min-cut, string sorts, tries, substring search (KMP), and data compression.",
+    "modules": [
+      {
+        "id": "algs2-m1",
+        "title": "Undirected Graphs: Depth-First Search & Breadth-First Search"
+      },
+      {
+        "id": "algs2-m2",
+        "title": "Directed Graphs: Topological Sort, DAGs & Strong Components"
+      },
+      {
+        "id": "algs2-m3",
+        "title": "Minimum Spanning Trees: Kruskal & Prim Algorithms"
+      },
+      {
+        "id": "algs2-m4",
+        "title": "Shortest Paths: Dijkstra, Acyclic Edge-Weighted & Bellman-Ford"
+      },
+      {
+        "id": "algs2-m5",
+        "title": "Maximum Flow & Minimum Cut (Ford-Fulkerson Algorithm)"
+      },
+      {
+        "id": "algs2-m6",
+        "title": "String Sorts: Key-Indexed Counting, LSD & MSD Radix Sorts"
+      },
+      {
+        "id": "algs2-m7",
+        "title": "Tries, Ternary Search Tries & Substring Search (KMP, Boyer-Moore)"
+      },
+      {
+        "id": "algs2-m8",
+        "title": "Regular Expressions, Data Compression (Huffman, LZW) & Reductions"
+      }
+    ],
+    "access": {
+      "kind": "no_cost_stated",
+      "note": "Links to the textbook's website, which links to lecture videos and the Coursera course. The page does not mention a cost.",
+      "quotes": [
+        {
+          "text": "Lectures. Curated studio-produced online videos, suitable for remote instruction via CUbits.",
+          "url": "https://algs4.cs.princeton.edu/home/"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
+  },
+  {
+    "id": "cmu-15-445",
+    "title": "15-445/645: Database Systems",
+    "provider": "Carnegie Mellon University",
+    "url": "https://15445.courses.cs.cmu.edu/",
+    "category": "Computer Science",
+    "level": "Advanced",
+    "duration_hours": 115,
+    "tags": [
+      "Computer Science",
+      "Databases",
+      "C++",
+      "Storage Engines",
+      "Concurrency Control",
+      "SQL"
+    ],
+    "description": "CMU's world-renowned relational database internals course taught by Andy Pavlo covering storage management, buffer pools, B+ trees, query execution, concurrency control, and logging/recovery in modern C++.",
+    "modules": [
+      {
+        "id": "cmu445-m1",
+        "title": "Relational Data Model, Relational Algebra & Modern SQL"
+      },
+      {
+        "id": "cmu445-m2",
+        "title": "Database Storage Architecture, Pages & Slotted-Page Layout"
+      },
+      {
+        "id": "cmu445-m3",
+        "title": "Buffer Pools: Replacement Policies (LRU, Clock, 2Q) & Disk I/O"
+      },
+      {
+        "id": "cmu445-m4",
+        "title": "Index Structures: Hash Tables & High-Performance B+ Trees"
+      },
+      {
+        "id": "cmu445-m5",
+        "title": "Query Execution Models: Volcano Iterator vs Vectorized Engine"
+      },
+      {
+        "id": "cmu445-m6",
+        "title": "Join Algorithms: Nested Loop, Hash Join & Sort-Merge Join"
+      },
+      {
+        "id": "cmu445-m7",
+        "title": "Concurrency Control: Two-Phase Locking (2PL), Deadlocks & Isolation Levels"
+      },
+      {
+        "id": "cmu445-m8",
+        "title": "Multi-Version Concurrency Control (MVCC) & Timestamp Ordering"
+      },
+      {
+        "id": "cmu445-m9",
+        "title": "Write-Ahead Logging (WAL) & ARIES Crash Recovery Algorithm"
+      }
+    ],
+    "access": {
+      "kind": "class_site",
+      "note": "Website of CMU's current on-campus class (Fall 2026), not a public online course. The page does not say what people outside CMU can use.",
+      "quotes": [],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
+  },
+  {
+    "id": "mit-ocw-6-036",
+    "title": "6.036: Introduction to Machine Learning",
+    "provider": "MIT OpenCourseWare",
+    "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/about",
+    "category": "Artificial Intelligence",
+    "level": "Intermediate",
+    "duration_hours": 85,
+    "tags": [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Python",
+      "Neural Networks",
+      "Optimization"
+    ],
+    "description": "MIT's core introduction to machine learning covering the perceptron, gradient descent, neural network architectures, autoencoders, convolutional nets, recurrent models, and reinforcement learning.",
+    "modules": [
+      {
+        "id": "mit036-m1",
+        "title": "Supervised Learning Foundations & The Perceptron Algorithm"
+      },
+      {
+        "id": "mit036-m2",
+        "title": "Regression, Mean Squared Error & Gradient Descent Optimization"
+      },
+      {
+        "id": "mit036-m3",
+        "title": "Logistic Regression, Cross-Entropy Loss & Margin Classifiers"
+      },
+      {
+        "id": "mit036-m4",
+        "title": "Feedforward Neural Networks & Backpropagation Derivations"
+      },
+      {
+        "id": "mit036-m5",
+        "title": "Convolutional Neural Architectures & Spatial Invariance"
+      },
+      {
+        "id": "mit036-m6",
+        "title": "Recurrent Neural Networks for Temporal Sequences & Language"
+      },
+      {
+        "id": "mit036-m7",
+        "title": "Unsupervised Learning: k-Means Clustering & Autoencoders"
+      },
+      {
+        "id": "mit036-m8",
+        "title": "Markov Decision Processes & Q-Learning in Reinforcement Learning"
+      }
+    ],
+    "access": {
+      "kind": "no_cost_stated",
+      "note": "MIT Open Learning Library course; enrolment is required and no certificate is offered. The page does not mention a cost.",
+      "quotes": [
+        {
+          "text": "Certificates cannot be earned on Open Learning Library",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/about"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
+  },
+  {
+    "id": "mit-6-s191",
+    "title": "6.S191: Introduction to Deep Learning",
+    "provider": "MIT OpenCourseWare",
+    "url": "http://introtodeeplearning.com/",
+    "category": "Artificial Intelligence",
+    "level": "Beginner",
+    "duration_hours": 45,
+    "tags": [
+      "Artificial Intelligence",
+      "Deep Learning",
+      "TensorFlow",
+      "Generative AI",
+      "Computer Vision"
+    ],
+    "description": "MIT's fast-paced, highly visual introduction to deep learning algorithms and their applications in computer vision, natural language processing, generative models, and reinforcement learning.",
+    "modules": [
+      {
+        "id": "s191-m1",
+        "title": "Foundations of Deep Learning: Perceptrons & Backpropagation"
+      },
+      {
+        "id": "s191-m2",
+        "title": "Recurrent Neural Networks, Transformers & Attention"
+      },
+      {
+        "id": "s191-m3",
+        "title": "Convolutional Neural Networks for Visual Perception"
+      },
+      {
+        "id": "s191-m4",
+        "title": "Deep Generative Modeling: VAEs, GANs & Diffusion Models"
+      },
+      {
+        "id": "s191-m5",
+        "title": "Deep Reinforcement Learning: Policy Gradients & Deep Q-Networks"
+      },
+      {
+        "id": "s191-m6",
+        "title": "AI Ethics, Bias, Robustness & Generalization Invariants"
+      }
+    ],
+    "access": {
+      "kind": "no_cost_stated",
+      "note": "Lectures, slides and labs are published online each week. The page does not mention a cost.",
+      "quotes": [
+        {
+          "text": "New lectures, slides, and labs will be open-sourced every week starting March 30 at 10AM ET!",
+          "url": "http://introtodeeplearning.com/"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
+  },
+  {
+    "id": "nand2tetris-hardware",
+    "title": "Nand to Tetris: Building a Modern Computer (Part I - Hardware)",
+    "provider": "Hebrew University / Coursera",
+    "url": "https://www.nand2tetris.org/",
+    "category": "Systems & Security",
+    "level": "Beginner",
+    "duration_hours": 50,
+    "tags": [
+      "Systems & Security",
+      "Digital Logic",
+      "Computer Architecture",
+      "Hardware",
+      "HDL"
+    ],
+    "description": "Construct a complete, general-purpose computer system from elementary NAND logic gates up to an Arithmetic Logic Unit, memory chips, CPU, and machine-language assembler.",
+    "modules": [
+      {
+        "id": "n2t1-m1",
+        "title": "Boolean Logic: Building Elementary Logic Gates from NAND"
+      },
+      {
+        "id": "n2t1-m2",
+        "title": "Boolean Arithmetic: Half-Adder, Full-Adder & 16-bit ALU"
+      },
+      {
+        "id": "n2t1-m3",
+        "title": "Sequential Logic: D-Flip-Flops, Registers & RAM Hierarchies"
+      },
+      {
+        "id": "n2t1-m4",
+        "title": "Machine Language: Hack Instruction Set Architecture & Assembly"
+      },
+      {
+        "id": "n2t1-m5",
+        "title": "Computer Architecture: Connecting CPU, Instruction Memory & Data RAM"
+      },
+      {
+        "id": "n2t1-m6",
+        "title": "Assembler: Translating Symbolic Assembly to 16-bit Machine Code"
+      }
+    ],
+    "access": {
+      "kind": "free_paid_certificate",
+      "note": "Free on nand2tetris.org. The Coursera version requires payment and gives a completion certificate.",
+      "quotes": [
+        {
+          "text": "Everything is free and open-source, as long as you operate in a non-profit setting.",
+          "url": "https://www.nand2tetris.org/"
+        },
+        {
+          "text": "The Coursera courses require payment, and provide an official course completion certificate.",
+          "url": "https://www.nand2tetris.org/"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
+  },
+  {
+    "id": "nand2tetris-software",
+    "title": "Nand to Tetris: Building a Modern Computer (Part II - Software)",
+    "provider": "Hebrew University / Coursera",
+    "url": "https://www.nand2tetris.org/",
+    "category": "Systems & Security",
+    "level": "Intermediate",
+    "duration_hours": 55,
+    "tags": [
+      "Systems & Security",
+      "Compilers",
+      "Virtual Machines",
+      "Operating Systems",
+      "Java"
+    ],
+    "description": "Build the complete software hierarchy for the Hack computer: write a virtual machine, a compiler for an object-based high-level language (Jack), and a basic operating system.",
+    "modules": [
+      {
+        "id": "n2t2-m1",
+        "title": "Virtual Machine I: Stack Arithmetic & Memory Segment Access"
+      },
+      {
+        "id": "n2t2-m2",
+        "title": "Virtual Machine II: Program Flow & Function Calling Conventions"
+      },
+      {
+        "id": "n2t2-m3",
+        "title": "High-Level Language: Jack Syntax, Classes, Methods & Constructors"
+      },
+      {
+        "id": "n2t2-m4",
+        "title": "Compiler I: Lexical Analysis, Tokenizing & Recursive Descent Parsing"
+      },
+      {
+        "id": "n2t2-m5",
+        "title": "Compiler II: Symbol Tables & Code Generation to VM Instructions"
+      },
+      {
+        "id": "n2t2-m6",
+        "title": "Operating System: Math, String, Array, Output, Screen & Memory Allocation"
+      }
+    ],
+    "access": {
+      "kind": "free_paid_certificate",
+      "note": "Free on nand2tetris.org. The Coursera version requires payment and gives a completion certificate.",
+      "quotes": [
+        {
+          "text": "Everything is free and open-source, as long as you operate in a non-profit setting.",
+          "url": "https://www.nand2tetris.org/"
+        },
+        {
+          "text": "The Coursera courses require payment, and provide an official course completion certificate.",
+          "url": "https://www.nand2tetris.org/"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
+  },
+  {
+    "id": "washington-cse373",
+    "title": "CSE 373: Data Structures and Algorithms",
+    "provider": "University of Washington",
+    "url": "https://courses.cs.washington.edu/courses/cse373/",
+    "category": "Computer Science",
+    "level": "Intermediate",
+    "duration_hours": 80,
+    "tags": [
+      "Computer Science",
+      "Data Structures",
+      "Algorithms",
+      "Java",
+      "Asymptotic Analysis"
+    ],
+    "description": "Rigorous treatment of fundamental data structures, abstract data types, asymptotic analysis, search trees, priority queues, sorting algorithms, hashing, and graph theory.",
+    "modules": [
+      {
+        "id": "cse373-m1",
+        "title": "Abstract Data Types, Generics & Iterators in Java"
+      },
+      {
+        "id": "cse373-m2",
+        "title": "Asymptotic Analysis & Formal Mathematical Invariants"
+      },
+      {
+        "id": "cse373-m3",
+        "title": "Binary Search Trees & AVL Balanced Search Trees"
+      },
+      {
+        "id": "cse373-m4",
+        "title": "Priority Queues, Binary Heaps & Up/Down Percolate"
+      },
+      {
+        "id": "cse373-m5",
+        "title": "Hash Tables: Separate Chaining & Open Addressing Probing"
+      },
+      {
+        "id": "cse373-m6",
+        "title": "Comparison Sorting Lower Bounds & Non-Comparison Sorts"
+      },
+      {
+        "id": "cse373-m7",
+        "title": "Graph Representations, Traversals & Shortest Path Algorithms"
+      }
+    ],
+    "access": {
+      "kind": "not_checked",
+      "note": "Not checked: the page did not load from here on 2026-11-17 (connection timed out twice).",
+      "quotes": [],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
+  },
+  {
+    "id": "oxford-deep-nlp",
+    "title": "Deep Learning for Natural Language Processing",
+    "provider": "University of Oxford",
+    "url": "https://github.com/oxford-cs-deepnlp-2017/lectures",
+    "category": "Artificial Intelligence",
+    "level": "Advanced",
+    "duration_hours": 60,
+    "tags": [
+      "Artificial Intelligence",
+      "NLP",
+      "Deep Learning",
+      "Neural Networks",
+      "Linguistics"
+    ],
+    "description": "Oxford and DeepMind lecture series on modern deep learning applied to natural language processing, word representations, language modeling, translation, and question answering.",
+    "modules": [
+      {
+        "id": "oxnlp-m1",
+        "title": "Introduction to NLP & Continuous Word Representations"
+      },
+      {
+        "id": "oxnlp-m2",
+        "title": "Language Modeling & Recurrent Neural Architectures"
+      },
+      {
+        "id": "oxnlp-m3",
+        "title": "Gated Units: Long Short-Term Memory (LSTM) & GRUs"
+      },
+      {
+        "id": "oxnlp-m4",
+        "title": "Conditioned Generation & Neural Machine Translation"
+      },
+      {
+        "id": "oxnlp-m5",
+        "title": "Attention Mechanisms for Translation & Summarization"
+      },
+      {
+        "id": "oxnlp-m6",
+        "title": "Question Answering, Reading Comprehension & Memory Networks"
+      }
+    ],
+    "access": {
+      "kind": "class_site",
+      "note": "GitHub repository of slides and video links from Oxford's 2017 class. Not an active course.",
+      "quotes": [
+        {
+          "text": "This repository contains the lecture slides and course description for the Deep Natural Language Processing course offered in Hilary Term 2017 at the University of Oxford.",
+          "url": "https://github.com/oxford-cs-deepnlp-2017/lectures"
+        }
+      ],
+      "checked_on": "2026-11-17",
+      "checked_by": "agent:Claude Opus 5.5 (page read by an AI agent, not re-read by a person)"
+    }
   }
 ]

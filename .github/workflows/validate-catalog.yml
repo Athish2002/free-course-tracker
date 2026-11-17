@@ -42,9 +42,10 @@ jobs:
 
           valid_levels = {'Beginner', 'Intermediate', 'Advanced'}
           seen_ids = set()
+          valid_kinds = {'free', 'free_paid_certificate', 'no_cost_stated', 'class_site', 'terms_unclear', 'not_checked'}
 
           for idx, c in enumerate(data):
-              for req in ['id', 'title', 'provider', 'url', 'category', 'level', 'duration_hours', 'tags', 'description', 'modules']:
+              for req in ['id', 'title', 'provider', 'url', 'category', 'level', 'duration_hours', 'tags', 'description', 'modules', 'access']:
                   if req not in c:
                       print(f'::error::Course at index {idx} is missing required field: {req}')
                       sys.exit(1)
@@ -86,5 +87,19 @@ jobs:
                       sys.exit(1)
                   mod_ids.add(m['id'])
 
-          print(f'Validation SUCCESS: All {len(data)} courses satisfy CoursePulse schema invariants!')
+              # A course may be labelled free only with the provider's own sentence quoted.
+              acc = c['access'] if isinstance(c['access'], dict) else {}
+              if acc.get('kind') not in valid_kinds:
+                  print(f'::error::Course {cid} access.kind must be one of {sorted(valid_kinds)}.')
+                  sys.exit(1)
+              for f in ['note', 'checked_on', 'checked_by']:
+                  if not acc.get(f):
+                      print(f'::error::Course {cid} access.{f} is empty.')
+                      sys.exit(1)
+              quotes = acc.get('quotes') or []
+              if acc['kind'] in ('free', 'free_paid_certificate') and not any(q.get('text') and q.get('url') for q in quotes):
+                  print(f'::error::Course {cid} is labelled {acc[\"kind\"]} but quotes no sentence from the course page.')
+                  sys.exit(1)
+
+          print(f'Validation passed: {len(data)} courses have the required fields. This checks structure only, not whether the quotes are on the pages.')
           "

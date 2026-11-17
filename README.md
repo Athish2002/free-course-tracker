@@ -1,195 +1,138 @@
-# CoursePulse ⚡
+# CoursePulse
 
-> **Autonomous, paywall-free open course directory & learning progress tracker.**  
-> Built as a zero-build static site for GitHub Pages. No framework, no npm, no bundler, no backend.
+A hand-picked list of 45 open computer science, web and AI courses, with a progress tracker that runs in your browser. No account; your progress stays in your browser's local storage.
 
-[![Live App](https://img.shields.io/badge/Live%20App-CoursePulse%20on%20GitHub%20Pages-2563eb?style=for-the-badge&logo=github)](https://athish2002.github.io/free-course-tracker/)
-[![Courses](https://img.shields.io/badge/Curated%20Courses-30%20Verified%20Free-10b981?style=for-the-badge)](https://athish2002.github.io/free-course-tracker/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+Live site: https://athish2002.github.io/free-course-tracker/
 
----
+## What "free" means here
+
+Each course carries an access note taken from its own page, with the sentence quoted and the date it was read (`access` in `data/courses.json`). A course is labelled **Free** only when a sentence on the provider's page says so. The notes were read by an AI agent on 2026-11-17 and have not yet been re-read by a person. Terms change: check the course page before you rely on one.
+
+| Access label | Courses |
+| :--- | :---: |
+| Free (page says so) | 20 |
+| Free; certificate costs | 2 |
+| Public; no cost stated | 11 |
+| University class site | 9 |
+| Check cost terms | 2 |
+| Not checked | 1 |
+
+- **University class site**: a university's website for its own enrolled students. Some materials are public, but it is not run as a public course, and some pages say videos are for enrolled students only.
+- **Check cost terms**: the page offers free enrolment but does not say which parts are free and which are paid.
+
+What is *not* checked:
+
+- **Module checklists** were written for this site. They are not copied from the courses and may not match a course's own structure. A spot check of 8 courses on 2026-11-17 found close matches for CS50x, CS50AI and Kaggle, and wrong or incomplete lists for fast.ai and Full Stack Open.
+- **Hours** are rough estimates written for this site, except where the access note quotes the provider's own figure.
+- **Links** are checked weekly by `scripts/check-catalog-health.py`. That check says whether a page answered and stayed on the same site. It does not check cost or content.
+
+## Courses
+
+### Computer Science (15)
+
+| Course | Provider | Level | Rough hours | Access (from the course page) |
+| :--- | :--- | :---: | :---: | :--- |
+| [CS50x: Introduction to Computer Science](https://cs50.harvard.edu/x/) | Harvard University | Beginner | ~120 | **Free (page says so).** Free through Harvard's OpenCourseWare. A verified or professional certificate is offered separately through edX; this page does not state its price. |
+| [CS50P: Introduction to Programming with Python](https://cs50.harvard.edu/python/) | Harvard University | Beginner | ~80 | **Free (page says so).** Free through Harvard's OpenCourseWare. Certificates are offered separately through edX; this page does not state their price. |
+| [JavaScript Algorithms and Data Structures](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8) | freeCodeCamp | Beginner | ~300 | **Free (page says so).** Free. freeCodeCamp marks this section as no longer updated and recommends its current curriculum instead. |
+| [Relational Databases Certification](https://www.freecodecamp.org/learn/relational-database) | freeCodeCamp | Intermediate | ~200 | **Free (page says so).** Free. freeCodeCamp marks this section as no longer updated and recommends its current curriculum instead. |
+| [6.0001: Intro to CS & Programming in Python](https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/) | MIT OpenCourseWare | Beginner | ~75 | **Public; no cost stated.** MIT OpenCourseWare materials from a past MIT term, published under a Creative Commons licence. The page does not mention a cost. |
+| [6.006: Introduction to Algorithms](https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/) | MIT OpenCourseWare | Advanced | ~110 | **Public; no cost stated.** MIT OpenCourseWare materials from a past MIT term, published under a Creative Commons licence. The page does not mention a cost. |
+| [6.004: Computation Structures](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/) | MIT OpenCourseWare | Advanced | ~95 | **Public; no cost stated.** MIT OpenCourseWare materials from a past MIT term, published under a Creative Commons licence. The page does not mention a cost. |
+| [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/) | MIT CSAIL | Beginner | ~30 | **Public; no cost stated.** Public course site with lecture notes and videos on YouTube. The page does not mention a cost. |
+| [CS106A: Programming Methodology](https://see.stanford.edu/Course/CS106A) | Stanford Engineering Everywhere | Beginner | ~65 | **Public; no cost stated.** Stanford Engineering Everywhere publishes recorded materials from a past Stanford class. The page does not mention a cost. |
+| [15-213: Introduction to Computer Systems](https://www.cs.cmu.edu/~213/) | Carnegie Mellon University | Advanced | ~130 | **University class site.** Website of CMU's current on-campus class (Fall 2026), not a public online course. The page does not say what people outside CMU can use. |
+| [CS 61A: Structure and Interpretation of Computer Programs](https://cs61a.org/) | UC Berkeley | Beginner | ~120 | **University class site.** Website of UC Berkeley's current on-campus class (Fall 2026), not a public online course. The page does not say what people outside Berkeley can use. |
+| [Algorithms, Part I: Data Structures & Sorting](https://algs4.cs.princeton.edu/home/) | Princeton University | Intermediate | ~65 | **Public; no cost stated.** Links to the textbook's website, which links to lecture videos and the Coursera course. The page does not mention a cost. |
+| [Algorithms, Part II: Graph Algorithms & String Processing](https://algs4.cs.princeton.edu/home/) | Princeton University | Advanced | ~70 | **Public; no cost stated.** Links to the textbook's website, which links to lecture videos and the Coursera course. The page does not mention a cost. |
+| [15-445/645: Database Systems](https://15445.courses.cs.cmu.edu/) | Carnegie Mellon University | Advanced | ~115 | **University class site.** Website of CMU's current on-campus class (Fall 2026), not a public online course. The page does not say what people outside CMU can use. |
+| [CSE 373: Data Structures and Algorithms](https://courses.cs.washington.edu/courses/cse373/) | University of Washington | Intermediate | ~80 | **Not checked.** Not checked: the page did not load from here on 2026-11-17 (connection timed out twice). |
+
+### Web Development (9)
+
+| Course | Provider | Level | Rough hours | Access (from the course page) |
+| :--- | :--- | :---: | :---: | :--- |
+| [CS50W: Web Programming with Python and JavaScript](https://cs50.harvard.edu/web/) | Harvard University | Intermediate | ~90 | **Free (page says so).** Free through Harvard's OpenCourseWare. Certificates are offered separately through edX; this page does not state their price. |
+| [Responsive Web Design Certification](https://www.freecodecamp.org/learn/responsive-web-design) | freeCodeCamp | Beginner | ~300 | **Free (page says so).** Free. freeCodeCamp marks this section as no longer updated and recommends its current curriculum instead. |
+| [Front End Development Libraries](https://www.freecodecamp.org/learn/front-end-development-libraries) | freeCodeCamp | Intermediate | ~150 | **Free (page says so).** Free. freeCodeCamp marks this section as no longer updated and recommends its current curriculum instead. |
+| [Back End Development and APIs](https://www.freecodecamp.org/learn/back-end-development-and-apis) | freeCodeCamp | Intermediate | ~180 | **Free (page says so).** Free. freeCodeCamp marks this section as no longer updated and recommends its current curriculum instead. |
+| [Computer Programming: Intro to JS & Animation](https://www.khanacademy.org/computing/computer-programming/programming) | Khan Academy | Beginner | ~35 | **Free (page says so).** Free. An account is optional and also free. |
+| [Intro to HTML/CSS: Making Webpages](https://www.khanacademy.org/computing/computer-programming/html-css) | Khan Academy | Beginner | ~25 | **Free (page says so).** Free. An account is optional and also free. |
+| [Foundations Course](https://www.theodinproject.com/paths/foundations/courses/foundations) | The Odin Project | Beginner | ~100 | **Free (page says so).** Free (stated on The Odin Project's Full Stack JavaScript page; this page does not mention cost). |
+| [Full Stack JavaScript Path](https://www.theodinproject.com/paths/full-stack-javascript) | The Odin Project | Intermediate | ~250 | **Free (page says so).** Free. |
+| [Full Stack Open 2024](https://fullstackopen.com/en/) | University of Helsinki | Advanced | ~150 | **Free (page says so).** Course material is openly licensed and public. The page does not mention a fee. |
+
+### Artificial Intelligence (14)
+
+| Course | Provider | Level | Rough hours | Access (from the course page) |
+| :--- | :--- | :---: | :---: | :--- |
+| [CS50AI: Introduction to Artificial Intelligence with Python](https://cs50.harvard.edu/ai/) | Harvard University | Intermediate | ~85 | **Free (page says so).** Free through Harvard's OpenCourseWare. Certificates are offered separately through edX; this page does not state their price. |
+| [Machine Learning Specialization](https://www.coursera.org/specializations/machine-learning-introduction) | DeepLearning.AI / Stanford | Intermediate | ~95 | **Check cost terms.** Coursera shows "Enroll for free" and "Financial aid available" but the page does not say which parts are free and which are paid. Check before enrolling. |
+| [Deep Learning Specialization](https://www.coursera.org/specializations/deep-learning) | DeepLearning.AI | Advanced | ~120 | **Check cost terms.** Coursera shows "Enroll for free" and "Financial aid available" but the page does not say which parts are free and which are paid. Check before enrolling. |
+| [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course) | Google Developers | Intermediate | ~30 | **Public; no cost stated.** Public course on Google for Developers. The page does not mention a cost. |
+| [Practical Deep Learning for Coders](https://course.fast.ai/) | Fast.ai | Intermediate | ~70 | **Free (page says so).** Free. |
+| [Intro to Machine Learning](https://www.kaggle.com/learn/intro-to-machine-learning) | Kaggle | Beginner | ~3 | **Free (page says so).** Free. Kaggle lists it as about 3 hours. |
+| [Elements of AI: Introduction to AI](https://www.elementsofai.com/) | University of Helsinki & Reaktor | Beginner | ~30 | **Free (page says so).** Free. |
+| [Building AI: Python Algorithms for AI](https://buildingai.elementsofai.com/) | University of Helsinki & Reaktor | Intermediate | ~50 | **Free (page says so).** Free (stated on the Elements of AI home page). |
+| [CS 229: Machine Learning](https://cs229.stanford.edu/) | Stanford University | Advanced | ~100 | **University class site.** Website of Stanford's on-campus class, not a public online course. The page does not say what people outside Stanford can use. |
+| [CS 224N: Natural Language Processing with Deep Learning](https://web.stanford.edu/class/cs224n/) | Stanford University | Advanced | ~95 | **University class site.** Website of Stanford's on-campus class. Current lecture videos are for enrolled students only; the page points to a free 2024 YouTube playlist instead. |
+| [CS 231N: Deep Learning for Computer Vision](http://cs231n.stanford.edu/) | Stanford University | Advanced | ~90 | **University class site.** Website of Stanford's on-campus class. Lecture videos are for enrolled Stanford students. |
+| [6.036: Introduction to Machine Learning](https://openlearninglibrary.mit.edu/courses/course-v1:MITx+6.036+1T2019/about) | MIT OpenCourseWare | Intermediate | ~85 | **Public; no cost stated.** MIT Open Learning Library course; enrolment is required and no certificate is offered. The page does not mention a cost. |
+| [6.S191: Introduction to Deep Learning](http://introtodeeplearning.com/) | MIT OpenCourseWare | Beginner | ~45 | **Public; no cost stated.** Lectures, slides and labs are published online each week. The page does not mention a cost. |
+| [Deep Learning for Natural Language Processing](https://github.com/oxford-cs-deepnlp-2017/lectures) | University of Oxford | Advanced | ~60 | **University class site.** GitHub repository of slides and video links from Oxford's 2017 class. Not an active course. |
+
+### Mathematics (1)
+
+| Course | Provider | Level | Rough hours | Access (from the course page) |
+| :--- | :--- | :---: | :---: | :--- |
+| [18.06: Linear Algebra (Gilbert Strang)](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/) | MIT OpenCourseWare | Intermediate | ~60 | **Public; no cost stated.** MIT OpenCourseWare materials from a past MIT term, published under a Creative Commons licence. The page does not mention a cost. |
+
+### Systems & Security (6)
+
+| Course | Provider | Level | Rough hours | Access (from the course page) |
+| :--- | :--- | :---: | :---: | :--- |
+| [Introduction to Linux (LFS101x)](https://www.edx.org/learn/linux/the-linux-foundation-introduction-to-linux) | The Linux Foundation | Beginner | ~60 | **Free (page says so).** edX offers free registration and an audit option. A certificate is offered separately; the page does not state its price. |
+| [Introduction to Cybersecurity](https://www.netacad.com/courses/introduction-to-cybersecurity) | Cisco Networking Academy | Beginner | ~20 | **Free (page says so).** Free (the page title says "Free Online Course"). |
+| [CS 61C: Great Ideas in Computer Architecture (Machine Structures)](https://cs61c.org/) | UC Berkeley | Advanced | ~130 | **University class site.** Website of UC Berkeley's current on-campus class (Fall 2026). Lecture recordings go to Berkeley's own system; the page links older videos from Spring 2024. |
+| [CS 110: Principles of Computer Systems](https://web.stanford.edu/class/cs110/) | Stanford University | Advanced | ~105 | **University class site.** Website of Stanford's Winter 2022 class, not a public online course and no longer current. |
+| [Nand to Tetris: Building a Modern Computer (Part I - Hardware)](https://www.nand2tetris.org/) | Hebrew University / Coursera | Beginner | ~50 | **Free; certificate costs.** Free on nand2tetris.org. The Coursera version requires payment and gives a completion certificate. |
+| [Nand to Tetris: Building a Modern Computer (Part II - Software)](https://www.nand2tetris.org/) | Hebrew University / Coursera | Intermediate | ~55 | **Free; certificate costs.** Free on nand2tetris.org. The Coursera version requires payment and gives a completion certificate. |
 
 ## Features
 
-- **Zero-Build Architecture**: 100% vanilla ES modules, semantic HTML5, CSS overrides, and pinned Tailwind CSS + DaisyUI via CDN.
-- **Subpath & Offline-Ready**: Uses strictly relative paths (`./assets/`, `./data/`) so it works out-of-the-box on GitHub Pages subpaths (`https://<user>.github.io/<repo>/`).
-- **Data-Driven (`data/courses.json`)**: Anyone can add or update courses via GitHub pull requests without touching frontend code.
-- **Client-Side Progress & Notes**: Module completions and personal notes persist in `localStorage` keyed by course ID.
-- **Export & Import JSON**: Back up or transfer your learning progress across devices with one click.
-- **Live Statistics**: Real-time course tracking with DaisyUI metrics (Total Courses, In Progress, Completed, Overall Completion Radial Progress).
-- **Deep Filtering & Search**: Instant debounced search, status filters (Not started / In progress / Completed), categories, difficulty levels, 88 topic tags, and multi-field sorting.
-- **URL Query Param Sync**: Filters, search terms, and sort orders sync dynamically with the URL (`?q=python&status=in-progress`).
-- **Course Detail Modal & Checklist**: Interactive module checklists with automated completion calculation, notes scratchpad, and celebratory confetti upon 100% completion.
-- **Study Streak Telemetry**: Daily learning activity tracking (`coursepulse_streak`) encouraging continuous study habits with day counters and motivational indicators.
-- **iCalendar (.ics) Study Plan Generator**: Generates spaced-repetition schedules exportable directly into Google Calendar, Apple Calendar, or Outlook.
-- **Markdown Notes Exporter**: One-click download of personal study notes with structured YAML frontmatter and checklist status for Obsidian, Notion, or local knowledge bases.
-- **High-Resolution Completion Diploma**: Instant client-side generation of executive 1200×750 PNG certificates of achievement with cryptographic verification hashes and seals.
-- **Dedicated Light Crisp & Dark Obsidian Modes**: Executive high-contrast design system (10.5:1 WCAG AAA text contrast) with tactile Sun/Moon toggle and **`[D]`** keyboard shortcut.
-- **Automated Catalog CI/CD Guardrails**: PR schema validator (`validate-catalog.yml`) ensuring course URLs, modules, and invariant integrity.
+- Search, filters by status, category, level and topic, and sorting. Filters are kept in the URL.
+- Per-course module checklist and notes, saved in `localStorage`. Export and import as JSON.
+- Export notes as Markdown, and a study schedule as an `.ics` calendar file.
+- A focus timer and a daily study streak counter, both local to your browser.
+- "Study Assist" copies a prompt describing the course and your checklist, for pasting into an AI assistant of your choice. Nothing is sent anywhere by the site.
+- Light and dark themes (press `D`).
 
----
+Earlier versions offered a downloadable "Verified Course Diploma". It was removed on 2026-11-17: it was generated from boxes you tick yourself, so it verified nothing. See [CORRECTIONS.md](CORRECTIONS.md).
 
-## Curated Course Directory (30 Free Courses)
+## Adding a course
 
-Below is the complete index of 30 verified, 100% paywall-free courses curated in CoursePulse. You can track your progress interactively on the [Live Web App](https://athish2002.github.io/free-course-tracker/) without signing in.
+Add an entry to `data/courses.json` (shape in `data/schema.json`) and open a pull request. Include the course page's own sentence about cost in `access.quotes`, copied exactly, with the page URL and the date you read it. If the page does not state the cost, say so in the note instead of guessing.
 
-### Computer Science (10 Courses)
-
-| Course Title | Provider | Level | Est. Duration | Official Syllabus |
-| :--- | :--- | :---: | :---: | :---: |
-| **CS50x: Introduction to Computer Science** | Harvard University | `Beginner` | 120h | [Open Syllabus](https://cs50.harvard.edu/x/) |
-| **CS50P: Introduction to Programming with Python** | Harvard University | `Beginner` | 80h | [Open Syllabus](https://cs50.harvard.edu/python/) |
-| **JavaScript Algorithms and Data Structures** | freeCodeCamp | `Beginner` | 300h | [Open Syllabus](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8) |
-| **Relational Databases Certification** | freeCodeCamp | `Intermediate` | 200h | [Open Syllabus](https://www.freecodecamp.org/learn/relational-database) |
-| **6.0001: Intro to CS & Programming in Python** | MIT OpenCourseWare | `Beginner` | 75h | [Open Syllabus](https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/) |
-| **6.006: Introduction to Algorithms** | MIT OpenCourseWare | `Advanced` | 110h | [Open Syllabus](https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/) |
-| **6.004: Computation Structures** | MIT OpenCourseWare | `Advanced` | 95h | [Open Syllabus](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/) |
-| **The Missing Semester of Your CS Education** | MIT CSAIL | `Beginner` | 30h | [Open Syllabus](https://missing.csail.mit.edu/) |
-| **CS106A: Programming Methodology** | Stanford Engineering Everywhere | `Beginner` | 65h | [Open Syllabus](https://see.stanford.edu/Course/CS106A) |
-| **15-213: Introduction to Computer Systems** | Carnegie Mellon University | `Advanced` | 130h | [Open Syllabus](https://www.cs.cmu.edu/~213/) |
-
-### Web Development (9 Courses)
-
-| Course Title | Provider | Level | Est. Duration | Official Syllabus |
-| :--- | :--- | :---: | :---: | :---: |
-| **CS50W: Web Programming with Python and JavaScript** | Harvard University | `Intermediate` | 90h | [Open Syllabus](https://cs50.harvard.edu/web/) |
-| **Responsive Web Design Certification** | freeCodeCamp | `Beginner` | 300h | [Open Syllabus](https://www.freecodecamp.org/learn/responsive-web-design) |
-| **Front End Development Libraries** | freeCodeCamp | `Intermediate` | 150h | [Open Syllabus](https://www.freecodecamp.org/learn/front-end-development-libraries) |
-| **Back End Development and APIs** | freeCodeCamp | `Intermediate` | 180h | [Open Syllabus](https://www.freecodecamp.org/learn/back-end-development-and-apis) |
-| **Computer Programming: Intro to JS & Animation** | Khan Academy | `Beginner` | 35h | [Open Syllabus](https://www.khanacademy.org/computing/computer-programming/programming) |
-| **Intro to HTML/CSS: Making Webpages** | Khan Academy | `Beginner` | 25h | [Open Syllabus](https://www.khanacademy.org/computing/computer-programming/html-css) |
-| **Foundations Course** | The Odin Project | `Beginner` | 100h | [Open Syllabus](https://www.theodinproject.com/paths/foundations/courses/foundations) |
-| **Full Stack JavaScript Path** | The Odin Project | `Intermediate` | 250h | [Open Syllabus](https://www.theodinproject.com/paths/full-stack-javascript) |
-| **Full Stack Open 2024** | University of Helsinki | `Advanced` | 150h | [Open Syllabus](https://fullstackopen.com/en/) |
-
-### Artificial Intelligence (8 Courses)
-
-| Course Title | Provider | Level | Est. Duration | Official Syllabus |
-| :--- | :--- | :---: | :---: | :---: |
-| **CS50AI: Introduction to Artificial Intelligence with Python** | Harvard University | `Intermediate` | 85h | [Open Syllabus](https://cs50.harvard.edu/ai/) |
-| **Machine Learning Specialization** | DeepLearning.AI / Stanford | `Intermediate` | 95h | [Open Syllabus](https://www.coursera.org/specializations/machine-learning-introduction) |
-| **Deep Learning Specialization** | DeepLearning.AI | `Advanced` | 120h | [Open Syllabus](https://www.coursera.org/specializations/deep-learning) |
-| **Machine Learning Crash Course** | Google Developers | `Intermediate` | 30h | [Open Syllabus](https://developers.google.com/machine-learning/crash-course) |
-| **Practical Deep Learning for Coders** | Fast.ai | `Intermediate` | 70h | [Open Syllabus](https://course.fast.ai/) |
-| **Intro to Machine Learning** | Kaggle | `Beginner` | 15h | [Open Syllabus](https://www.kaggle.com/learn/intro-to-machine-learning) |
-| **Elements of AI: Introduction to AI** | University of Helsinki & Reaktor | `Beginner` | 30h | [Open Syllabus](https://www.elementsofai.com/) |
-| **Building AI: Python Algorithms for AI** | University of Helsinki & Reaktor | `Intermediate` | 50h | [Open Syllabus](https://buildingai.elementsofai.com/) |
-
-### Systems & Security (2 Courses)
-
-| Course Title | Provider | Level | Est. Duration | Official Syllabus |
-| :--- | :--- | :---: | :---: | :---: |
-| **Introduction to Linux (LFS101x)** | The Linux Foundation | `Beginner` | 60h | [Open Syllabus](https://www.edx.org/learn/linux/the-linux-foundation-introduction-to-linux) |
-| **Introduction to Cybersecurity** | Cisco Networking Academy | `Beginner` | 20h | [Open Syllabus](https://www.netacad.com/courses/introduction-to-cybersecurity) |
-
-### Mathematics (1 Course)
-
-| Course Title | Provider | Level | Est. Duration | Official Syllabus |
-| :--- | :--- | :---: | :---: | :---: |
-| **18.06: Linear Algebra (Gilbert Strang)** | MIT OpenCourseWare | `Intermediate` | 60h | [Open Syllabus](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/) |
-
----
-
-## File Structure
-
-```
-/
-├── index.html                  # Main application canvas
-├── 404.html                    # Subpath-ready 404 error page
-├── assets/
-│   ├── app.js                  # Vanilla JS ES Module (~12 KB unminified)
-│   └── styles.css              # Custom overrides & animations
-├── data/
-│   └── courses.json            # Course database (contribute via PR!)
-├── .github/
-│   └── workflows/
-│       └── pages.yml           # Official GitHub Pages deployment workflow
-└── README.md                   # Documentation & setup guide
-```
-
----
-
-## Local Development & Preview
-
-Because CoursePulse is a pure static web app that fetches `./data/courses.json`, serve it with any lightweight local HTTP server (browsers restrict `fetch()` on `file://` protocols):
+## Running locally
 
 ```bash
-# 1. Clone your repository
-git clone https://github.com/<your-username>/free-course-tracker.git
-cd free-course-tracker
-
-# 2. Start a local Python HTTP server
 python -m http.server 8000
-
-# 3. Open in your browser
-# Visit http://localhost:8000
 ```
 
-Alternatively, use Node.js `npx serve` or VS Code's Live Server extension.
+Then open http://localhost:8000. Browsers block `fetch()` on `file://`, so a local server is needed.
 
----
+## Files
 
-## How to Add a Course (Pull Request Guide)
-
-To add a new free course to CoursePulse, simply append an entry to `data/courses.json`. No build step or code modifications are required.
-
-### JSON Schema & Copy-Paste Template
-
-```json
-{
-  "id": "institution-course-slug",
-  "title": "Course Title: Subtitle",
-  "provider": "University or Platform Name",
-  "url": "https://official-course-url.org/",
-  "category": "Computer Science",
-  "level": "Beginner",
-  "duration_hours": 40,
-  "tags": ["Python", "Algorithms", "Free Certificate"],
-  "description": "A clear, 2-3 sentence overview of the syllabus and prerequisites.",
-  "modules": [
-    { "id": "slug-m1", "title": "Module 1: Introduction & Fundamentals" },
-    { "id": "slug-m2", "title": "Module 2: Core Concepts & Practice" },
-    { "id": "slug-m3", "title": "Module 3: Advanced Applications" },
-    { "id": "slug-m4", "title": "Module 4: Final Capstone Project" }
-  ]
-}
+```
+index.html                     page
+assets/app.js, styles.css      app code (no build step)
+data/courses.json              the course list
+data/schema.json               shape of courses.json
+data/summary.json              counts derived from courses.json
+scripts/check-catalog-health.py  weekly link check
+.github/workflows/             Pages deploy, weekly link check, PR validation
 ```
 
-### Validation Rules
-- **`id`**: Lowercase alphanumeric string with hyphens (e.g. `harvard-cs50x`, `mit-ocw-6-006`).
-- **`level`**: Must be either `"Beginner"`, `"Intermediate"`, or `"Advanced"`.
-- **`duration_hours`**: Positive integer representing estimated total study hours.
-- **`url`**: Must link to the official, 100% paywall-free course syllabus.
-- **`modules`**: Array of objects with unique `id` and human-readable `title`.
+## Licence
 
----
-
-## Visual Theming (Light Crisp & Dark Companion)
-
-CoursePulse features an executive, high-contrast visual design system with dedicated **Light Crisp** and **Dark Obsidian** modes:
-- **Light Crisp (`light`)**: Clean `#f8fafc` canvas, pure `#ffffff` cards, deep Slate 900 `#0f172a` ink with **10.5:1 WCAG AAA contrast**, and royal blue `#2563eb` action buttons.
-- **Dark Obsidian (`dark`)**: Deep Slate 950 `#0b0f19` canvas, elevated Slate 900 `#111827` cards, quiet Slate 800 `#1e293b` borders, and pure `#f8fafc` typography.
-
-### Toggling Themes
-- Click the **Theme Toggle Button** in the header.
-- Or press **`D`** on your keyboard from anywhere on the page (when not typing in search or notes).
-- Your preference is instantly saved in `localStorage` and restored on future visits without layout flash. Default theme respects your operating system's `prefers-color-scheme`.
-
----
-
-## GitHub Pages Deployment Setup
-
-Deploying CoursePulse to GitHub Pages takes under 1 minute using GitHub Actions:
-
-1. Push your repository to GitHub (`main` branch).
-2. On GitHub, navigate to your repository's **Settings** tab.
-3. Under the **Code and automation** section in the left sidebar, click **Pages**.
-4. Under **Build and deployment** > **Source**, select **GitHub Actions** from the dropdown.
-5. The included workflow [`.github/workflows/pages.yml`](.github/workflows/pages.yml) will trigger automatically on every push to `main` and deploy the entire static site.
-6. Your live tracker will be accessible at: `https://<your-username>.github.io/<repository-name>/`
-
----
-
-## License & Fair Use
-
-CoursePulse is released under the MIT License. All courses, logos, video lectures, and syllabus materials belong to their respective universities, foundations, and educational providers.
+No licence file has been added to this repository yet. Course content, names and trademarks belong to their providers; this site links to them and is not affiliated with them.
